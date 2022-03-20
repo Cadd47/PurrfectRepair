@@ -5,13 +5,14 @@ using System.Security.Cryptography;
 using System.Threading;
 using UnityEngine;
 
-public class ThirdPersonMovement : MonoBehaviour
+public class PlayerTwoMovement : MonoBehaviour
 {
     public CharacterController controller;
     public Transform cam;
 
-    public float speed = 6;
-    public float gravity = -1f;
+    public float speed = 8;
+    public float gravity = -27.5f;
+    public float jumpHeight = 1.5f;
     Vector3 velocity;
     bool isGrounded;
 
@@ -20,19 +21,43 @@ public class ThirdPersonMovement : MonoBehaviour
     public LayerMask groundMask;
 
     float turnSmoothVelocity;
-    public float turnSmoothTime = 0.1f;
+    public float turnSmoothTime = 0.15f;
 
 
     // Update is called once per frame
     void Update()
     {
+        //jump
+        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+
+        if (isGrounded && velocity.y < 0)
+        {
+            velocity.y = -2f;
+        }
+
+        if (Input.GetButtonDown("Jump") && isGrounded)
+        {
+            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+        }
+
         //gravity
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
+
         //walk
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
         Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
+
+        //sprint
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            speed = 14;
+        }
+        if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            speed = 8;
+        }
 
         if (direction.magnitude >= 0.1f)
         {
