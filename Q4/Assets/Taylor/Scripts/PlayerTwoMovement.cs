@@ -7,6 +7,9 @@ using UnityEngine;
 
 public class PlayerTwoMovement : MonoBehaviour
 {
+
+    [SerializeField] ParticleSystem sprintParticle = null;
+
     public CharacterController controller;
     public Transform cam;
 
@@ -23,6 +26,11 @@ public class PlayerTwoMovement : MonoBehaviour
     float turnSmoothVelocity;
     public float turnSmoothTime = 0.15f;
 
+
+    void Start()
+    {
+        sprintParticle.Stop();
+    }
 
     // Update is called once per frame
     void Update()
@@ -59,6 +67,17 @@ public class PlayerTwoMovement : MonoBehaviour
             speed = 8;
         }
 
+        //sprint particle check
+        if (Input.GetKey(KeyCode.LeftShift) && isGrounded)
+        {
+            sprintParticle.Play();
+        }
+        else
+        {
+            sprintParticle.Stop();
+        }
+
+        //camera
         if (direction.magnitude >= 0.1f)
         {
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
@@ -68,5 +87,6 @@ public class PlayerTwoMovement : MonoBehaviour
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
             controller.Move(moveDir.normalized * speed * Time.deltaTime);
         }
+
     }
 }

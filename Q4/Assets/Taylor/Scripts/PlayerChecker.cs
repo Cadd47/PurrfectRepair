@@ -10,6 +10,9 @@ public class PlayerChecker : MonoBehaviour
     public GameObject camOne;
     public GameObject camTwo;
 
+    public GameObject sprintOne;
+    public GameObject sprintTwo;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -42,6 +45,9 @@ public class PlayerChecker : MonoBehaviour
 
             camOne.SetActive(true);
             camTwo.SetActive(false);
+
+            sprintOne.SetActive(true);
+            sprintTwo.SetActive(false);
         }
 
         if (playerCheck % 2 == 1)
@@ -55,6 +61,9 @@ public class PlayerChecker : MonoBehaviour
 
             camOne.SetActive(false);
             camTwo.SetActive(true);
+
+            sprintOne.SetActive(false);
+            sprintTwo.SetActive(true);
         }
     }
 }
