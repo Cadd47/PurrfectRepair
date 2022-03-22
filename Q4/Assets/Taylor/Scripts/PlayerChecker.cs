@@ -46,6 +46,7 @@ public class PlayerChecker : MonoBehaviour
             camOne.SetActive(true);
             camTwo.SetActive(false);
 
+            //particles
             sprintOne.SetActive(true);
             sprintTwo.SetActive(false);
         }
@@ -62,6 +63,7 @@ public class PlayerChecker : MonoBehaviour
             camOne.SetActive(false);
             camTwo.SetActive(true);
 
+            //particles
             sprintOne.SetActive(false);
             sprintTwo.SetActive(true);
         }

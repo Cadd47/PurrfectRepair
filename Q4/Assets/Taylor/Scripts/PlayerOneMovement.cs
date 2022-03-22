@@ -9,13 +9,19 @@ public class PlayerOneMovement : MonoBehaviour
 {
 
     [SerializeField] ParticleSystem sprintParticle = null;
+    [SerializeField] ParticleSystem jumpParticle = null;
+    public GameObject sprintCheck;
 
     public CharacterController controller;
     public Transform cam;
 
     public float speed = 8;
     public float gravity = -27.5f;
-    public float jumpHeight = 1.5f;
+    
+    public float jumpHeight;
+    private float jumpTimeCounter;
+    public bool isJumping;
+
     Vector3 velocity;
     bool isGrounded;
 
@@ -32,6 +38,11 @@ public class PlayerOneMovement : MonoBehaviour
         sprintParticle.Stop();
     }
 
+    void Jump()
+    {
+        jumpParticle.Play();
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -43,10 +54,33 @@ public class PlayerOneMovement : MonoBehaviour
             velocity.y = -2f;
         }
 
-        if (Input.GetButtonDown("Jump") && isGrounded)
+        if (Input.GetKeyDown(KeyCode.Space) && velocity.y < 0 && isGrounded)
         {
+            isJumping = true;
+            jumpTimeCounter = 0.25f;
+            Jump();
+
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
+
+        if (Input.GetKey(KeyCode.Space) && isJumping == true)
+        {
+            if(jumpTimeCounter > 0)
+            {
+                velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+                jumpTimeCounter -= Time.deltaTime;
+            }
+            else
+            {
+                isJumping = false;
+            }
+        }
+
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            isJumping = false;
+        }
+
 
         //gravity
         velocity.y += gravity * Time.deltaTime;
@@ -61,10 +95,13 @@ public class PlayerOneMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             speed = 14;
+            sprintCheck.SetActive(false);
         }
         if (Input.GetKeyUp(KeyCode.LeftShift))
         {
             speed = 8;
+            sprintCheck.SetActive(true);
+            jumpParticle.Stop();
         }
 
         //sprint particle check
