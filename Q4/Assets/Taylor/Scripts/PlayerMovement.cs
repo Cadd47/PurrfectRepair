@@ -5,7 +5,7 @@ using System.Security.Cryptography;
 using System.Threading;
 using UnityEngine;
 
-public class PlayerTwoMovement : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
 
     [SerializeField] ParticleSystem sprintParticle = null;
@@ -17,7 +17,7 @@ public class PlayerTwoMovement : MonoBehaviour
 
     public float speed = 8;
     public float gravity = -27.5f;
-
+    
     public float jumpHeight;
     private float jumpTimeCounter;
     public bool isJumping;
@@ -38,6 +38,18 @@ public class PlayerTwoMovement : MonoBehaviour
         sprintParticle.Stop();
     }
 
+    IEnumerator checkLanded()
+    {
+        jumpParticle.Stop();
+
+        while (!isGrounded)
+        {
+            yield return null;
+        }
+        jumpParticle.Play();
+
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -49,18 +61,23 @@ public class PlayerTwoMovement : MonoBehaviour
             velocity.y = -2f;
         }
 
+        //check if not grounded
+        if (!isGrounded)
+        {
+            StartCoroutine(checkLanded());
+        }
+
         if (Input.GetKeyDown(KeyCode.Space) && velocity.y < 0 && isGrounded)
         {
             isJumping = true;
             jumpTimeCounter = 0.25f;
-            jumpParticle.Play();
 
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
 
         if (Input.GetKey(KeyCode.Space) && isJumping == true)
         {
-            if (jumpTimeCounter > 0)
+            if(jumpTimeCounter > 0)
             {
                 velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
                 jumpTimeCounter -= Time.deltaTime;

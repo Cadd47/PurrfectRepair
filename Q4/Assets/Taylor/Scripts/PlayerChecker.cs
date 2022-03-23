@@ -37,8 +37,8 @@ public class PlayerChecker : MonoBehaviour
         if (playerCheck % 2 == 0)
         {
             Debug.Log("Even");
-            GameObject.Find("Player One").GetComponent<PlayerOneMovement>().enabled = true;
-            GameObject.Find("Player Two").GetComponent<PlayerTwoMovement>().enabled = false;
+            GameObject.Find("Player One").GetComponent<PlayerMovement>().enabled = true;
+            GameObject.Find("Player Two").GetComponent<PlayerMovement>().enabled = false;
 
             GameObject.Find("Player One").GetComponent<AltGrav>().enabled = false;
             GameObject.Find("Player Two").GetComponent<AltGrav>().enabled = true;
@@ -54,8 +54,8 @@ public class PlayerChecker : MonoBehaviour
         if (playerCheck % 2 == 1)
         {
             Debug.Log("Odd");
-            GameObject.Find("Player One").GetComponent<PlayerOneMovement>().enabled = false;
-            GameObject.Find("Player Two").GetComponent<PlayerTwoMovement>().enabled = true;
+            GameObject.Find("Player One").GetComponent<PlayerMovement>().enabled = false;
+            GameObject.Find("Player Two").GetComponent<PlayerMovement>().enabled = true;
 
             GameObject.Find("Player One").GetComponent<AltGrav>().enabled = true;
             GameObject.Find("Player Two").GetComponent<AltGrav>().enabled = false;
