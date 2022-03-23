@@ -7,20 +7,21 @@ public class AIMovement : MonoBehaviour
 {
     public Transform target;
     NavMeshAgent agent;
+    public ResourceCatalogue RC;
     // Start is called before the first frame update
     void Start()
     {
-        target = GameObject.FindGameObjectWithTag("Wood").GetComponent<Transform>();
             agent = GetComponent<NavMeshAgent>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        GoToResource();
+    }
+
+    void GoToResource()
+    {
         agent.SetDestination(target.position);
-        if(target == null)
-        {
-            target = GameObject.FindGameObjectWithTag("Wood").GetComponent<Transform>();
-        }
     }
 }
