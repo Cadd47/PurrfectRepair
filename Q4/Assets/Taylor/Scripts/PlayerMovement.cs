@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] ParticleSystem sprintParticle = null;
     [SerializeField] ParticleSystem jumpParticle = null;
-    public GameObject sprintCheck;
+    [SerializeField] ParticleSystem landParticle = null;
 
     public CharacterController controller;
     public Transform cam;
@@ -33,20 +33,16 @@ public class PlayerMovement : MonoBehaviour
     public float turnSmoothTime = 0.15f;
 
 
-    void Start()
-    {
-        sprintParticle.Stop();
-    }
-
     IEnumerator checkLanded()
     {
-        jumpParticle.Stop();
+        landParticle.Stop();
 
         while (!isGrounded)
         {
             yield return null;
         }
-        jumpParticle.Play();
+
+        landParticle.Play();
 
     }
 
@@ -71,6 +67,7 @@ public class PlayerMovement : MonoBehaviour
         {
             isJumping = true;
             jumpTimeCounter = 0.25f;
+            jumpParticle.Play();
 
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
@@ -93,7 +90,6 @@ public class PlayerMovement : MonoBehaviour
             isJumping = false;
         }
 
-
         //gravity
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
@@ -107,16 +103,12 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             speed = 14;
-            sprintCheck.SetActive(false);
         }
         if (Input.GetKeyUp(KeyCode.LeftShift))
         {
             speed = 8;
-            sprintCheck.SetActive(true);
-            jumpParticle.Stop();
         }
 
-        //sprint particle check
         if (Input.GetKey(KeyCode.LeftShift) && isGrounded)
         {
             sprintParticle.Play();
