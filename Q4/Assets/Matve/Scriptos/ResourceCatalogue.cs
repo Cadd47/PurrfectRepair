@@ -6,6 +6,10 @@ public class ResourceCatalogue : MonoBehaviour
 {
 
     public GameObject[] wood;
+    public GameObject[] stone;
+    public GameObject[] fish;
+    public GameObject[] ore;
+    public GameObject[] witchStuff;
     // Start is called before the first frame update
     void Start()
     {
