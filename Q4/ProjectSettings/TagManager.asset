@@ -8,6 +8,7 @@ TagManager:
   - Wood
   - NPCHead
   - ResourceManager
+  - AI
   layers:
   - Default
   - TransparentFX

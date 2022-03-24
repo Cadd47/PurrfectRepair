@@ -8,6 +8,7 @@ public class DestroyOnTouch : MonoBehaviour
     public int value;
     public int minVal;
     public int maxVal;
+    AIMovement AIM;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,26 +23,32 @@ public class DestroyOnTouch : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(type == "wood")
+        if(other.gameObject.tag == "Player"|| other.gameObject.tag == "AI")
         {
-            ResourceManager.woodCount += value;
+            if (type == "wood")
+            {
+                ResourceManager.woodCount += value;
+            }
+            else if (type == "stone")
+            {
+                ResourceManager.stoneCount += value;
+            }
+            else if (type == "fish")
+            {
+                ResourceManager.fishCount += value;
+            }
+            else if (type == "ore")
+            {
+                ResourceManager.oreCount += value;
+            }
+            else if (type == "witchStuff")
+            {
+                ResourceManager.witchStuff += value;
+            }
+            AIM = other.gameObject.GetComponent<AIMovement>();
+            AIM.target = null;
+            Destroy(gameObject);
         }
-        else if(type == "stone")
-        {
-            ResourceManager.stoneCount += value;
-        }
-        else if(type == "fish")
-        {
-            ResourceManager.fishCount += value;
-        }
-        else if(type == "ore")
-        {
-            ResourceManager.oreCount += value;
-        }
-        else if(type == "witchStuff")
-        {
-            ResourceManager.witchStuff += value;
-        }
-        Destroy(gameObject);
+
     }
 }
