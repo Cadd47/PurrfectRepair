@@ -9,6 +9,10 @@ TagManager:
   - NPCHead
   - ResourceManager
   - AI
+  - Stone
+  - Ore
+  - Fish
+  - AIHome
   layers:
   - Default
   - TransparentFX
