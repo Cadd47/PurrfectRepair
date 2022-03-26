@@ -4,5 +4,17 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Taylor/MainMenu.unity
+    guid: cb003b6b7fb921142a1dbfa51afd2de6
+  - enabled: 1
+    path: Assets/Taylor/TaylorTest.unity
+    guid: 546689662b0e46348b8aa3b38c4db4bc
+  - enabled: 1
+    path: Assets/Taylor/CreditScene.unity
+    guid: e653122a9f4e3d241bc3b78e9ac6e3dd
+  - enabled: 1
+    path: Assets/Taylor/OptionScene.unity
+    guid: 029afed70037fbb419097d0d3ff37128
   m_configObjects: {}

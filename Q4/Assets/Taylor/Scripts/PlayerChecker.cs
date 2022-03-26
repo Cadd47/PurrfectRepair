@@ -17,6 +17,7 @@ public class PlayerChecker : MonoBehaviour
     void Start()
     {
         Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
 
         playerCheck = 0;
     }
