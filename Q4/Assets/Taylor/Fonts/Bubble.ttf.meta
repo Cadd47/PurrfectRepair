@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: fc74f4315f200a74eaba9eda77697cf0
+guid: 793ea1dfa47b2fa4bb3b1ab7913e93cf
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -8,9 +8,9 @@ TrueTypeFontImporter:
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
-  fontName: Winter Sunday
+  fontName: Janda Manatee Bubble
   fontNames:
-  - Winter Sunday
+  - Janda Manatee Bubble
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0

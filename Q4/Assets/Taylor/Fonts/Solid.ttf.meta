@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f53e7246c17d9934ca3657979f052e18
+guid: afd1629ba6aad164ead19e66ed79a7cb
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -8,9 +8,9 @@ TrueTypeFontImporter:
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
-  fontName: PWJoyeuxNoel
+  fontName: Janda Manatee Solid
   fontNames:
-  - PWJoyeuxNoel
+  - Janda Manatee Solid
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
