@@ -50,27 +50,27 @@ public class DestroyOnTouch : MonoBehaviour
             
             if (type == "wood")
             {
-                ResourceManager.woodCount += value;
+                
                 RC.wood.Remove(gameObject);
             }
             else if (type == "stone")
             {
-                ResourceManager.stoneCount += value;
+                
                 RC.stone.Remove(gameObject);
             }
             else if (type == "fish")
             {
-                ResourceManager.fishCount += value;
+                
                 RC.fish.Remove(gameObject);
             }
             else if (type == "ore")
             {
-                ResourceManager.oreCount += value;
+                
                 RC.ore.Remove(gameObject);
             }
             else
             {
-                ResourceManager.witchStuff += value;
+                
                 RC.witchStuff.Remove(gameObject);
             }
             AIM = other.gameObject.GetComponent<AIMovement>();
