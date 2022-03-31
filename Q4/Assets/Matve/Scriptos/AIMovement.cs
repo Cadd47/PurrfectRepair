@@ -5,6 +5,9 @@ using UnityEngine.AI;
 
 public class AIMovement : MonoBehaviour
 {
+    float Timer = 1.0f;
+    float daTime;
+
     public int stored;
     public Transform target;
     public Transform home;
@@ -13,12 +16,15 @@ public class AIMovement : MonoBehaviour
     public string huntType;
     public bool deployed;
     public bool returnHome;
+
+    ResourceManager RM;
     // Start is called before the first frame update
     void Start()
     {
-            RC = GameObject.FindGameObjectWithTag("ResourceManager").GetComponent<ResourceCatalogue>();
-            agent = GetComponent<NavMeshAgent>();
-            home = GameObject.FindGameObjectWithTag("AIHome").transform;
+        RM = GameObject.FindGameObjectWithTag("ResourceManager").GetComponent<ResourceManager>();
+        RC = GameObject.FindGameObjectWithTag("ResourceManager").GetComponent<ResourceCatalogue>();
+        agent = GetComponent<NavMeshAgent>();
+        home = GameObject.FindGameObjectWithTag("AIHome").transform;
     }
 
     // Update is called once per frame
@@ -26,6 +32,7 @@ public class AIMovement : MonoBehaviour
     {
         if (deployed)
         {
+            daTime = 0;
             if (target == null && !returnHome)
             {
                 int itemIndex;
@@ -92,7 +99,51 @@ public class AIMovement : MonoBehaviour
 
             GoToResource();
         }
+        else
+        {
+            if(Timer <= daTime)
+            {
+                Timer += Time.deltaTime;
+            }
+            else
+            {
+                deployed = true;
+            }
+        }
 
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == "AIHome")
+        {
+            deployed = false;
+            if (huntType == "wood")
+            {
+                ResourceManager.woodCount += stored;
+                
+            }
+            else if (huntType == "stone")
+            {
+                ResourceManager.stoneCount += stored;
+
+            }
+            else if (huntType == "fish")
+            {
+                ResourceManager.fishCount += stored;
+
+            }
+            else if (huntType == "ore")
+            {
+                ResourceManager.oreCount += stored;
+
+            }
+            else
+            {
+                ResourceManager.witchStuff += stored;
+
+            }
+        }
     }
 
     void GoToResource()
