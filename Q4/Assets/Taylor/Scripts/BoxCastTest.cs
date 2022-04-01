@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BoxCastTest : MonoBehaviour
 {
-    {
+    
     float m_MaxDistance;
     bool m_HitDetect;
 
