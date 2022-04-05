@@ -5,9 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
+    PlayerChecker playerChecker;
+
     public static bool GameIsPaused = false;
     public GameObject pauseMenuUI;
     
+    void Start()
+    {
+        playerChecker = GameObject.Find("Players").GetComponent<PlayerChecker>();
+    }
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -25,8 +32,11 @@ public class MenuManager : MonoBehaviour
 
     public void Resume()
     {
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
+        if (playerChecker.canSwitch == true)
+        {
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+        }
 
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;

@@ -20,7 +20,7 @@ public class BuildingManager : MonoBehaviour
     private RaycastHit hit;
     [SerializeField] private LayerMask layerMask;
 
-    void Update()
+    private void Update()
     {
         if(selectedObject != null)
         {

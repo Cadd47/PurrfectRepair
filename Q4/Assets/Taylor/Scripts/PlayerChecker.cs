@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PlayerChecker : MonoBehaviour
 {
-
     private float playerCheck;
+    public bool canSwitch;
 
     public GameObject camOne;
     public GameObject camTwo;
@@ -20,12 +20,13 @@ public class PlayerChecker : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
 
         playerCheck = 0;
+        canSwitch = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.C))
+        if (Input.GetKeyDown(KeyCode.C) && canSwitch)
         {
             playerCheck++;
             Check();
@@ -33,7 +34,7 @@ public class PlayerChecker : MonoBehaviour
 
     }
 
-    void Check()
+    private void Check()
     {
         if (playerCheck % 2 == 0)
         {

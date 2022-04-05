@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3365081125089232770}
   - component: {fileID: 7121501664905481470}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ColliderChecker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae1add481d6f5f143b6c63eb28dd1705, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: {x: 0, y: 0, z: 0}
 --- !u!1 &3452425448470302217
 GameObject:
   m_ObjectHideFlags: 0
@@ -57,7 +56,7 @@ GameObject:
   - component: {fileID: 1932447068477289129}
   - component: {fileID: 4418097554912208044}
   - component: {fileID: 9124948835046404569}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Buiding 2
   m_TagString: Building
   m_Icon: {fileID: 0}
@@ -150,8 +149,8 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3452425448470302217}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 1.5, y: 1.5, z: 1.5}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
