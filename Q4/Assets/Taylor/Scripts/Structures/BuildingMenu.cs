@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BuildingMenu : MonoBehaviour
 {
+    BuildingManager buildingManager;
     PlayerChecker playerChecker;
 
     public GameObject mainCam;
@@ -14,12 +15,14 @@ public class BuildingMenu : MonoBehaviour
     private bool hasPlayer;
     private bool amOne;
 
-    private int menuCheck;
+    public int menuCheck;
 
     void Start()
     {
         playerChecker = GameObject.Find("Players").GetComponent<PlayerChecker>();
-        GameObject.Find("BuildingManager").GetComponent<BuildingManager>().enabled = false;
+        buildingManager = GameObject.Find("BuildingManager").GetComponent<BuildingManager>();
+        
+        buildingManager.enabled = false;
     }
 
     private void Update()
@@ -63,7 +66,6 @@ public class BuildingMenu : MonoBehaviour
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
 
-            Debug.Log("Open");
             GameObject.Find("BuildingManager").GetComponent<BuildingManager>().enabled = true;
 
             //Checks which player you are
@@ -84,8 +86,11 @@ public class BuildingMenu : MonoBehaviour
 
         if (menuCheck % 2 == 0)
         {
-            Debug.Log("Close");
             GameObject.Find("BuildingManager").GetComponent<BuildingManager>().enabled = false;
+
+            //destroy any green and red
+            Destroy(buildingManager.selectedObject);
+            buildingManager.selectedObject = null;
 
             playerChecker.canSwitch = true;
 

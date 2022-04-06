@@ -2033,22 +2033,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   structures:
-  - {fileID: 7489195270885496326, guid: 4941b288e0c5c984eb99a0462ab10a16, type: 3}
-  - {fileID: 3452425448470302217, guid: 34b5f5e3c0cda2943bce1387bd85badf, type: 3}
-  - {fileID: 7086384232262625934, guid: 15d1c8a5894e61640bd63b212e819350, type: 3}
+  - {fileID: 3188989353509782520, guid: 4941b288e0c5c984eb99a0462ab10a16, type: 3}
+  - {fileID: 5400299847835409397, guid: 34b5f5e3c0cda2943bce1387bd85badf, type: 3}
+  - {fileID: 6788404746602728447, guid: 15d1c8a5894e61640bd63b212e819350, type: 3}
   selectedObject: {fileID: 0}
-  materials:
-  - {fileID: 2100000, guid: 3f0642978293e6541bd30334c44e5bb3, type: 2}
-  - {fileID: 2100000, guid: 543016fab4359ab4fa3f6443efc5142d, type: 2}
-  - {fileID: 2100000, guid: 4be96b2d2b3a4bd4bbcdef69f563b12d, type: 2}
   check: 1
   canPlace: 1
   buildCamera: {fileID: 32337918}
   gridSize: 10
   rotateAmount: 45
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 256
 --- !u!4 &1158019072
 Transform:
   m_ObjectHideFlags: 0
@@ -2078,6 +2071,7 @@ MonoBehaviour:
   mainCam: {fileID: 874515820}
   buildCam: {fileID: 32337915}
   buildMenu: {fileID: 581670053}
+  menuCheck: 0
 --- !u!65 &1158019074
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4149,17 +4143,17 @@ PrefabInstance:
     - target: {fileID: 1529755942298351229, guid: 1a18f7ff2d95b7b4e96c5aff68d0c299,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.16018224
+      value: 0.16018222
       objectReference: {fileID: 0}
     - target: {fileID: 1529755942298351229, guid: 1a18f7ff2d95b7b4e96c5aff68d0c299,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000004252742
+      value: -0.000000025470568
       objectReference: {fileID: 0}
     - target: {fileID: 1529755942298351229, guid: 1a18f7ff2d95b7b4e96c5aff68d0c299,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -6.9012535e-10
+      value: 0.0000000041333035
       objectReference: {fileID: 0}
     - target: {fileID: 1529755942357715806, guid: 1a18f7ff2d95b7b4e96c5aff68d0c299,
         type: 3}
@@ -4259,12 +4253,12 @@ PrefabInstance:
     - target: {fileID: 1529755943447766955, guid: 1a18f7ff2d95b7b4e96c5aff68d0c299,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000008557246
+      value: -0.000000008557245
       objectReference: {fileID: 0}
     - target: {fileID: 1529755943447766955, guid: 1a18f7ff2d95b7b4e96c5aff68d0c299,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -8.8794133e-10
+      value: 8.879412e-10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a18f7ff2d95b7b4e96c5aff68d0c299, type: 3}

@@ -7,7 +7,8 @@ public class BuildingManager : MonoBehaviour
 {
     public GameObject[] structures;
     public GameObject selectedObject;
-    public Material[] materials;
+    private MeshRenderer renderer;
+
     public bool check = true;
     public bool canPlace = true;
 
@@ -18,7 +19,6 @@ public class BuildingManager : MonoBehaviour
     public float rotateAmount;
 
     private RaycastHit hit;
-    [SerializeField] private LayerMask layerMask;
 
     private void Update()
     {
@@ -45,7 +45,7 @@ public class BuildingManager : MonoBehaviour
     {
         Ray ray = buildCamera.ScreenPointToRay(Input.mousePosition);
 
-        if (Physics.Raycast(ray, out hit, 1000, layerMask))
+        if (Physics.Raycast(ray, out hit))
         {
             pos = hit.point;
         }
@@ -62,28 +62,28 @@ public class BuildingManager : MonoBehaviour
         selectedObject.transform.Rotate(Vector3.up, rotateAmount);
     }
 
-    void UpdateMaterials()
+    private void UpdateMaterials()
     {
         if (canPlace)
         {
-            selectedObject.GetComponent<MeshRenderer>().material = materials[0];
+            selectedObject.GetComponent<Renderer>().material.color = new Color(155/255f, 255/255f, 166/255f);
         }
         else
         {
-            selectedObject.GetComponent<MeshRenderer>().material = materials[1];
+            selectedObject.GetComponent<Renderer>().material.color = new Color(255/255f, 130/255f, 130/255f);
         }
     }
 
     public void PlaceObject()
     {
-        selectedObject.GetComponent<MeshRenderer>().material = materials[2];
+        selectedObject.GetComponent<Renderer>().material.color = Color.white;
 
         check = false;
         selectedObject.GetComponent<Collider>().enabled = true;
         selectedObject = null;
     }
 
-    float RoundToGrid(float pos)
+    public float RoundToGrid(float pos)
     {
         float xDiff = pos % gridSize;
         pos -= xDiff;
@@ -94,4 +94,5 @@ public class BuildingManager : MonoBehaviour
         }
         return pos;
     }
+
 }

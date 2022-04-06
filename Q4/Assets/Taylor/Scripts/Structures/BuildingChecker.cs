@@ -5,6 +5,7 @@ using UnityEngine;
 public class BuildingChecker : MonoBehaviour
 {
     BuildingManager buildingManager;
+    BuildingMove buildingMove;
 
     private int checkGood = 0;
     private int checkBad = 0;
@@ -19,16 +20,18 @@ public class BuildingChecker : MonoBehaviour
         if (buildingManager.check == true)
         {
             PlaceCheck();
+            this.gameObject.SetActive(true);
         }
 
         if (buildingManager.check == false)
         {
-            Destroy(gameObject);
+            this.gameObject.SetActive(false);
         }
+
     }
 
 
-    void PlaceCheck()
+    public void PlaceCheck()
     {
         Collider[] hitChecks = Physics.OverlapBox(transform.position, new Vector3(10, 10, 10));
 
@@ -49,12 +52,10 @@ public class BuildingChecker : MonoBehaviour
 
         if (checkGood > checkBad)
         {
-            //Debug.Log("Good");
             buildingManager.canPlace = true;
         }
         else
         {
-            //Debug.Log("Bad");
             buildingManager.canPlace = false;
         }
     }

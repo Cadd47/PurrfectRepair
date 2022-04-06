@@ -38,7 +38,7 @@ public class PlayerChecker : MonoBehaviour
     {
         if (playerCheck % 2 == 0)
         {
-            Debug.Log("Even");
+            //Debug.Log("Even");
             GameObject.Find("Player One").GetComponent<PlayerMovement>().enabled = true;
             GameObject.Find("Player Two").GetComponent<PlayerMovement>().enabled = false;
 
@@ -55,7 +55,7 @@ public class PlayerChecker : MonoBehaviour
 
         if (playerCheck % 2 == 1)
         {
-            Debug.Log("Odd");
+            //Debug.Log("Odd");
             GameObject.Find("Player One").GetComponent<PlayerMovement>().enabled = false;
             GameObject.Find("Player Two").GetComponent<PlayerMovement>().enabled = true;
 
