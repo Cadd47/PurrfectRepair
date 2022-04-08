@@ -5,11 +5,13 @@ using UnityEngine.UI;
 
 public class BuildingManager : MonoBehaviour
 {
+    BuildingMenu buildingMenu;
+
     public GameObject[] structures;
     public GameObject selectedObject;
     private MeshRenderer renderer;
 
-    public bool check = true;
+    public bool cantSelect = false;
     public bool canPlace = true;
 
     public Camera buildCamera;
@@ -20,31 +22,38 @@ public class BuildingManager : MonoBehaviour
 
     private RaycastHit hit;
 
+    void Start()
+    {
+        buildingMenu = GameObject.Find("BuildingManager").GetComponent<BuildingMenu>();
+    }
+
     private void Update()
     {
-        if(selectedObject != null)
+        if(buildingMenu.editBuild == true)
         {
-            selectedObject.GetComponent<Collider>();
-            selectedObject.transform.position = new Vector3(RoundToGrid(pos.x), 5, RoundToGrid(pos.z));
-
-            if (Input.GetMouseButtonDown(0) && canPlace)
+            if (selectedObject != null)
             {
-                PlaceObject();
+                selectedObject.GetComponent<Collider>().enabled = false;
+                selectedObject.transform.position = new Vector3(RoundToGrid(pos.x), 5, RoundToGrid(pos.z));
+
+                if (Input.GetMouseButtonDown(0) && canPlace)
+                {
+                    PlaceObject();
+                }
+
+                if (Input.GetKeyDown(KeyCode.R))
+                {
+                    RotateObject();
+                }
             }
 
-            if(Input.GetKeyDown(KeyCode.R))
-            {
-                RotateObject();
-            }
+            UpdateMaterials();
         }
-
-        UpdateMaterials();
     }
 
     private void FixedUpdate()
     {
         Ray ray = buildCamera.ScreenPointToRay(Input.mousePosition);
-
         if (Physics.Raycast(ray, out hit))
         {
             pos = hit.point;
@@ -53,8 +62,11 @@ public class BuildingManager : MonoBehaviour
 
     public void SelectObject(int index)
     {
-        check = true;
-        selectedObject = Instantiate(structures[index], pos, transform.rotation);
+        if(cantSelect == false)
+        {
+            selectedObject = Instantiate(structures[index], pos, transform.rotation);
+            cantSelect = true;
+        }
     }
 
     public void RotateObject()
@@ -78,8 +90,7 @@ public class BuildingManager : MonoBehaviour
     {
         selectedObject.GetComponent<Renderer>().material.color = Color.white;
 
-        check = false;
-        selectedObject.GetComponent<Collider>().enabled = true;
+        cantSelect = false;
         selectedObject = null;
     }
 
@@ -94,5 +105,4 @@ public class BuildingManager : MonoBehaviour
         }
         return pos;
     }
-
 }

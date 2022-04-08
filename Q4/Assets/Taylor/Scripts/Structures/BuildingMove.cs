@@ -5,45 +5,50 @@ using UnityEngine;
 public class BuildingMove : MonoBehaviour
 {
     BuildingManager buildingManager;
-
-    private MeshRenderer renderer;
+    BuildingMenu buildingMenu;
 
     Camera buildCamera;
     Vector3 pos;
     private RaycastHit hit;
 
-    public GameObject colChecker;
-    public GameObject grabToMove;
+    public GameObject colliderCheck;
 
-    private bool hover;
-    private bool moveBuilding = false;
-    private int pick;
+    public bool hover;
 
     void Start()
     {
         buildCamera = GameObject.Find("BuildingCamera").GetComponent<Camera>();
         buildingManager = GameObject.Find("BuildingManager").GetComponent<BuildingManager>();
+        buildingMenu = GameObject.Find("BuildingManager").GetComponent<BuildingMenu>();
     }
 
     void Update()
     {
         if (Input.GetMouseButtonDown(0) && hover == true)
         {
-            pick++;
-            PickOrPlace();
+            hover = false;
+            buildingManager.cantSelect = true;
+            colliderCheck.SetActive(true);
+
+            gameObject.GetComponent<Collider>().enabled = false;
+            GameObject.Find("BuildingManager").GetComponent<BuildingManager>().selectedObject = gameObject;
         }
 
-        if (moveBuilding == true)
+        if(buildingManager.selectedObject == null)
         {
-            this.transform.position = new Vector3(buildingManager.RoundToGrid(pos.x), 5, buildingManager.RoundToGrid(pos.z));
+            gameObject.GetComponent<Collider>().enabled = true;
         }
 
-        //UpdateMaterials();
+        if(buildingMenu.editBuild == false)
+        {
+            GetComponent<Renderer>().material.color = Color.white;
+            hover = false;
+        }
     }
+
     private void FixedUpdate()
     {
         Ray ray = buildCamera.ScreenPointToRay(Input.mousePosition);
-
         if (Physics.Raycast(ray, out hit))
         {
             pos = hit.point;
@@ -52,75 +57,19 @@ public class BuildingMove : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        if (buildingManager.check == false)
+        if (buildingManager.selectedObject == null && buildingMenu.editBuild == true)
         {
-            grabToMove.SetActive(true);
             GetComponent<Renderer>().material.color = new Color(177 / 255f, 188 / 255f, 255 / 255f);
-
             hover = true;
         }
     }
 
     private void OnMouseExit()
     {
-        if (buildingManager.check == false)
+        if (buildingManager.selectedObject == null && buildingMenu.editBuild == true)
         {
-            grabToMove.SetActive(false);
             GetComponent<Renderer>().material.color = Color.white;
-
-            if(moveBuilding == false)
-            {
-                hover = false;
-            }
+            hover = false;
         }
-    }
-
-    void PickOrPlace()
-    {
-        if (pick % 2 == 1)
-        {
-            PickObject();
-        }
-
-        if (pick % 2 == 0)
-        {
-            PutObject();
-        }
-    }
-
-    public void PickObject()
-    {
-        //Debug.Log("pick");
-        moveBuilding = true;
-
-        colChecker.SetActive(true);
-        this.gameObject.GetComponent<Collider>().enabled = false;
-    }
-
-    public void PutObject()
-    {
-        //Debug.Log("place");
-        moveBuilding = false;
-
-        colChecker.SetActive(false);
-        this.gameObject.GetComponent<Collider>().enabled = true;
-        this.gameObject.GetComponent<Renderer>().material.color = Color.white;
-    }
-
-    private void UpdateMaterials()
-    {
-        /*
-        if (moveBuilding == true)
-        {
-            if ()
-            {
-                this.gameObject.GetComponent<Renderer>().material.color = new Color(155 / 255f, 255 / 255f, 166 / 255f);
-            }
-            else
-            {
-                this.gameObject.GetComponent<Renderer>().material.color = new Color(255 / 255f, 130 / 255f, 130 / 255f);
-            }
-        }
-        */
     }
 }

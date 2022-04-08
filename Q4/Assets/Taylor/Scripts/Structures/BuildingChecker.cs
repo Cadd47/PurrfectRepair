@@ -5,7 +5,6 @@ using UnityEngine;
 public class BuildingChecker : MonoBehaviour
 {
     BuildingManager buildingManager;
-    BuildingMove buildingMove;
 
     private int checkGood = 0;
     private int checkBad = 0;
@@ -17,24 +16,20 @@ public class BuildingChecker : MonoBehaviour
 
     void Update()
     {
-        if (buildingManager.check == true)
+        if (buildingManager.selectedObject)
         {
             PlaceCheck();
-            this.gameObject.SetActive(true);
         }
-
-        if (buildingManager.check == false)
+        else
         {
-            this.gameObject.SetActive(false);
+            gameObject.SetActive(false);
         }
-
     }
-
 
     public void PlaceCheck()
     {
+        //checks colliders
         Collider[] hitChecks = Physics.OverlapBox(transform.position, new Vector3(10, 10, 10));
-
         foreach (Collider hitCollider in hitChecks)
         {
             if (hitCollider.gameObject.tag == "Building")
@@ -46,7 +41,6 @@ public class BuildingChecker : MonoBehaviour
             {
                 checkGood++;
                 checkBad = 0;
-
             }
         }
 

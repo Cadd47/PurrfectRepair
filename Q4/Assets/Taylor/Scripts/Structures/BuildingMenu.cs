@@ -5,15 +5,16 @@ using UnityEngine;
 public class BuildingMenu : MonoBehaviour
 {
     BuildingManager buildingManager;
+    BuildingMove buildingMove;
     PlayerChecker playerChecker;
 
     public GameObject mainCam;
     public GameObject buildCam;
-
     public GameObject buildMenu;
 
     private bool hasPlayer;
     private bool amOne;
+    public bool editBuild = false;
 
     public int menuCheck;
 
@@ -21,8 +22,6 @@ public class BuildingMenu : MonoBehaviour
     {
         playerChecker = GameObject.Find("Players").GetComponent<PlayerChecker>();
         buildingManager = GameObject.Find("BuildingManager").GetComponent<BuildingManager>();
-        
-        buildingManager.enabled = false;
     }
 
     private void Update()
@@ -30,7 +29,7 @@ public class BuildingMenu : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Q) && hasPlayer)
         {
             menuCheck++;
-            check();
+            Check();
         }
     }
 
@@ -47,27 +46,23 @@ public class BuildingMenu : MonoBehaviour
         if (buildMenu.CompareTag("Player"))
         {
             hasPlayer = false;
-            GameObject.Find("BuildingManager").GetComponent<BuildingManager>().enabled = false;
         }
     }
 
-    void check()
+    private void Check()
     {
         if (menuCheck % 2 == 1)
         {
             playerChecker.canSwitch = false;
-
             //camera & build menu
             mainCam.SetActive(false);
             buildCam.SetActive(true);
             buildMenu.SetActive(true);
-
             //cursor
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
-
-            GameObject.Find("BuildingManager").GetComponent<BuildingManager>().enabled = true;
-
+            //buildings
+            editBuild = true;
             //Checks which player you are
             if (GameObject.Find("Player One").GetComponent<PlayerMovement>().enabled == true)
             {
@@ -86,23 +81,19 @@ public class BuildingMenu : MonoBehaviour
 
         if (menuCheck % 2 == 0)
         {
-            GameObject.Find("BuildingManager").GetComponent<BuildingManager>().enabled = false;
-
+            playerChecker.canSwitch = true;
             //destroy any green and red
             Destroy(buildingManager.selectedObject);
             buildingManager.selectedObject = null;
-
-            playerChecker.canSwitch = true;
-
             //camera & build menu
             mainCam.SetActive(true);
             buildCam.SetActive(false);
             buildMenu.SetActive(false);
-
             //cursor
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
-
+            //buildings
+            editBuild = false;
             //Checks which player you are when closing build menu
             if (amOne)
             {
