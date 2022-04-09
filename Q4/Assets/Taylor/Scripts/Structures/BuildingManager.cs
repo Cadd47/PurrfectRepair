@@ -9,6 +9,7 @@ public class BuildingManager : MonoBehaviour
 
     public GameObject[] structures;
     public GameObject selectedObject;
+    public GameObject howToBuild;
     private MeshRenderer renderer;
 
     public bool cantSelect = false;
@@ -43,11 +44,28 @@ public class BuildingManager : MonoBehaviour
 
                 if (Input.GetKeyDown(KeyCode.R))
                 {
-                    RotateObject();
+                    selectedObject.transform.Rotate(Vector3.up, rotateAmount);
+                }
+
+                if (Input.GetKeyDown(KeyCode.T))
+                {
+                    Destroy(selectedObject);
+                    cantSelect = false;
+                    selectedObject = null;
                 }
             }
 
             UpdateMaterials();
+        }
+
+        if (Time.timeScale == 0f)
+        {
+            cantSelect = true;
+        }
+
+        if (Time.timeScale == 1f && selectedObject == null)
+        {
+            cantSelect = false;
         }
     }
 
@@ -64,14 +82,10 @@ public class BuildingManager : MonoBehaviour
     {
         if(cantSelect == false)
         {
+            Destroy(howToBuild);
             selectedObject = Instantiate(structures[index], pos, transform.rotation);
             cantSelect = true;
         }
-    }
-
-    public void RotateObject()
-    {
-        selectedObject.transform.Rotate(Vector3.up, rotateAmount);
     }
 
     private void UpdateMaterials()

@@ -5,7 +5,6 @@ using UnityEngine;
 public class BuildingMenu : MonoBehaviour
 {
     BuildingManager buildingManager;
-    BuildingMove buildingMove;
     PlayerChecker playerChecker;
 
     public GameObject mainCam;
@@ -85,6 +84,7 @@ public class BuildingMenu : MonoBehaviour
             //destroy any green and red
             Destroy(buildingManager.selectedObject);
             buildingManager.selectedObject = null;
+            buildingManager.cantSelect = false;
             //camera & build menu
             mainCam.SetActive(true);
             buildCam.SetActive(false);

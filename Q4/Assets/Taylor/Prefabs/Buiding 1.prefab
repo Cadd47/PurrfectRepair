@@ -125,6 +125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colliderCheck: {fileID: 8784621181166006951}
+  hover: 0
 --- !u!1 &8784621181166006951
 GameObject:
   m_ObjectHideFlags: 0

@@ -29,7 +29,6 @@ public class BuildingMove : MonoBehaviour
             hover = false;
             buildingManager.cantSelect = true;
             colliderCheck.SetActive(true);
-
             gameObject.GetComponent<Collider>().enabled = false;
             GameObject.Find("BuildingManager").GetComponent<BuildingManager>().selectedObject = gameObject;
         }
@@ -42,6 +41,11 @@ public class BuildingMove : MonoBehaviour
         if(buildingMenu.editBuild == false)
         {
             GetComponent<Renderer>().material.color = Color.white;
+            hover = false;
+        }
+
+        if(Time.timeScale == 0f)
+        {
             hover = false;
         }
     }

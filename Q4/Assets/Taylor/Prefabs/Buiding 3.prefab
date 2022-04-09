@@ -167,4 +167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32b5efd45d7f15a4bb468190fa8490fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buildCanvas: {fileID: 0}
   colliderCheck: {fileID: 4682480331526025746}
+  hover: 0
+  buildCanvasOn: 0

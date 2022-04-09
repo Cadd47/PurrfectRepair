@@ -29,7 +29,7 @@ public class BuildingChecker : MonoBehaviour
     public void PlaceCheck()
     {
         //checks colliders
-        Collider[] hitChecks = Physics.OverlapBox(transform.position, new Vector3(10, 10, 10));
+        Collider[] hitChecks = Physics.OverlapBox(transform.position, new Vector3(10, 50, 10), transform.rotation);
         foreach (Collider hitCollider in hitChecks)
         {
             if (hitCollider.gameObject.tag == "Building")
