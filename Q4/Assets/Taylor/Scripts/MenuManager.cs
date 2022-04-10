@@ -7,6 +7,7 @@ public class MenuManager : MonoBehaviour
 {
     PlayerChecker playerChecker;
 
+    public static bool canPause = true;
     public static bool GameIsPaused = false;
     public GameObject pauseMenuUI;
     
@@ -17,7 +18,7 @@ public class MenuManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && canPause)
         {
             if (GameIsPaused)
             {
@@ -51,7 +52,6 @@ public class MenuManager : MonoBehaviour
         Time.timeScale = 0f;
         GameIsPaused = true;
     }
-
 
     //Main transitions
     public void PressStart()

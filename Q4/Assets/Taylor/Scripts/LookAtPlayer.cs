@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Test : MonoBehaviour
+public class LookAtPlayer : MonoBehaviour
 {
-    public Transform cam; //put the camera in here
+    public Transform cam;
 
     void LateUpdate()
     {

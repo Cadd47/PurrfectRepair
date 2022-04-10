@@ -15,6 +15,11 @@ TagManager:
   - AIHome
   - Building
   - Checker
+  - Red
+  - Orange
+  - Yellow
+  - Green
+  - Blue
   layers:
   - Default
   - TransparentFX
