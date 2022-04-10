@@ -33,7 +33,12 @@ public class MenuManager : MonoBehaviour
 
     public void Resume()
     {
-        if (playerChecker.canSwitch == true)
+        if (playerChecker.canSwitch == false)
+        {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+        }
+        else
         {
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
@@ -53,15 +58,9 @@ public class MenuManager : MonoBehaviour
         GameIsPaused = true;
     }
 
-    //Main transitions
     public void PressStart()
     {
-        SceneManager.LoadScene("TaylorTest");
-    }
-
-    public void PressOptions()
-    {
-        SceneManager.LoadScene("OptionScene");
+        SceneManager.LoadScene("MainScene");
     }
 
     public void PressCredits()
