@@ -35,7 +35,7 @@ public class BuildingManager : MonoBehaviour
             if (selectedObject != null)
             {
                 selectedObject.GetComponent<Collider>().enabled = false;
-                selectedObject.transform.position = new Vector3(RoundToGrid(pos.x), 5, RoundToGrid(pos.z));
+                selectedObject.transform.position = new Vector3(RoundToGrid(pos.x), 11.55f, RoundToGrid(pos.z));
 
                 if (Input.GetMouseButtonDown(0) && canPlace)
                 {
