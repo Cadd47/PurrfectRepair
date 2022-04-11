@@ -16,7 +16,7 @@ public class OreMG : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(SpawnShiny());
+        //StartCoroutine(SpawnShiny());
     }
 
     IEnumerator SpawnShiny()
