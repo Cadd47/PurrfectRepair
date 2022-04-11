@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SpendCurrency : MonoBehaviour
 {
+    bool firstPlace;
+    Collider col;
     public int woodCost;
     public int stoneCost;
     public int fishCost;
@@ -11,13 +13,17 @@ public class SpendCurrency : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        col = gameObject.GetComponent<Collider>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (col.enabled && !firstPlace)
+        {
+            Spend();
+            firstPlace = true;
+        }
     }
 
     public void Spend()

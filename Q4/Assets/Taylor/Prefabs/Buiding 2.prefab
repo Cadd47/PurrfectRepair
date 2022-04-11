@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6361614777266237776}
   - component: {fileID: 1998074451992388645}
   - component: {fileID: 4821531165896638846}
+  - component: {fileID: -3565074502057063629}
   m_Layer: 8
   m_Name: Buiding 2
   m_TagString: Building
@@ -124,10 +125,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32b5efd45d7f15a4bb468190fa8490fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buildCanvas: {fileID: 0}
   colliderCheck: {fileID: 5411329847473313017}
   hover: 0
-  buildCanvasOn: 0
+--- !u!114 &-3565074502057063629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5400299847835409397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b2b8bc608d403e4d8f778fb5e2c8a22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  woodCost: 3
+  stoneCost: 0
+  fishCost: 0
+  oreCost: 2
 --- !u!1 &5411329847473313017
 GameObject:
   m_ObjectHideFlags: 0
