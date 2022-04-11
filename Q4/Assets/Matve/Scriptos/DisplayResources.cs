@@ -1,15 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using TMPro;
 
 public class DisplayResources : MonoBehaviour
 {
-    public Text wood;
-    public Text stone;
-    public Text fish;
-    public Text ore;
-    public Text witchStuff;
+    public TextMeshProUGUI wood;
+    public TextMeshProUGUI stone;
+    public TextMeshProUGUI fish;
+    public TextMeshProUGUI ore;
+    public TextMeshProUGUI witchStuff;
     void Start()
     {
         
