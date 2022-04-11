@@ -21,7 +21,7 @@ public class MGManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.O))
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             activateMiniGame++;
             CheckMG();
