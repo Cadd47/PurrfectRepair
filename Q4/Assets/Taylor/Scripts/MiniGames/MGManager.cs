@@ -9,7 +9,8 @@ public class MGManager : MonoBehaviour
     public GameObject ore;
     public GameObject fish;
 
-    public int activateMiniGame;
+    public static bool woodGame;
+    public static bool oreGame;
 
     void Start()
     {
@@ -23,21 +24,46 @@ public class MGManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            activateMiniGame++;
+            woodGame = !woodGame;
+            CheckMG();
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            oreGame = !oreGame;
             CheckMG();
         }
     }
 
     private void CheckMG()
     {
-        if (activateMiniGame % 2 == 1)
+        if (woodGame)
         {
+            MenuManager.canPause = false;
+
             wood.SetActive(true);
         }
-
-        if (activateMiniGame % 2 == 0)
+        if (!woodGame)
         {
+            MenuManager.canPause = true;
+
             wood.SetActive(false);
+        }
+
+        if (oreGame)
+        {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+            MenuManager.canPause = false;
+
+            ore.SetActive(true);
+        }
+        if (!oreGame)
+        {
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+            MenuManager.canPause = true;
+
+            ore.SetActive(false);
         }
     }
 }

@@ -51,6 +51,7 @@ public class MenuManager : MonoBehaviour
 
     public void Pause()
     {
+        Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
 
         pauseMenuUI.SetActive(true);

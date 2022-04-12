@@ -32,37 +32,42 @@ public class BuildingManager : MonoBehaviour
     {
         if(buildingMenu.editBuild == true)
         {
-            if (selectedObject != null)
+            try
             {
-                selectedObject.GetComponent<Collider>().enabled = false;
-                selectedObject.transform.position = new Vector3(RoundToGrid(pos.x), 11.55f, RoundToGrid(pos.z));
-
-                if (Input.GetMouseButtonDown(0) && canPlace)
+                if (selectedObject != null)
                 {
-                    PlaceObject();
+                    selectedObject.GetComponent<Collider>().enabled = false;
+                    selectedObject.transform.position = new Vector3(RoundToGrid(pos.x), 11.55f, RoundToGrid(pos.z));
+                    //Place
+                    if (Input.GetMouseButtonDown(0) && canPlace)
+                    {
+                        PlaceObject();
+                    }
+                    //Rotate
+                    if (Input.GetKeyDown(KeyCode.R))
+                    {
+                        selectedObject.transform.Rotate(Vector3.up, rotateAmount);
+                    }
+                    //Trash
+                    if (Input.GetKeyDown(KeyCode.T))
+                    {
+                        Destroy(selectedObject);
+                        cantSelect = false;
+                        selectedObject = null;
+                    }
                 }
-
-                if (Input.GetKeyDown(KeyCode.R))
-                {
-                    selectedObject.transform.Rotate(Vector3.up, rotateAmount);
-                }
-
-                if (Input.GetKeyDown(KeyCode.T))
-                {
-                    Destroy(selectedObject);
-                    cantSelect = false;
-                    selectedObject = null;
-                }
+                UpdateMaterials();
             }
-
-            UpdateMaterials();
+            catch
+            {
+                //No more error lol
+            }
         }
 
         if (Time.timeScale == 0f)
         {
             cantSelect = true;
         }
-
         if (Time.timeScale == 1f && selectedObject == null)
         {
             cantSelect = false;

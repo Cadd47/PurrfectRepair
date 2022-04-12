@@ -4,32 +4,37 @@ using UnityEngine;
 
 public class OreMG : MonoBehaviour
 {
-    public float waitTime = 2;
-    public float shinyTotal = 10;
+    public float waitTime;
+    public float shinyTotal;
+
     public GameObject shinyPrefab;
     public GameObject panel;
 
-    float xMin = -220f;
-    float xMax = 150f;
-    float yMin = -50f;
-    float yMax = 800f;
+    public GameObject min;
+    public GameObject max;
 
-    void Start()
+    void Update()
     {
-        //StartCoroutine(SpawnShiny());
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            StartCoroutine(SpawnShiny());
+        }
     }
 
     IEnumerator SpawnShiny()
     {
         for (int i = 0; i < shinyTotal; i++)
         {
-            float xPos = Random.Range(xMin, xMax);
-            float yPos = Random.Range(yMin, yMax);
+            //Spawn positions
+            float xPos = Random.Range(min.transform.position.x, max.transform.position.x);
+            float yPos = Random.Range(min.transform.position.y, max.transform.position.y);
             Vector3 spawnPosition = new Vector3(xPos, yPos, 0f);
 
+            //Choose object
             GameObject shiny = Instantiate(shinyPrefab, spawnPosition, Quaternion.identity) as GameObject;
-            shiny.transform.parent = panel.transform;
+            shiny.transform.SetParent(panel.transform);
             shiny.transform.position = spawnPosition;
+
             yield return new WaitForSeconds(waitTime);
         }
     }

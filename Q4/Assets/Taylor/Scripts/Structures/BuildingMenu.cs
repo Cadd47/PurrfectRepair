@@ -57,9 +57,10 @@ public class BuildingMenu : MonoBehaviour
             mainCam.SetActive(false);
             buildCam.SetActive(true);
             buildMenu.SetActive(true);
-            //cursor
+            //cursor && pause
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
+            MenuManager.canPause = false;
             //buildings
             editBuild = true;
             //Checks which player you are
@@ -69,7 +70,6 @@ public class BuildingMenu : MonoBehaviour
                 GameObject.Find("Player One").GetComponent<PlayerMovement>().enabled = false;
                 GameObject.Find("Player One").GetComponent<AltGrav>().enabled = true;
             }
-
             if (GameObject.Find("Player Two").GetComponent<PlayerMovement>().enabled == true)
             {
                 amOne = false;
@@ -89,9 +89,10 @@ public class BuildingMenu : MonoBehaviour
             mainCam.SetActive(true);
             buildCam.SetActive(false);
             buildMenu.SetActive(false);
-            //cursor
+            //cursor && pause
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
+            MenuManager.canPause = true;
             //buildings
             editBuild = false;
             //Checks which player you are when closing build menu
