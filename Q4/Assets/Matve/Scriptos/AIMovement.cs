@@ -143,6 +143,7 @@ public class AIMovement : MonoBehaviour
                 ResourceManager.witchStuff += stored;
 
             }
+            Destroy(gameObject); //temp destroy until resource spawning is complete
         }
     }
 
