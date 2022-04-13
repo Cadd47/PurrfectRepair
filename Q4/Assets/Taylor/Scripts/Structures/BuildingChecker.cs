@@ -6,16 +6,22 @@ public class BuildingChecker : MonoBehaviour
 {
     BuildingManager buildingManager;
 
+    BoxCollider colCheck;
+    Vector3 colTest;
+
     private int checkGood = 0;
     private int checkBad = 0;
 
     void Start()
     {
         buildingManager = GameObject.Find("BuildingManager").GetComponent<BuildingManager>();
+        //colCheck = buildingManager.selectedObject.GetComponent<BoxCollider>();
+        //colTest = colCheck.transform.position;
     }
 
     void Update()
     {
+        //Debug.Log("colTest: " + colTest);
         if (buildingManager.selectedObject)
         {
             PlaceCheck();
