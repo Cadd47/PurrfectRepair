@@ -3142,8 +3142,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCam: {fileID: 0}
-  buildCam: {fileID: 0}
-  buildMenu: {fileID: 0}
+  spawnCam: {fileID: 0}
+  spawnMenu: {fileID: 0}
   editBuild: 0
   menuCheck: 0
 --- !u!65 &772217566
@@ -8670,6 +8670,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9073547944640000889, guid: 35a40264aaa359b409b7e3fc2063679b,
         type: 3}
+      propertyPath: fPrice
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 9073547944640000889, guid: 35a40264aaa359b409b7e3fc2063679b,
+        type: 3}
+      propertyPath: oPrice
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9073547944640000889, guid: 35a40264aaa359b409b7e3fc2063679b,
+        type: 3}
+      propertyPath: sPrice
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9073547944640000889, guid: 35a40264aaa359b409b7e3fc2063679b,
+        type: 3}
+      propertyPath: wPrice
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9073547944640000889, guid: 35a40264aaa359b409b7e3fc2063679b,
+        type: 3}
+      propertyPath: spawnCap
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9073547944640000889, guid: 35a40264aaa359b409b7e3fc2063679b,
+        type: 3}
       propertyPath: spawnPoint
       value: 
       objectReference: {fileID: 1452823463}
@@ -8730,3 +8755,25 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35a40264aaa359b409b7e3fc2063679b, type: 3}
+--- !u!1 &8852513835896659349 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9073547944640000888, guid: 35a40264aaa359b409b7e3fc2063679b,
+    type: 3}
+  m_PrefabInstance: {fileID: 8852513835896659348}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8852513835896659350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8852513835896659349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f3edf5f691195c47a769f84f609f86b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buyWood: {fileID: 0}
+  buyStone: {fileID: 0}
+  buyOre: {fileID: 0}
+  buyFish: {fileID: 0}

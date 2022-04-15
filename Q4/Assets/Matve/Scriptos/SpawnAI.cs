@@ -13,6 +13,8 @@ public class SpawnAI : MonoBehaviour
     public int sPrice;
     public int oPrice;
     public int fPrice;
+    public int spawnCap;
+    public int spawnAmount;
     //public GameObject witchHunt;
     // Start is called before the first frame update
     void Start()
@@ -28,21 +30,25 @@ public class SpawnAI : MonoBehaviour
 
     public void spawnWood()
     {
+        spawnAmount++;
         ResourceManager.fishCount -= wPrice;
         Instantiate(woodHunt, spawnPoint);
     }
     public void spawnStone()
     {
+        spawnAmount++;
         ResourceManager.fishCount -= sPrice;
         Instantiate(stoneHunt, spawnPoint);
     }
     public void spawnOre()
     {
+        spawnAmount++;
         ResourceManager.fishCount -= oPrice;
         Instantiate(oreHunt, spawnPoint);
     }
     public void spawnFish()
     {
+        spawnAmount++;
         ResourceManager.fishCount -= fPrice;
         Instantiate(fishHunt, spawnPoint);
     }
