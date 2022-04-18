@@ -11,6 +11,7 @@ public class MGManager : MonoBehaviour
 
     public static bool woodGame;
     public static bool oreGame;
+    public static bool fishGame;
 
     void Start()
     {
@@ -32,20 +33,30 @@ public class MGManager : MonoBehaviour
             oreGame = !oreGame;
             CheckMG();
         }
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            fishGame = !fishGame;
+            CheckMG();
+        }
+
+        if(!woodGame && !oreGame && !fishGame)
+        {
+            MenuManager.canPause = true;
+        }
+        else
+        {
+            MenuManager.canPause = false;
+        }
     }
 
     private void CheckMG()
     {
         if (woodGame)
         {
-            MenuManager.canPause = false;
-
             wood.SetActive(true);
         }
-        if (!woodGame)
+        else
         {
-            MenuManager.canPause = true;
-
             wood.SetActive(false);
         }
 
@@ -53,17 +64,24 @@ public class MGManager : MonoBehaviour
         {
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
-            MenuManager.canPause = false;
 
             ore.SetActive(true);
         }
-        if (!oreGame)
+        else
         {
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
-            MenuManager.canPause = true;
 
             ore.SetActive(false);
+        }
+
+        if (fishGame)
+        {
+            fish.SetActive(true);
+        }
+        else
+        {
+            fish.SetActive(false);
         }
     }
 }
