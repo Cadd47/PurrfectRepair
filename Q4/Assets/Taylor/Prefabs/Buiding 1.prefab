@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 6734828755495057403}
   - component: {fileID: 973044652087133425}
   - component: {fileID: 801885798799807125}
+  - component: {fileID: 8771097982407138358}
   m_Layer: 8
   m_Name: Buiding 1
   m_TagString: Building
@@ -139,11 +140,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b2b8bc608d403e4d8f778fb5e2c8a22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  col: {fileID: 0}
   woodCost: 3
   stoneCost: 2
   fishCost: 0
   oreCost: 0
+--- !u!114 &8771097982407138358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3188989353509782520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f63e9305981d5f49ac56c2003f66b09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  value: 3
 --- !u!1 &8784621181166006951
 GameObject:
   m_ObjectHideFlags: 0

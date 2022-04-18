@@ -143,7 +143,15 @@ public class AIMovement : MonoBehaviour
                 ResourceManager.witchStuff += stored;
 
             }
-            Destroy(gameObject); //temp destroy until resource spawning is complete
+            if(LimitTheBuyAI.currentAI <= LimitTheBuyAI.maxAI)
+            {
+                deployed = true;
+            }
+            else
+            {
+                Destroy(gameObject);
+                LimitTheBuyAI.currentAI--;
+            }
         }
     }
 
