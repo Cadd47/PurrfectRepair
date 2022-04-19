@@ -10107,8 +10107,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wood: {fileID: 600097263}
   stone: {fileID: 2118950946}
-  fish: {fileID: 1438853509}
-  ore: {fileID: 1963557205}
+  fish: {fileID: 1963557205}
+  ore: {fileID: 1438853509}
   witchStuff: {fileID: 2077948962}
 --- !u!1 &2092653087
 GameObject:
@@ -29660,7 +29660,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2735504584860038163}
-  m_LocalRotation: {x: 0.16018221, y: 0.000000018988914, z: -0.0000000030814755, w: 0.9870875}
+  m_LocalRotation: {x: 0.16018221, y: -0.000000018988919, z: 0.0000000030814769, w: 0.9870875}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
