@@ -19,13 +19,14 @@ public class SpawnAI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        LimitTheBuyAI.maxAI += spawnCap;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        spawnCap = LimitTheBuyAI.maxAI;
+        spawnAmount = LimitTheBuyAI.currentAI;
     }
 
     public void spawnWood()
@@ -56,5 +57,4 @@ public class SpawnAI : MonoBehaviour
         ResourceManager.fishCount -= fPrice;
         Instantiate(fishHunt, spawnPoint);
     }
-
 }

@@ -11,7 +11,7 @@ public class AddPopulation : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        col = gameObject.GetComponent<Collider>();
     }
 
     // Update is called once per frame
@@ -33,7 +33,7 @@ public class AddPopulation : MonoBehaviour
 
     public void RemovePop()
     {
-        LimitTheBuyAI.maxAI += AIvalue;
+        LimitTheBuyAI.maxAI -= AIvalue;
         Population.population -= value;
     }
 
