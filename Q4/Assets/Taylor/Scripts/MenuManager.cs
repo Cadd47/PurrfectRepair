@@ -10,7 +10,10 @@ public class MenuManager : MonoBehaviour
     public static bool canPause = true;
     public static bool GameIsPaused = false;
     public GameObject pauseMenuUI;
-    
+
+    public GameObject playTestUI;
+    public bool playTest;
+
     void Start()
     {
         playerChecker = GameObject.Find("Players").GetComponent<PlayerChecker>();
@@ -28,6 +31,20 @@ public class MenuManager : MonoBehaviour
             {
                 Pause();
             }
+        }
+
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            playTest = !playTest;
+        }
+
+        if (!playTest)
+        {
+            playTestUI.SetActive(true);
+        }
+        else
+        {
+            playTestUI.SetActive(false);
         }
     }
 
