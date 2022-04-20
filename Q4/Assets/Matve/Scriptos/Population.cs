@@ -7,7 +7,7 @@ public class Population : MonoBehaviour
     public static int population;
     void Start()
     {
-
+        population = 0;
     }
 
     // Update is called once per frame

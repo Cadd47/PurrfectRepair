@@ -11,6 +11,15 @@ public class ResourceManager : MonoBehaviour
     public static int oreCount;
     public static int witchStuff;
 
+    private void Start()
+    {
+        woodCount = 0;
+        stoneCount = 0;
+        fishCount = 0;
+        oreCount = 0;
+        witchStuff = 0;
+    }
+
     private void Update()
     {
         if(woodCount < 0)

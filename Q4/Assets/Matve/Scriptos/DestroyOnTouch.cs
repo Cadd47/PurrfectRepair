@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class DestroyOnTouch : MonoBehaviour
 {
+    public RepsawnResource spawnParent;
     public string type;
     public int value;
     AIMovement AIM;
@@ -11,6 +12,9 @@ public class DestroyOnTouch : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        spawnParent = GetComponentInParent<RepsawnResource>();
+        spawnParent.currentResource = gameObject;
+        spawnParent.occupied = true;
         RC = GameObject.FindWithTag("ResourceManager").GetComponent<ResourceCatalogue>();
         if (type == "wood")
         {
@@ -111,5 +115,9 @@ public class DestroyOnTouch : MonoBehaviour
 
     }
 
-    
+    private void OnDestroy()
+    {
+        spawnParent.currentResource = null;
+        spawnParent.occupied = false;
+    }
 }
