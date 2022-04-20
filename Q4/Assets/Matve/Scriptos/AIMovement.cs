@@ -9,6 +9,7 @@ public class AIMovement : MonoBehaviour
     float daTime;
 
     public int stored;
+    public int maxStored;
     public Transform target;
     public Transform home;
     NavMeshAgent agent;
@@ -92,7 +93,7 @@ public class AIMovement : MonoBehaviour
                 target = home;
             }
 
-            if (stored >= 10)
+            if (stored >= maxStored)
             {
                 returnHome = true;
             }
@@ -113,7 +114,7 @@ public class AIMovement : MonoBehaviour
 
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collision)
     {
         if(collision.gameObject.tag == "AIHome")
         {
@@ -121,31 +122,34 @@ public class AIMovement : MonoBehaviour
             if (huntType == "wood")
             {
                 ResourceManager.woodCount += stored;
-                
+                stored = 0;
             }
             else if (huntType == "stone")
             {
                 ResourceManager.stoneCount += stored;
+                stored = 0;
 
             }
             else if (huntType == "fish")
             {
                 ResourceManager.fishCount += stored;
-
+                stored = 0;
             }
             else if (huntType == "ore")
             {
                 ResourceManager.oreCount += stored;
-
+                stored = 0;
             }
             else
             {
                 ResourceManager.witchStuff += stored;
-
+                stored = 0;
             }
             if(LimitTheBuyAI.currentAI <= LimitTheBuyAI.maxAI)
             {
-                deployed = true;
+                target = null;
+                returnHome = false;
+                
             }
             else
             {
