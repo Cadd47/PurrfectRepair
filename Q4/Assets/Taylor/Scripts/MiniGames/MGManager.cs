@@ -62,6 +62,15 @@ public class MGManager : MonoBehaviour
             wood.SetActive(false);
         }
 
+        if (fishGame)
+        {
+            fish.SetActive(true);
+        }
+        else
+        {
+            fish.SetActive(false);
+        }
+
         if (oreGame)
         {
             Cursor.visible = true;
@@ -80,15 +89,7 @@ public class MGManager : MonoBehaviour
             {
                 GameObject.Destroy(child.gameObject);
             }
-        }
-
-        if (fishGame)
-        {
-            fish.SetActive(true);
-        }
-        else
-        {
-            fish.SetActive(false);
+            return;
         }
     }
 }
