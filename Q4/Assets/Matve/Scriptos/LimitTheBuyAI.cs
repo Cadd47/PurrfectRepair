@@ -21,6 +21,10 @@ public class LimitTheBuyAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(maxAI > 25)
+        {
+            maxAI = 25;
+        }
         if (currentAI < maxAI)
         {
             if (ResourceManager.fishCount < SAI.wPrice)
