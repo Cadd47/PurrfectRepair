@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-4968234429229150239
+--- !u!114 &-1690759032697767954
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20,10 +20,10 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Test1(Blue)
-  m_Shader: {fileID: 4800000, guid: 87e28d33d03492146876e05515f43376, type: 3}
-  m_ShaderKeywords: _ADDITIONAL_LIGHTS_ENABLED _ENVIRONMENT_LIGHTING_ENABLED _FOG
-    _FRESNEL _SPECULAR _ZWRITE_ON
+  m_Name: Toon(Blue)
+  m_Shader: {fileID: -6465566751694194690, guid: ee8bae74438e8994c81929154b8d7aab,
+    type: 3}
+  m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -57,81 +57,41 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _RampMap:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _AdditionalLights: 1
-    - _AdditionalLightsSpecular: 0
+    - Vector1_405B7F0: 15
+    - Vector1_A4BEC8D2: 0
+    - Vector1_D6C8B1C5: 0.55
     - _AlphaClip: 0
-    - _AnisoSpecular: 0
     - _Blend: 0
-    - _Brightness: 0.1
     - _BumpScale: 1
-    - _ColorMask: 15
     - _Cull: 2
-    - _Culling: 2
     - _Cutoff: 0.5
-    - _Detail: 0.25
     - _DstBlend: 0
-    - _Emission: 0
-    - _EnvironmentLightingEnabled: 1
     - _EnvironmentReflections: 1
-    - _Fog: 1
-    - _Fresnel: 1
-    - _FresnelSmoothness: 0.1
-    - _FresnelThickness: 0.45
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
     - _Metallic: 0
     - _OcclusionStrength: 1
-    - _Offset: 0
-    - _PureShadowColor: 0
     - _QueueOffset: 0
-    - _Ramp0: 0
-    - _Ramp1: 0.5
-    - _RampSmoothness: 0.005
-    - _RampTriple: 0
-    - _ReadMask: 255
     - _ReceiveShadows: 1
-    - _RimAmount: 0
-    - _RimThreshold: 0
-    - _ShadowMask: 0
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
-    - _Specular: 1
-    - _SpecularExponent: 200
     - _SpecularHighlights: 1
-    - _SpecularSmoothness: 0.025
-    - _SpecularThreshold: 0.8
     - _SrcBlend: 1
-    - _Stencil: 0
-    - _StencilComp: 0
-    - _StencilFail: 0
-    - _StencilOp: 0
-    - _StencilZFail: 0
-    - _Strength: 0.35
     - _Surface: 0
-    - _UseRampMap: 0
-    - _VertexColor: 0
     - _WorkflowMode: 1
-    - _WriteMask: 255
-    - _ZTest: 4
     - _ZWrite: 1
     m_Colors:
-    - _AmbientColor: {r: 1, g: 1, b: 1, a: 1}
+    - Color_9B7AC15F: {r: 0.5457247, g: 0.5457247, b: 0.5457247, a: 0}
+    - Color_C4FA2C60: {r: 0, g: 0.40138817, b: 1, a: 0}
+    - Color_F4D27F1D: {r: 1, g: 1, b: 1, a: 0}
+    - Color_F6896160: {r: 0.5471698, g: 0.5471698, b: 0.5471698, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Color: {r: 0, g: 0.33030385, b: 0.6226415, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _FresnelColor: {r: 1, g: 1, b: 1, a: 1}
-    - _RimColor: {r: 0, g: 0, b: 0, a: 1}
-    - _ShadowTint: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
-    - _SpecularColor: {r: 0, g: 0, b: 0, a: 1}
-    - i_BaseColor: {r: 1, g: 1, b: 1, a: 1}

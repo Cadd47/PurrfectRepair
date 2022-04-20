@@ -30,7 +30,7 @@ public class OreShiny : MonoBehaviour
         Destroy();
     }
 
-    public void Destroy()
+    void Destroy()
     {
         Destroy(gameObject);
     }

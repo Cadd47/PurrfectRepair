@@ -9,6 +9,8 @@ public class MGManager : MonoBehaviour
     public GameObject ore;
     public GameObject fish;
 
+    [Header("Side Stuffs")]
+    public GameObject oreSpawner;
     public static bool woodGame;
     public static bool oreGame;
     public static bool fishGame;
@@ -73,6 +75,11 @@ public class MGManager : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked;
 
             ore.SetActive(false);
+
+            foreach(Transform child in oreSpawner.transform)
+            {
+                GameObject.Destroy(child.gameObject);
+            }
         }
 
         if (fishGame)
