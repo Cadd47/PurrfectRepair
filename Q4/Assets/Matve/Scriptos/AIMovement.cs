@@ -33,6 +33,7 @@ public class AIMovement : MonoBehaviour
     {
         if (deployed)
         {
+            returnHome = false;
             daTime = 0;
             if (target == null && !returnHome)
             {
@@ -42,6 +43,7 @@ public class AIMovement : MonoBehaviour
                     if (RC.wood.Count == 0)
                     {
                         target = null;
+                        deployed = false;
                         returnHome = true;
                     }
                     itemIndex = Random.Range(0, RC.wood.Count);
@@ -52,6 +54,7 @@ public class AIMovement : MonoBehaviour
                     if (RC.stone.Count == 0)
                     {
                         target = null;
+                        deployed = false;
                         returnHome = true;
                     }
                     itemIndex = Random.Range(0, RC.stone.Count);
@@ -62,6 +65,7 @@ public class AIMovement : MonoBehaviour
                     if (RC.fish.Count == 0)
                     {
                         target = null;
+                        deployed = false;
                         returnHome = true;
                     }
                     itemIndex = Random.Range(0, RC.fish.Count);
@@ -72,6 +76,7 @@ public class AIMovement : MonoBehaviour
                     if (RC.ore.Count == 0)
                     {
                         target = null;
+                        deployed = false;
                         returnHome = true;
                     }
                     itemIndex = Random.Range(0, RC.ore.Count);
@@ -82,35 +87,33 @@ public class AIMovement : MonoBehaviour
                     if (RC.witchStuff.Count == 0)
                     {
                         target = null;
+                        deployed = false;
                         returnHome = true;
                     }
                     itemIndex = Random.Range(0, RC.witchStuff.Count);
                     target = RC.witchStuff[itemIndex].transform;
                 }
             }
-            if (returnHome)
-            {
-                target = home;
-            }
-
-            if (stored >= maxStored)
-            {
-                returnHome = true;
-            }
-
-            GoToResource();
+            
+        }
+        if (stored >= maxStored)
+        {
+            returnHome = true;
+        }
+        if (returnHome)
+        {
+            deployed = false;
+            target = home;
         }
         else
         {
-            if(Timer <= daTime)
-            {
-                Timer += Time.deltaTime;
-            }
-            else
-            {
-                deployed = true;
-            }
+          
+            deployed = true;
         }
+
+        
+
+        GoToResource();
 
     }
 
@@ -118,46 +121,53 @@ public class AIMovement : MonoBehaviour
     {
         if(collision.gameObject.tag == "AIHome")
         {
-            deployed = false;
+            target = null;
             if (huntType == "wood")
             {
                 ResourceManager.woodCount += stored;
                 stored = 0;
+                returnHome = false;
             }
             else if (huntType == "stone")
             {
                 ResourceManager.stoneCount += stored;
                 stored = 0;
+                returnHome = false;
 
             }
             else if (huntType == "fish")
             {
                 ResourceManager.fishCount += stored;
                 stored = 0;
+                returnHome = false;
             }
             else if (huntType == "ore")
             {
                 ResourceManager.oreCount += stored;
                 stored = 0;
+                returnHome = false;
             }
             else
             {
                 ResourceManager.witchStuff += stored;
                 stored = 0;
-            }
-            if(LimitTheBuyAI.currentAI <= LimitTheBuyAI.maxAI)
-            {
-                target = null;
                 returnHome = false;
-                
             }
-            else
+            
+            
+            if (LimitTheBuyAI.currentAI > LimitTheBuyAI.maxAI)
             {
                 Destroy(gameObject);
                 LimitTheBuyAI.currentAI--;
+
             }
+            
+
+
         }
     }
+
+    
 
     void GoToResource()
     {
