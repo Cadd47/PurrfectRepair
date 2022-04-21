@@ -20,6 +20,7 @@ TagManager:
   - Yellow
   - Green
   - Blue
+  - Collector
   layers:
   - Default
   - TransparentFX
