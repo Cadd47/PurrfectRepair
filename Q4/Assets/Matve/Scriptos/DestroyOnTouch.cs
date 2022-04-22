@@ -32,7 +32,7 @@ public class DestroyOnTouch : MonoBehaviour
         {
             RC.ore.Add(gameObject);
         }
-        else if (type == "witchStuff")
+        else
         {
             RC.witchStuff.Add(gameObject);
         }
