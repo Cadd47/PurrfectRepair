@@ -5,20 +5,23 @@ using UnityEngine;
 public class MGManager : MonoBehaviour
 {
     public GameObject wood;
-    public GameObject stone;
+    public GameObject rog;
     public GameObject ore;
     public GameObject fish;
 
+    public bool woodGame;
+    public bool oreGame;
+    public bool fishGame;
+    public bool rogGame;
+
     [Header("Side Stuffs")]
     public GameObject oreSpawner;
-    public static bool woodGame;
-    public static bool oreGame;
-    public static bool fishGame;
+    public GameObject rogSpawner;
 
     void Start()
     {
         wood.SetActive(false);
-        stone.SetActive(false);
+        rog.SetActive(false);
         ore.SetActive(false);
         fish.SetActive(false);
     }
@@ -28,20 +31,25 @@ public class MGManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             woodGame = !woodGame;
-            CheckMG();
+            StartCoroutine(CheckMG());
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             oreGame = !oreGame;
-            CheckMG();
+            StartCoroutine(CheckMG());
         }
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             fishGame = !fishGame;
-            CheckMG();
+            StartCoroutine(CheckMG());
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            rogGame = !rogGame;
+            StartCoroutine(CheckMG());
         }
 
-        if(!woodGame && !oreGame && !fishGame)
+        if (!woodGame && !oreGame && !fishGame && !rogGame)
         {
             MenuManager.canPause = true;
         }
@@ -51,7 +59,7 @@ public class MGManager : MonoBehaviour
         }
     }
 
-    private void CheckMG()
+    IEnumerator CheckMG()
     {
         if (woodGame)
         {
@@ -85,11 +93,32 @@ public class MGManager : MonoBehaviour
 
             ore.SetActive(false);
 
-            foreach(Transform child in oreSpawner.transform)
+            while(oreSpawner.transform.childCount > 0)
             {
-                GameObject.Destroy(child.gameObject);
+                foreach (Transform child in oreSpawner.transform)
+                {
+                    GameObject.Destroy(child.gameObject);
+                    yield return null;
+                }
             }
-            return;
+        }
+
+        if (rogGame)
+        {
+            rog.SetActive(true);
+        }
+        else
+        {
+            rog.SetActive(false);
+
+            while (rogSpawner.transform.childCount > 0)
+            {
+                foreach (Transform child in rogSpawner.transform)
+                {
+                    GameObject.Destroy(child.gameObject);
+                    yield return null;
+                }
+            }
         }
     }
 }
