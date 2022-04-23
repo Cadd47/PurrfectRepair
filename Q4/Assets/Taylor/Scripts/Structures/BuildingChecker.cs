@@ -6,17 +6,14 @@ public class BuildingChecker : MonoBehaviour
 {
     BuildingManager buildingManager;
 
-    BoxCollider colCheck;
-    Vector3 colTest;
-
     private int checkGood = 0;
     private int checkBad = 0;
+
+    private float timerCheck = 0.15f;
 
     void Start()
     {
         buildingManager = GameObject.Find("BuildingManager").GetComponent<BuildingManager>();
-        //colCheck = buildingManager.selectedObject.GetComponent<BoxCollider>();
-        //colTest = colCheck.transform.position;
     }
 
     void Update()
@@ -38,21 +35,28 @@ public class BuildingChecker : MonoBehaviour
         Collider[] hitChecks = Physics.OverlapBox(transform.position, new Vector3(10, 50, 10), transform.rotation);
         foreach (Collider hitCollider in hitChecks)
         {
-            if (hitCollider.gameObject.tag == "Building")
-            {
-                checkBad++;
-                checkGood = 0;
-            }
-            else
+            if (hitCollider.gameObject.tag == "Untagged")
             {
                 checkGood++;
                 checkBad = 0;
+
+                timerCheck -= Time.deltaTime;
+            }
+            else
+            {
+                checkBad++;
+                checkGood = 0;
+
+                timerCheck = 0.15f;
             }
         }
 
         if (checkGood > checkBad)
         {
-            buildingManager.canPlace = true;
+            if(timerCheck <= 0.0f)
+            {
+                buildingManager.canPlace = true;
+            }
         }
         else
         {
