@@ -15,8 +15,8 @@ public class PlayerMovement : MonoBehaviour
     public CharacterController controller;
     public Transform cam;
 
-    public float speed = 8;
-    public float gravity = -27.5f;
+    public float speed = 12;
+    public float gravity;
     
     public float jumpHeight;
     private float jumpTimeCounter;
@@ -31,7 +31,6 @@ public class PlayerMovement : MonoBehaviour
 
     float turnSmoothVelocity;
     public float turnSmoothTime = 0.15f;
-
 
     IEnumerator checkLanded()
     {
@@ -102,11 +101,11 @@ public class PlayerMovement : MonoBehaviour
         //sprint
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
-            speed = 14;
+            speed = 20;
         }
         if (Input.GetKeyUp(KeyCode.LeftShift))
         {
-            speed = 8;
+            speed = 12;
         }
 
         if (Input.GetKey(KeyCode.LeftShift) && isGrounded)
