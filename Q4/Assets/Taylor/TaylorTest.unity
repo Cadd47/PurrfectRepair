@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: 4005b30981bf9a0498678233a9cc6443, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 30d0249dd1a9680429c0f687ae299ca6, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.58927786, g: 0.72930735, b: 0.7581308, a: 1}
+  m_IndirectSpecularColor: {r: 0.50603247, g: 0.06366146, b: 0.4683897, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -39833,7 +39833,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9072982177449919705}
-  m_LocalRotation: {x: 0.16018222, y: 7.7439394e-16, z: -8.454275e-16, w: 0.9870875}
+  m_LocalRotation: {x: 0.16018222, y: 4.1894842e-15, z: -1.2204044e-15, w: 0.9870875}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
