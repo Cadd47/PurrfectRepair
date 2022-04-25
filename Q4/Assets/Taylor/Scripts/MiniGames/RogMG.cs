@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class RogMG : MonoBehaviour
 {
@@ -20,13 +21,39 @@ public class RogMG : MonoBehaviour
 
     public float collectedRog;
 
+    [Header("Resource Implementation")]
+    public int yield;
+
+    public int currentPoints;
+    public int maxPoints = 5;
+
+    MGManager MGM;
+
+    public TextMeshProUGUI pointCounter;
+    public TextMeshProUGUI pointsGained;
+
+    public GameObject minigame;
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        MGM = GameObject.Find("MiniGameManager").GetComponent<MGManager>();
+        pointsGained.enabled = false;
     }
 
     private void Update()
     {
+        pointCounter.text = currentPoints.ToString() + "/" + maxPoints.ToString();
+
+        if (currentPoints >= maxPoints)
+        {
+            pointsGained.text = "+" + yield.ToString() + " stone";
+            pointsGained.enabled = true;
+            ResourceManager.stoneCount += yield;
+            currentPoints = 0;
+            MGM.rogGame = false;
+            minigame.SetActive(false);
+        }
+
         if (Input.GetKeyDown(KeyCode.P))
         {
             StartCoroutine(SpawnRog());
@@ -47,6 +74,7 @@ public class RogMG : MonoBehaviour
     {
         if (collector.CompareTag("Stone"))
         {
+            currentPoints++;
             collectedRog++;
             Debug.Log("Rog: " + collectedRog);
         }

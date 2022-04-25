@@ -1,9 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class OreMG : MonoBehaviour
 {
+
+
     public float waitTime;
     public float shinyTotal;
 
@@ -13,11 +16,38 @@ public class OreMG : MonoBehaviour
     public GameObject min;
     public GameObject max;
 
+    [Header("Resource Implementation")]
+    public int currentPoints;
+    public int maxPoints = 5;
+
+    public int yield;
+
+    MGManager MGM;
+
+    public TextMeshProUGUI pointCounter;
+    public TextMeshProUGUI pointsGained;
+    private void Start()
+    {
+        MGM = GameObject.Find("MiniGameManager").GetComponent<MGManager>();
+        pointsGained.enabled = false;
+    }
+
     void Update()
     {
+        pointCounter.text = currentPoints.ToString() + "/" + maxPoints.ToString();
         if (Input.GetKeyDown(KeyCode.P))
         {
             StartCoroutine(SpawnShiny());
+        }
+
+        if(currentPoints >= maxPoints)
+        {
+            pointsGained.text = "+" + yield.ToString() + " ore";
+            pointsGained.enabled = true;
+            ResourceManager.oreCount += yield;
+            currentPoints = 0;
+            MGM.oreGame = false;
+            gameObject.SetActive(false);
         }
     }
 

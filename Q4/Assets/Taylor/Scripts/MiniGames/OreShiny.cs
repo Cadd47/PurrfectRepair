@@ -8,6 +8,9 @@ public class OreShiny : MonoBehaviour
     private Vector3 maxScale;
     private float duration = 5;
 
+    GameObject minigame;
+    OreMG ORMG;
+
     IEnumerator Start()
     {
         minScale = transform.localScale;
@@ -27,10 +30,18 @@ public class OreShiny : MonoBehaviour
             transform.localScale = Vector3.Lerp(a, b, i);
             yield return null;
         }
-        Destroy();
+        DestroyOther();
     }
 
     void Destroy()
+    {
+        minigame = GameObject.Find("OreMG");
+        ORMG = minigame.GetComponent<OreMG>();
+        ORMG.currentPoints++;
+        Destroy(gameObject);
+    }
+
+    void DestroyOther()
     {
         Destroy(gameObject);
     }
