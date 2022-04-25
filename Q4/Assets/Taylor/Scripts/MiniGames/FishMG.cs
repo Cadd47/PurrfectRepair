@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class FishMG : MonoBehaviour
 {
@@ -31,9 +32,17 @@ public class FishMG : MonoBehaviour
     public float progressBarDecay;
     float catchProgress;
 
+    [Header("Resource Implementation")]
+    public int yield;
+
+    MGManager MGM;
+
+    public TextMeshProUGUI pointsGained;
     private void Start()
     {
         catchProgress = 0.15f;
+        MGM = GameObject.Find("MiniGameManager").GetComponent<MGManager>();
+        pointsGained.enabled = false;
     }
 
     private void FixedUpdate()
@@ -58,6 +67,11 @@ public class FishMG : MonoBehaviour
             if(catchProgress >= 1)
             {
                 Debug.Log("Full");
+                pointsGained.text = "+" + yield.ToString() + " fish";
+                pointsGained.enabled = true;
+                ResourceManager.fishCount += yield;
+                MGM.fishGame = false;
+                gameObject.SetActive(false);
             }
         }
         else
@@ -66,6 +80,8 @@ public class FishMG : MonoBehaviour
             if(catchProgress <= 0)
             {
                 Debug.Log("Poop");
+                MGM.fishGame = false;
+                gameObject.SetActive(false);
             }
         }
         catchProgress = Mathf.Clamp(catchProgress, 0, 1);
