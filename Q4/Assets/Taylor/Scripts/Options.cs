@@ -5,11 +5,16 @@ using Cinemachine;
 
 public class Options : MonoBehaviour
 {
-    public CinemachineFreeLook playerOneCam;
-    public CinemachineFreeLook playerTwoCam;
+    private CinemachineFreeLook playerOneCam;
+    private CinemachineFreeLook playerTwoCam;
 
     public float ySpeed = 9f;
     public float xSpeed = 1500f;
+
+    private void Start()
+    {
+        playerOneCam = 
+    }
 
     private void AdjustY(float newY)
     {
@@ -19,9 +24,7 @@ public class Options : MonoBehaviour
 
     private void AdjustX(float newX)
     {
-        float multiplyX = newX * 1000;
-
-        playerOneCam.m_XAxis.m_MaxSpeed = multiplyX;
-        playerTwoCam.m_XAxis.m_MaxSpeed = multiplyX;
+        playerOneCam.m_XAxis.m_MaxSpeed = newX * 1000;
+        playerTwoCam.m_XAxis.m_MaxSpeed = newX * 1000;
     }
 }
