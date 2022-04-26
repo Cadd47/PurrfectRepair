@@ -7,9 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Outline
-  m_Shader: {fileID: -6465566751694194690, guid: e63e4cb18a937c647828145c0e3ba935,
-    type: 3}
+  m_Name: cAT_pelt
+  m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -21,7 +20,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BaseMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: a7b468190d067d5438c68c0c5111503d, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
@@ -49,9 +48,6 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_405B7F0: 32
-    - Vector1_A4BEC8D2: 0.1
-    - Vector1_D6C8B1C5: 0.7
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -64,7 +60,6 @@ Material:
     - _GlossyReflections: 0
     - _Metallic: 0
     - _OcclusionStrength: 1
-    - _OutlineThickness: 0.025
     - _QueueOffset: 0
     - _ReceiveShadows: 1
     - _Smoothness: 0.5
@@ -75,18 +70,11 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Color_328FC1CE: {r: 0, g: 0.06743296, b: 0.3301887, a: 0}
-    - Color_5DE70DFD: {r: 0, g: 0, b: 0, a: 0}
-    - Color_85E53591: {r: 0, g: 0, b: 0, a: 0}
-    - Color_9B7AC15F: {r: 0.8867924, g: 0.8867924, b: 0.8867924, a: 0}
-    - Color_C4FA2C60: {r: 1, g: 1, b: 1, a: 0}
-    - Color_F4D27F1D: {r: 1, g: 1, b: 1, a: 0}
-    - Color_F6896160: {r: 1, g: 1, b: 1, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
---- !u!114 &6427992938650298901
+--- !u!114 &1954186632844855483
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
