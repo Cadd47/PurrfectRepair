@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerChecker : MonoBehaviour
 {
-    private float playerCheck;
+    public static bool playerCheck;
     public bool canSwitch;
 
     public GameObject camOne;
@@ -19,7 +19,6 @@ public class PlayerChecker : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
 
-        playerCheck = 0;
         canSwitch = true;
     }
 
@@ -28,7 +27,7 @@ public class PlayerChecker : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.C) && canSwitch)
         {
-            playerCheck++;
+            playerCheck = !playerCheck;
             Check();
         }
 
@@ -36,7 +35,7 @@ public class PlayerChecker : MonoBehaviour
 
     private void Check()
     {
-        if (playerCheck % 2 == 0)
+        if (!playerCheck)
         {
             //Debug.Log("Even");
             GameObject.Find("Player One").GetComponent<PlayerMovement>().enabled = true;
@@ -53,7 +52,7 @@ public class PlayerChecker : MonoBehaviour
             sprintTwo.SetActive(false);
         }
 
-        if (playerCheck % 2 == 1)
+        if (playerCheck)
         {
             //Debug.Log("Odd");
             GameObject.Find("Player One").GetComponent<PlayerMovement>().enabled = false;
