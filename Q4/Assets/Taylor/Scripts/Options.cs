@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Cinemachine;
 
 public class Options : MonoBehaviour
@@ -8,23 +9,39 @@ public class Options : MonoBehaviour
     private CinemachineFreeLook playerOneCam;
     private CinemachineFreeLook playerTwoCam;
 
-    public float ySpeed = 9f;
-    public float xSpeed = 1500f;
+    public Slider ySlider;
+    public Slider xSlider;
 
     private void Start()
     {
-        playerOneCam = 
+        playerOneCam = GameObject.Find("Player One Camera").GetComponent<CinemachineFreeLook>();
+        playerTwoCam = GameObject.Find("Player Two Camera").GetComponent<CinemachineFreeLook>();
     }
 
-    private void AdjustY(float newY)
+    private void FixedUpdate()
     {
-        playerOneCam.m_YAxis.m_MaxSpeed = newY;
-        playerTwoCam.m_YAxis.m_MaxSpeed = newY;
+        ySlider.value = SavedOptions.savedYSense;
+        xSlider.value = SavedOptions.savedXSense;
+
+        if (PlayerChecker.playerCheck == false)
+        {
+            playerOneCam.m_YAxis.m_MaxSpeed = ySlider.value;
+            playerOneCam.m_XAxis.m_MaxSpeed = xSlider.value * 166.667f;
+        }
+        else
+        {
+            playerTwoCam.m_YAxis.m_MaxSpeed = ySlider.value;
+            playerTwoCam.m_XAxis.m_MaxSpeed = xSlider.value * 166.667f;
+        }
     }
 
-    private void AdjustX(float newX)
+    public void AdjustY(float newY)
     {
-        playerOneCam.m_XAxis.m_MaxSpeed = newX * 1000;
-        playerTwoCam.m_XAxis.m_MaxSpeed = newX * 1000;
+        SavedOptions.savedYSense = newY;
+    }
+
+    public void AdjustX(float newX)
+    {
+        SavedOptions.savedXSense = newX;
     }
 }
