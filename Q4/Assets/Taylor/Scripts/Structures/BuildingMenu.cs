@@ -10,6 +10,7 @@ public class BuildingMenu : MonoBehaviour
     public GameObject mainCam;
     public GameObject buildCam;
     public GameObject buildMenu;
+    public GameObject buildGrid;
 
     private bool hasPlayer;
     private bool amOne;
@@ -82,6 +83,7 @@ public class BuildingMenu : MonoBehaviour
         mainCam.SetActive(false);
         buildCam.SetActive(true);
         buildMenu.SetActive(true);
+        buildGrid.SetActive(true);
         //cursor && pause
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
@@ -112,6 +114,7 @@ public class BuildingMenu : MonoBehaviour
         mainCam.SetActive(true);
         buildCam.SetActive(false);
         buildMenu.SetActive(false);
+        buildGrid.SetActive(false);
         //cursor && pause
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;

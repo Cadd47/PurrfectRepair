@@ -55,6 +55,7 @@ public class BuildingManager : MonoBehaviour
                         Destroy(selectedObject);
                         cantSelect = false;
                         selectedObject = null;
+                        Cursor.visible = true;
                     }
                 }
                 UpdateMaterials();
@@ -113,6 +114,8 @@ public class BuildingManager : MonoBehaviour
     public void PlaceObject()
     {
         selectedObject.GetComponent<Renderer>().material.color = Color.white;
+        //selectedObject.GetComponentInChildren<MeshRenderer>().enabled = false;
+        selectedObject.transform.Find("Plane").gameObject.SetActive(false);
 
         cantSelect = false;
         selectedObject = null;
