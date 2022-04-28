@@ -26,11 +26,16 @@ public class BuildingMove : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) && hover == true)
         {
+            GameObject.Find("BuildingManager").GetComponent<BuildingManager>().selectedObject = gameObject;
+
             hover = false;
             buildingManager.cantSelect = true;
+            Cursor.visible = false;
+
+            BuildingManager.yCoord = gameObject.transform.position.y;
+
             colliderCheck.SetActive(true);
             gameObject.GetComponent<Collider>().enabled = false;
-            GameObject.Find("BuildingManager").GetComponent<BuildingManager>().selectedObject = gameObject;
         }
 
         if(buildingManager.selectedObject == null)

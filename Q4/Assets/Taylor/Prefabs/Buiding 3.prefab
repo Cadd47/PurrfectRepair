@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2826028506643702572}
-  - component: {fileID: 6333659445469732371}
+  - component: {fileID: 5485716777903210369}
   m_Layer: 8
   m_Name: ColliderChecker
   m_TagString: Checker
@@ -31,7 +31,7 @@ Transform:
   m_Father: {fileID: 1089905201598838139}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6333659445469732371
+--- !u!114 &5485716777903210369
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -40,16 +40,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 4682480331526025746}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae1add481d6f5f143b6c63eb28dd1705, type: 3}
+  m_Script: {fileID: 11500000, guid: 98705cb55666fbd469d0034e8490edc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TagList:
-  - Building
-  - AI
-  - AIHome
-  - NPCHead
-  - Player
-  - ResourceManager
 --- !u!1 &6788404746602728447
 GameObject:
   m_ObjectHideFlags: 0
@@ -81,8 +74,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6788404746602728447}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 10, y: 10, z: 10}
+  m_LocalPosition: {x: 0, y: 11.5, z: 0}
+  m_LocalScale: {x: 20, y: 10, z: 10}
   m_Children:
   - {fileID: 2826028506643702572}
   m_Father: {fileID: 0}
@@ -114,7 +107,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 52dc67aba24aea24387d5113e3f4b827, type: 2}
+  - {fileID: 2100000, guid: e93a08829b6296a4fa6aca597eeb8f28, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

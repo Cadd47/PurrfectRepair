@@ -20,6 +20,7 @@ public class BuildingManager : MonoBehaviour
 
     Vector3 pos;
     public float rotateAmount;
+    public static float yCoord;
 
     private RaycastHit hit;
 
@@ -37,7 +38,7 @@ public class BuildingManager : MonoBehaviour
                 if (selectedObject != null)
                 {
                     selectedObject.GetComponent<Collider>().enabled = false;
-                    selectedObject.transform.position = new Vector3(RoundToGrid(pos.x), 11.55f, RoundToGrid(pos.z));
+                    selectedObject.transform.position = new Vector3(RoundToGrid(pos.x), yCoord, RoundToGrid(pos.z));
                     //Place
                     if (Input.GetMouseButtonDown(0) && canPlace)
                     {
@@ -87,9 +88,13 @@ public class BuildingManager : MonoBehaviour
     {
         if(cantSelect == false)
         {
+            Cursor.visible = false;
+
             Destroy(howToBuild);
             selectedObject = Instantiate(structures[index], pos, transform.rotation);
             cantSelect = true;
+
+            yCoord = selectedObject.transform.position.y * 4;
         }
     }
 
@@ -111,6 +116,9 @@ public class BuildingManager : MonoBehaviour
 
         cantSelect = false;
         selectedObject = null;
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 
     public float RoundToGrid(float pos)
@@ -123,5 +131,14 @@ public class BuildingManager : MonoBehaviour
             pos += gridSize;
         }
         return pos;
+    }
+
+    public void SmallBuildingY()
+    {
+        yCoord = 11.55f;
+    }
+    public void BigBuildingY()
+    {
+        yCoord = 16.55f;
     }
 }

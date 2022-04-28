@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BuildingChecker : MonoBehaviour
+public class BuildingCheckerThree : MonoBehaviour
 {
     BuildingManager buildingManager;
 
     private int checkGood = 0;
     private int checkBad = 0;
 
-    private float timerCheck = 0.15f;
+    private float timerCheck = 0.2f;
 
     void Start()
     {
@@ -32,7 +32,7 @@ public class BuildingChecker : MonoBehaviour
     public void PlaceCheck()
     {
         //checks colliders
-        Collider[] hitChecks = Physics.OverlapBox(transform.position, new Vector3(10, 50, 10), transform.rotation);
+        Collider[] hitChecks = Physics.OverlapBox(transform.position, new Vector3(15f, 50, 12.5f), transform.rotation);
         foreach (Collider hitCollider in hitChecks)
         {
             if (hitCollider.gameObject.tag == "Untagged")
@@ -47,13 +47,13 @@ public class BuildingChecker : MonoBehaviour
                 checkBad++;
                 checkGood = 0;
 
-                timerCheck = 0.15f;
+                timerCheck = 0.2f;
             }
         }
 
         if (checkGood > checkBad)
         {
-            if(timerCheck <= 0.0f)
+            if (timerCheck <= 0.0f)
             {
                 buildingManager.canPlace = true;
             }
