@@ -30,23 +30,19 @@ public class BuildingMove : MonoBehaviour
 
             hover = false;
             buildingManager.cantSelect = true;
-            Cursor.visible = false;
 
             BuildingManager.yCoord = gameObject.transform.position.y;
 
             colliderCheck.SetActive(true);
             gameObject.GetComponent<Collider>().enabled = false;
+
+            GetComponent<Renderer>().material.color = Color.white;
+            gameObject.transform.Find("Plane").gameObject.SetActive(true);
         }
 
         if(buildingManager.selectedObject == null)
         {
             gameObject.GetComponent<Collider>().enabled = true;
-        }
-
-        if(buildingMenu.editBuild == false)
-        {
-            GetComponent<Renderer>().material.color = Color.white;
-            hover = false;
         }
 
         if(Time.timeScale == 0f)

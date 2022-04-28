@@ -7,6 +7,8 @@ public class BuildingManager : MonoBehaviour
 {
     BuildingMenu buildingMenu;
 
+    public Material[] materials;
+
     public GameObject[] structures;
     public GameObject selectedObject;
     public GameObject howToBuild;
@@ -55,7 +57,6 @@ public class BuildingManager : MonoBehaviour
                         Destroy(selectedObject);
                         cantSelect = false;
                         selectedObject = null;
-                        Cursor.visible = true;
                     }
                 }
                 UpdateMaterials();
@@ -89,8 +90,6 @@ public class BuildingManager : MonoBehaviour
     {
         if(cantSelect == false)
         {
-            Cursor.visible = false;
-
             Destroy(howToBuild);
             selectedObject = Instantiate(structures[index], pos, transform.rotation);
             cantSelect = true;
@@ -103,25 +102,22 @@ public class BuildingManager : MonoBehaviour
     {
         if (canPlace)
         {
-            selectedObject.GetComponent<Renderer>().material.color = new Color(155/255f, 255/255f, 166/255f);
+            selectedObject.transform.Find("Plane").GetComponent<Renderer>().material = materials[0];
+
         }
         else
         {
-            selectedObject.GetComponent<Renderer>().material.color = new Color(255/255f, 130/255f, 130/255f);
+            selectedObject.transform.Find("Plane").GetComponent<Renderer>().material = materials[1];
         }
     }
 
     public void PlaceObject()
     {
         selectedObject.GetComponent<Renderer>().material.color = Color.white;
-        //selectedObject.GetComponentInChildren<MeshRenderer>().enabled = false;
         selectedObject.transform.Find("Plane").gameObject.SetActive(false);
 
         cantSelect = false;
         selectedObject = null;
-
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
     }
 
     public float RoundToGrid(float pos)

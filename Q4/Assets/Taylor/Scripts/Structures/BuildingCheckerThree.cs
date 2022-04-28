@@ -32,7 +32,7 @@ public class BuildingCheckerThree : MonoBehaviour
     public void PlaceCheck()
     {
         //checks colliders
-        Collider[] hitChecks = Physics.OverlapBox(transform.position, new Vector3(15f, 50, 12.5f), transform.rotation);
+        Collider[] hitChecks = Physics.OverlapBox(transform.position, new Vector3(17.5f, 50, 12.5f), transform.rotation);
         foreach (Collider hitCollider in hitChecks)
         {
             if (hitCollider.gameObject.tag == "Untagged")
