@@ -5,8 +5,6 @@ using TMPro;
 
 public class OreMG : MonoBehaviour
 {
-
-
     public float waitTime;
     public float shinyTotal;
 

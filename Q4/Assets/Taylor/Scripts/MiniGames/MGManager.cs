@@ -72,6 +72,7 @@ public class MGManager : MonoBehaviour
 
         if (fishGame)
         {
+            FishMG.catchProgress = 0.15f;
             fish.SetActive(true);
         }
         else

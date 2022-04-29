@@ -31,8 +31,6 @@ public class BuildingMove : MonoBehaviour
             hover = false;
             buildingManager.cantSelect = true;
 
-            BuildingManager.yCoord = gameObject.transform.position.y;
-
             colliderCheck.SetActive(true);
             gameObject.GetComponent<Collider>().enabled = false;
 

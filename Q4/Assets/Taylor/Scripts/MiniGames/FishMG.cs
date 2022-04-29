@@ -30,7 +30,7 @@ public class FishMG : MonoBehaviour
     public Transform progressBarContainer;
     public float hookPower;
     public float progressBarDecay;
-    float catchProgress;
+    public static float catchProgress;
 
     [Header("Resource Implementation")]
     public int yield;
@@ -38,9 +38,9 @@ public class FishMG : MonoBehaviour
     MGManager MGM;
 
     public TextMeshProUGUI pointsGained;
+
     private void Start()
     {
-        catchProgress = 0.15f;
         MGM = GameObject.Find("MiniGameManager").GetComponent<MGManager>();
         pointsGained.enabled = false;
     }
@@ -80,8 +80,7 @@ public class FishMG : MonoBehaviour
             if(catchProgress <= 0)
             {
                 Debug.Log("Poop");
-                MGM.fishGame = false;
-                gameObject.SetActive(false);
+                //MGM.fishGame = false;
             }
         }
         catchProgress = Mathf.Clamp(catchProgress, 0, 1);
