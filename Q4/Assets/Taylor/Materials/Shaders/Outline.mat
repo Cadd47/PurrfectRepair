@@ -64,7 +64,7 @@ Material:
     - _GlossyReflections: 0
     - _Metallic: 0
     - _OcclusionStrength: 1
-    - _OutlineThickness: 0.025
+    - _OutlineThickness: 0.015
     - _QueueOffset: 0
     - _ReceiveShadows: 1
     - _Smoothness: 0.5
@@ -75,7 +75,7 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Color_328FC1CE: {r: 0, g: 0.06743296, b: 0.3301887, a: 0}
+    - Color_328FC1CE: {r: 0, g: 0.06666667, b: 0.32941177, a: 0}
     - Color_5DE70DFD: {r: 0, g: 0, b: 0, a: 0}
     - Color_85E53591: {r: 0, g: 0, b: 0, a: 0}
     - Color_9B7AC15F: {r: 0.8867924, g: 0.8867924, b: 0.8867924, a: 0}

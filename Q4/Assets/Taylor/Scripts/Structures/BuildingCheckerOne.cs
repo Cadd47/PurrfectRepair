@@ -35,7 +35,7 @@ public class BuildingCheckerOne : MonoBehaviour
         Collider[] hitChecks = Physics.OverlapBox(transform.position, new Vector3(12.5f, 50, 12.5f), transform.rotation);
         foreach (Collider hitCollider in hitChecks)
         {
-            if (hitCollider.gameObject.tag == "Untagged")
+            if (hitCollider.gameObject.tag != "Building")
             {
                 checkGood++;
                 checkBad = 0;

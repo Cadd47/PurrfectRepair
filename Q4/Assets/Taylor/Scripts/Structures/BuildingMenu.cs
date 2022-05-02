@@ -11,6 +11,8 @@ public class BuildingMenu : MonoBehaviour
     public GameObject buildCam;
     public GameObject buildMenu;
     public GameObject buildGrid;
+    public GameObject E;
+    public Light mainLight;
 
     private bool hasPlayer;
     private bool amOne;
@@ -26,7 +28,7 @@ public class BuildingMenu : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q) && hasPlayer)
+        if (Input.GetKeyDown(KeyCode.E) && hasPlayer)
         {
             menuCheck = !menuCheck;
             Check();
@@ -36,7 +38,7 @@ public class BuildingMenu : MonoBehaviour
         {
             MenuManager.canPause = false;
 
-            if (Input.GetKeyDown(KeyCode.Q) && !hasPlayer)
+            if (Input.GetKeyDown(KeyCode.E) && !hasPlayer)
             {
                 menuCheck = !menuCheck;
                 Check();
@@ -45,6 +47,15 @@ public class BuildingMenu : MonoBehaviour
         else
         {
             MenuManager.canPause = true;
+        }
+
+        if (hasPlayer)
+        {
+            E.SetActive(true);
+        }
+        else
+        {
+            E.SetActive(false);
         }
     }
 
@@ -79,11 +90,12 @@ public class BuildingMenu : MonoBehaviour
     private void enableBuildMenu()
     {
         playerChecker.canSwitch = false;
-        //camera & build menu
+        //camera & menu
         mainCam.SetActive(false);
         buildCam.SetActive(true);
         buildMenu.SetActive(true);
         buildGrid.SetActive(true);
+        mainLight.shadowStrength = 0f;
         //cursor && pause
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
@@ -110,11 +122,12 @@ public class BuildingMenu : MonoBehaviour
         Destroy(buildingManager.selectedObject);
         buildingManager.selectedObject = null;
         buildingManager.cantSelect = false;
-        //camera & build menu
+        //camera & menu
         mainCam.SetActive(true);
         buildCam.SetActive(false);
         buildMenu.SetActive(false);
         buildGrid.SetActive(false);
+        mainLight.shadowStrength = 0.15f;
         //cursor && pause
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;

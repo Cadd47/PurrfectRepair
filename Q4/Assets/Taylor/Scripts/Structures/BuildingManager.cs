@@ -128,4 +128,10 @@ public class BuildingManager : MonoBehaviour
         }
         return pos;
     }
+
+    //this for fixing the beginning orientation of da long building
+    public void LongBoi()
+    {
+        selectedObject.transform.rotation = Quaternion.Euler(0, 360, 0);
+    }
 }
