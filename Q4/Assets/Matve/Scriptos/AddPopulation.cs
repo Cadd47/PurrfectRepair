@@ -39,6 +39,10 @@ public class AddPopulation : MonoBehaviour
 
     private void OnDestroy()
     {
-        RemovePop();
+        if (placed)
+        {
+            RemovePop();
+        }
+        
     }
 }
