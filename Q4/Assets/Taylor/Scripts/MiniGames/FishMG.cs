@@ -79,7 +79,6 @@ public class FishMG : MonoBehaviour
             catchProgress -= progressBarDecay * Time.deltaTime;
             if(catchProgress <= 0)
             {
-                Debug.Log("Poop");
                 //MGM.fishGame = false;
             }
         }

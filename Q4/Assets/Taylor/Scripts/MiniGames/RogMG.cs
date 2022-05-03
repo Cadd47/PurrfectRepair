@@ -27,31 +27,29 @@ public class RogMG : MonoBehaviour
     public int currentPoints;
     public int maxPoints = 5;
 
-    MGManager MGM;
+    MGManager MGManager;
 
     public TextMeshProUGUI pointCounter;
     public TextMeshProUGUI pointsGained;
 
-    public GameObject minigame;
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
-        MGM = GameObject.Find("MiniGameManager").GetComponent<MGManager>();
+        MGManager = GameObject.Find("MiniGameManager").GetComponent<MGManager>();
         pointsGained.enabled = false;
     }
 
-    private void Update()
+    public void Update()
     {
-        pointCounter.text = currentPoints.ToString() + "/" + maxPoints.ToString();
-
         if (currentPoints >= maxPoints)
         {
             pointsGained.text = "+" + yield.ToString() + " stone";
             pointsGained.enabled = true;
             ResourceManager.stoneCount += yield;
             currentPoints = 0;
-            MGM.rogGame = false;
-            minigame.SetActive(false);
+
+            MGManager.rogGame = false;
+            MGManager.PleaseCheck();
         }
 
         if (Input.GetKeyDown(KeyCode.P))
@@ -68,6 +66,8 @@ public class RogMG : MonoBehaviour
         {
             rb.velocity = new Vector2(-Speed, 0);
         }
+
+        pointCounter.text = currentPoints.ToString();
     }
 
     private void OnTriggerEnter(Collider collector)
@@ -76,7 +76,6 @@ public class RogMG : MonoBehaviour
         {
             currentPoints++;
             collectedRog++;
-            Debug.Log("Rog: " + collectedRog);
         }
     }
 

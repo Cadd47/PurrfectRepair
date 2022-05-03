@@ -9,6 +9,8 @@ public class Rog : MonoBehaviour
     private float duration = 5f;
     public float distance;
 
+    [SerializeField] private Vector3 _rotation;
+
     IEnumerator Start()
     {
         startPos = transform.position;
@@ -34,6 +36,7 @@ public class Rog : MonoBehaviour
         {
             i += Time.deltaTime * rate;
             transform.position = Vector3.Lerp(a, b, i);
+            transform.Rotate(_rotation * Time.deltaTime);
             yield return null;
         }
         Destroy();

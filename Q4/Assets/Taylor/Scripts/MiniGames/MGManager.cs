@@ -12,7 +12,7 @@ public class MGManager : MonoBehaviour
     public bool woodGame;
     public bool oreGame;
     public bool fishGame;
-    public bool rogGame;
+    public static bool rogGame;
 
     [Header("Side Stuffs")]
     public GameObject oreSpawner;
@@ -57,6 +57,11 @@ public class MGManager : MonoBehaviour
         {
             MenuManager.canPause = false;
         }
+    }
+
+    public void PleaseCheck()
+    {
+        StartCoroutine(CheckMG());
     }
 
     IEnumerator CheckMG()

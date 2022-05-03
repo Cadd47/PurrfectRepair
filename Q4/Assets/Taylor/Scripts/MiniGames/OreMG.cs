@@ -20,19 +20,19 @@ public class OreMG : MonoBehaviour
 
     public int yield;
 
-    MGManager MGM;
+    MGManager MGManager;
 
     public TextMeshProUGUI pointCounter;
     public TextMeshProUGUI pointsGained;
     private void Start()
     {
-        MGM = GameObject.Find("MiniGameManager").GetComponent<MGManager>();
+        MGManager = GameObject.Find("MiniGameManager").GetComponent<MGManager>();
         pointsGained.enabled = false;
     }
 
     void Update()
     {
-        pointCounter.text = currentPoints.ToString() + "/" + maxPoints.ToString();
+        pointCounter.text = currentPoints.ToString();
         if (Input.GetKeyDown(KeyCode.P))
         {
             StartCoroutine(SpawnShiny());
@@ -44,8 +44,9 @@ public class OreMG : MonoBehaviour
             pointsGained.enabled = true;
             ResourceManager.oreCount += yield;
             currentPoints = 0;
-            MGM.oreGame = false;
-            gameObject.SetActive(false);
+
+            MGManager.oreGame = false;
+            MGManager.PleaseCheck();
         }
     }
 

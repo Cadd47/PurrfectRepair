@@ -5,8 +5,6 @@ using TMPro;
 
 public class WoodMG : MonoBehaviour
 {
-    
-
     public GameObject arrow;
     public Transform pointA;
     public Transform pointB;
@@ -43,7 +41,7 @@ public class WoodMG : MonoBehaviour
 
     void Update()
     {
-        pointCounter.text = currentPoints.ToString() + "/" + maxPoints.ToString();
+        pointCounter.text = currentPoints.ToString();
 
         transform.position = Vector3.Lerp(pointA.position, pointB.position, Mathf.Sin(Time.time * Speed) * Amplitude + AmplitudeOffset);
 
@@ -51,29 +49,24 @@ public class WoodMG : MonoBehaviour
         {
             if (r)
             {
-                Debug.Log("r");
                 MGM.woodGame = false;
                 MiniGame.SetActive(false);
             }
             if (o)
             {
-                Debug.Log("o");
-                currentPoints += 1;
+                currentPoints += 0;
             }
             if (y)
             {
-                Debug.Log("y");
-                currentPoints += 2;
+                currentPoints += 1;
             }
             if (g)
             {
-                Debug.Log("g");
-                currentPoints += 4;
+                currentPoints += 2;
             }
             if (b)
             {
-                Debug.Log("b");
-                currentPoints += 5;
+                currentPoints += 4;
             }
         }
 
