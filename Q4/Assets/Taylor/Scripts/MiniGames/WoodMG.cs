@@ -25,8 +25,6 @@ public class WoodMG : MonoBehaviour
     public TextMeshProUGUI pointCounter;
     public TextMeshProUGUI pointsGained;
 
-    public GameObject MiniGame;
-
     private bool r = false;
     private bool o = false;
     private bool y = false;
@@ -50,7 +48,7 @@ public class WoodMG : MonoBehaviour
             if (r)
             {
                 MGM.woodGame = false;
-                MiniGame.SetActive(false);
+                MGM.PleaseCheck();
             }
             if (o)
             {
@@ -72,12 +70,22 @@ public class WoodMG : MonoBehaviour
 
         if(currentPoints >= maxPoints)
         {
-            ResourceManager.woodCount += yield;
-            pointsGained.text = "+" + yield.ToString() + " wood";
-            pointsGained.enabled = true;
+            if (PlayerChecker.playerCheck)
+            {
+                pointsGained.text = "+3 wewd";
+                pointsGained.enabled = true;
+                ResourceManager.woodCount += 3;
+            }
+            else
+            {
+                pointsGained.text = "+6 wewd";
+                pointsGained.enabled = true;
+                ResourceManager.woodCount += 6;
+            }
+
             currentPoints = 0;
             MGM.woodGame = false;
-            MiniGame.SetActive(false);
+            MGM.PleaseCheck();
         }
     }
 

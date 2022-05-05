@@ -10,6 +10,7 @@ public class SpawnMenuActivate : MonoBehaviour
     public GameObject mainCam;
     public GameObject buildCam;
     public GameObject buildMenu;
+    public GameObject E;
 
     private bool hasPlayer;
     private bool amOne;
@@ -25,7 +26,7 @@ public class SpawnMenuActivate : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q) && hasPlayer)
+        if (Input.GetKeyDown(KeyCode.E) && hasPlayer)
         {
             menuCheck = !menuCheck;
             Check();
@@ -44,6 +45,15 @@ public class SpawnMenuActivate : MonoBehaviour
         else
         {
             MenuManager.canPause = true;
+        }
+
+        if (hasPlayer)
+        {
+            E.SetActive(true);
+        }
+        else
+        {
+            E.SetActive(false);
         }
     }
 

@@ -43,11 +43,20 @@ public class RogMG : MonoBehaviour
     {
         if (currentPoints >= maxPoints)
         {
-            pointsGained.text = "+" + yield.ToString() + " stone";
-            pointsGained.enabled = true;
-            ResourceManager.stoneCount += yield;
-            currentPoints = 0;
+            if (PlayerChecker.playerCheck)
+            {
+                pointsGained.text = "+5 rog";
+                pointsGained.enabled = true;
+                ResourceManager.stoneCount += 5;
+            }
+            else
+            {
+                pointsGained.text = "+2 rog";
+                pointsGained.enabled = true;
+                ResourceManager.stoneCount += 2;
+            }
 
+            currentPoints = 0;
             MGManager.rogGame = false;
             MGManager.PleaseCheck();
         }

@@ -8,6 +8,7 @@ public class AutoTextDisable : MonoBehaviour
     public TextMeshProUGUI yourMom;
     public float timeNow;
     public float timer;
+
     // Start is called before the first frame update
     void Start()
     {

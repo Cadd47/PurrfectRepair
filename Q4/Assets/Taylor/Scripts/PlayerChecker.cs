@@ -33,7 +33,7 @@ public class PlayerChecker : MonoBehaviour
 
     }
 
-    private void Check()
+    public void Check()
     {
         if (!playerCheck)
         {

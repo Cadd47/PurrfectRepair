@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Map
+  m_Name: New Material 1
   m_Shader: {fileID: -6465566751694194690, guid: 739f5781ef6400645b2981a3bf05e073,
     type: 3}
   m_ShaderKeywords: 
@@ -33,7 +33,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 558c2ce9ee2b5c046ad99b888224071e, type: 3}
+        m_Texture: {fileID: 2800000, guid: 0821e30d351205d42b937d098aba7683, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -71,12 +71,12 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Color_A2828A0D: {r: 0.7372549, g: 0.7372549, b: 0.7372549, a: 0}
+    - Color_A2828A0D: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
---- !u!114 &8868578583159587842
+--- !u!114 &5998545464440982311
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}

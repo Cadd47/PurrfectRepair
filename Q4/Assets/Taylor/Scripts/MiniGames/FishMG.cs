@@ -66,12 +66,21 @@ public class FishMG : MonoBehaviour
             catchProgress += hookPower * Time.deltaTime;
             if(catchProgress >= 1)
             {
-                Debug.Log("Full");
-                pointsGained.text = "+" + yield.ToString() + " fish";
-                pointsGained.enabled = true;
-                ResourceManager.fishCount += yield;
+                if (PlayerChecker.playerCheck)
+                {
+                    pointsGained.text = "+2 feesh";
+                    pointsGained.enabled = true;
+                    ResourceManager.fishCount += 2;
+                }
+                else
+                {
+                    pointsGained.text = "+1 feesh";
+                    pointsGained.enabled = true;
+                    ResourceManager.fishCount += 1;
+                }
+
                 MGM.fishGame = false;
-                gameObject.SetActive(false);
+                MGM.PleaseCheck();
             }
         }
         else

@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class MGManager : MonoBehaviour
 {
+    PlayerChecker playerChecker;
+
+    public GameObject players;
+
+    [Header("MG Stuffs")]
     public GameObject wood;
     public GameObject rog;
     public GameObject ore;
@@ -24,6 +29,8 @@ public class MGManager : MonoBehaviour
         rog.SetActive(false);
         ore.SetActive(false);
         fish.SetActive(false);
+
+        playerChecker = GameObject.Find("Players").GetComponent<PlayerChecker>();
     }
 
     void Update()
@@ -52,10 +59,14 @@ public class MGManager : MonoBehaviour
         if (!woodGame && !oreGame && !fishGame && !rogGame)
         {
             MenuManager.canPause = true;
+            playerChecker.canSwitch = true;
+            players.SetActive(true);
         }
         else
         {
             MenuManager.canPause = false;
+            playerChecker.canSwitch = false;
+            players.SetActive(false);
         }
     }
 
@@ -66,6 +77,18 @@ public class MGManager : MonoBehaviour
 
     IEnumerator CheckMG()
     {
+        if (!woodGame && !oreGame && !fishGame && !rogGame)
+        {
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+        else
+        {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+        }
+
+        //minigames
         if (woodGame)
         {
             wood.SetActive(true);
@@ -87,19 +110,13 @@ public class MGManager : MonoBehaviour
 
         if (oreGame)
         {
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;
-
             ore.SetActive(true);
         }
         else
         {
-            Cursor.visible = false;
-            Cursor.lockState = CursorLockMode.Locked;
-
             ore.SetActive(false);
 
-            while(oreSpawner.transform.childCount > 0)
+            while (oreSpawner.transform.childCount > 0)
             {
                 foreach (Transform child in oreSpawner.transform)
                 {

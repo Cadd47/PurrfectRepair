@@ -18,12 +18,11 @@ public class OreMG : MonoBehaviour
     public int currentPoints;
     public int maxPoints = 5;
 
-    public int yield;
-
     MGManager MGManager;
 
     public TextMeshProUGUI pointCounter;
     public TextMeshProUGUI pointsGained;
+
     private void Start()
     {
         MGManager = GameObject.Find("MiniGameManager").GetComponent<MGManager>();
@@ -40,11 +39,20 @@ public class OreMG : MonoBehaviour
 
         if(currentPoints >= maxPoints)
         {
-            pointsGained.text = "+" + yield.ToString() + " ore";
-            pointsGained.enabled = true;
-            ResourceManager.oreCount += yield;
-            currentPoints = 0;
+            if (PlayerChecker.playerCheck)
+            {
+                pointsGained.text = "+1 shiny";
+                pointsGained.enabled = true;
+                ResourceManager.oreCount += 1;
+            }
+            else
+            {
+                pointsGained.text = "+3 shiny";
+                pointsGained.enabled = true;
+                ResourceManager.oreCount += 3;
+            }
 
+            currentPoints = 0;
             MGManager.oreGame = false;
             MGManager.PleaseCheck();
         }
