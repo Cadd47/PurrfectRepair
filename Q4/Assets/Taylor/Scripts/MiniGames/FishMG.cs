@@ -68,18 +68,18 @@ public class FishMG : MonoBehaviour
             {
                 if (PlayerChecker.playerCheck)
                 {
-                    pointsGained.text = "+2 feesh";
+                    pointsGained.text = "+2 fish";
                     pointsGained.enabled = true;
                     ResourceManager.fishCount += 2;
                 }
                 else
                 {
-                    pointsGained.text = "+1 feesh";
+                    pointsGained.text = "+1 fish";
                     pointsGained.enabled = true;
                     ResourceManager.fishCount += 1;
                 }
 
-                MGM.fishGame = false;
+                MGManager.fishGame = false;
                 MGM.PleaseCheck();
             }
         }
@@ -96,7 +96,7 @@ public class FishMG : MonoBehaviour
 
     private void MoveHook()
     {
-        if (Input.GetKey(KeyCode.P))
+        if (Input.GetKey(KeyCode.Space))
         {
             hookPullVelocity += hookSpeed * Time.deltaTime; 
         }

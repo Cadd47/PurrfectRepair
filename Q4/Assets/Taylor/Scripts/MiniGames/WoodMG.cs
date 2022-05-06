@@ -43,11 +43,11 @@ public class WoodMG : MonoBehaviour
 
         transform.position = Vector3.Lerp(pointA.position, pointB.position, Mathf.Sin(Time.time * Speed) * Amplitude + AmplitudeOffset);
 
-        if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             if (r)
             {
-                MGM.woodGame = false;
+                MGManager.woodGame = false;
                 MGM.PleaseCheck();
             }
             if (o)
@@ -72,19 +72,19 @@ public class WoodMG : MonoBehaviour
         {
             if (PlayerChecker.playerCheck)
             {
-                pointsGained.text = "+3 wewd";
+                pointsGained.text = "+3 wood";
                 pointsGained.enabled = true;
                 ResourceManager.woodCount += 3;
             }
             else
             {
-                pointsGained.text = "+6 wewd";
+                pointsGained.text = "+6 wood";
                 pointsGained.enabled = true;
                 ResourceManager.woodCount += 6;
             }
 
             currentPoints = 0;
-            MGM.woodGame = false;
+            MGManager.woodGame = false;
             MGM.PleaseCheck();
         }
     }

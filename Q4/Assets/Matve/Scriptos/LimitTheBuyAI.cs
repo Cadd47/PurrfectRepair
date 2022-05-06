@@ -53,15 +53,6 @@ public class LimitTheBuyAI : MonoBehaviour
             {
                 buyOre.interactable = true;
             }
-
-            if (ResourceManager.fishCount < SAI.fPrice)
-            {
-                buyFish.interactable = false;
-            }
-            else
-            {
-                buyFish.interactable = true;
-            }
         }
         else
         {
@@ -69,7 +60,6 @@ public class LimitTheBuyAI : MonoBehaviour
             buyWood.interactable = false;
             buyStone.interactable = false;
             buyOre.interactable = false;
-            buyFish.interactable = false;
         }
 
     }

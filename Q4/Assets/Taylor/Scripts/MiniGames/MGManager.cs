@@ -14,9 +14,9 @@ public class MGManager : MonoBehaviour
     public GameObject ore;
     public GameObject fish;
 
-    public bool woodGame;
-    public bool oreGame;
-    public bool fishGame;
+    public static bool woodGame;
+    public static bool oreGame;
+    public static bool fishGame;
     public static bool rogGame;
 
     [Header("Side Stuffs")]
@@ -35,23 +35,27 @@ public class MGManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (AreaWood.activateMG)
         {
+            AreaWood.activateMG = false;
             woodGame = !woodGame;
             StartCoroutine(CheckMG());
         }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
+        if (AreaOre.activateMG)
         {
+            AreaOre.activateMG = false;
             oreGame = !oreGame;
             StartCoroutine(CheckMG());
         }
-        if (Input.GetKeyDown(KeyCode.Alpha3))
+        if (AreaFish.activateMG)
         {
+            AreaFish.activateMG = false;
             fishGame = !fishGame;
             StartCoroutine(CheckMG());
         }
-        if (Input.GetKeyDown(KeyCode.Alpha4))
+        if (AreaStone.activateMG)
         {
+            AreaStone.activateMG = false;
             rogGame = !rogGame;
             StartCoroutine(CheckMG());
         }

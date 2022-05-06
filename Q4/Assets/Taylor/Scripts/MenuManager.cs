@@ -18,7 +18,7 @@ public class MenuManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && canPause)
+        if (Input.GetKeyDown(KeyCode.Escape) && canPause && BuildingMenu.menuCheck == false && SpawnMenuActivate.menuCheck == false)
         {
             if (GameIsPaused)
             {
@@ -29,6 +29,19 @@ public class MenuManager : MonoBehaviour
                 Pause();
             }
         }
+        /*
+        if (Input.GetKeyDown(KeyCode.Escape) && GameIsPaused)
+        {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape) && !GameIsPaused)
+        {
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+        */
     }
 
     public void Resume()
@@ -51,6 +64,7 @@ public class MenuManager : MonoBehaviour
 
     public void Pause()
     {
+
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
 

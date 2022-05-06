@@ -45,13 +45,13 @@ public class RogMG : MonoBehaviour
         {
             if (PlayerChecker.playerCheck)
             {
-                pointsGained.text = "+5 rog";
+                pointsGained.text = "+5 rock";
                 pointsGained.enabled = true;
                 ResourceManager.stoneCount += 5;
             }
             else
             {
-                pointsGained.text = "+2 rog";
+                pointsGained.text = "+2 rock";
                 pointsGained.enabled = true;
                 ResourceManager.stoneCount += 2;
             }
@@ -61,7 +61,7 @@ public class RogMG : MonoBehaviour
             MGManager.PleaseCheck();
         }
 
-        if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             StartCoroutine(SpawnRog());
         }

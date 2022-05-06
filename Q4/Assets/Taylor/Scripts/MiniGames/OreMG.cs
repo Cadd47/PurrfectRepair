@@ -32,7 +32,7 @@ public class OreMG : MonoBehaviour
     void Update()
     {
         pointCounter.text = currentPoints.ToString();
-        if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             StartCoroutine(SpawnShiny());
         }
@@ -41,13 +41,13 @@ public class OreMG : MonoBehaviour
         {
             if (PlayerChecker.playerCheck)
             {
-                pointsGained.text = "+1 shiny";
+                pointsGained.text = "+1 ore";
                 pointsGained.enabled = true;
                 ResourceManager.oreCount += 1;
             }
             else
             {
-                pointsGained.text = "+3 shiny";
+                pointsGained.text = "+3 ore";
                 pointsGained.enabled = true;
                 ResourceManager.oreCount += 3;
             }

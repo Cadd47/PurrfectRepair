@@ -18,7 +18,7 @@ public class BuildingMenu : MonoBehaviour
     private bool amOne;
     public bool editBuild = false;
 
-    public bool menuCheck;
+    public static bool menuCheck;
 
     void Start()
     {
@@ -47,6 +47,13 @@ public class BuildingMenu : MonoBehaviour
         else
         {
             MenuManager.canPause = true;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape) && menuCheck)
+        {
+            MenuManager.canPause = false;
+            menuCheck = !menuCheck;
+            Check();
         }
 
         if (hasPlayer)

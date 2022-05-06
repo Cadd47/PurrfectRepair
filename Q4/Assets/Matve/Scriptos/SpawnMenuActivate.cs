@@ -16,12 +16,11 @@ public class SpawnMenuActivate : MonoBehaviour
     private bool amOne;
     public bool editBuild = false;
 
-    public bool menuCheck;
+    public static bool menuCheck;
 
     void Start()
     {
         playerChecker = GameObject.Find("Players").GetComponent<PlayerChecker>();
-
     }
 
     private void Update()
@@ -36,7 +35,7 @@ public class SpawnMenuActivate : MonoBehaviour
         {
             MenuManager.canPause = false;
 
-            if (Input.GetKeyDown(KeyCode.Q) && !hasPlayer)
+            if (Input.GetKeyDown(KeyCode.E) && !hasPlayer)
             {
                 menuCheck = !menuCheck;
                 Check();
@@ -45,6 +44,13 @@ public class SpawnMenuActivate : MonoBehaviour
         else
         {
             MenuManager.canPause = true;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape) && menuCheck)
+        {
+            MenuManager.canPause = false;
+            menuCheck = !menuCheck;
+            Check();
         }
 
         if (hasPlayer)
