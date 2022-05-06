@@ -81,18 +81,6 @@ public class MGManager : MonoBehaviour
 
     IEnumerator CheckMG()
     {
-        if (!woodGame && !oreGame && !fishGame && !rogGame)
-        {
-            Cursor.visible = false;
-            Cursor.lockState = CursorLockMode.Locked;
-        }
-        else
-        {
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;
-        }
-
-        //minigames
         if (woodGame)
         {
             wood.SetActive(true);
