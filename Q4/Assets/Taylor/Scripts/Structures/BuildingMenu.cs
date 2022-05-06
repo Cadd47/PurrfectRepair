@@ -103,9 +103,6 @@ public class BuildingMenu : MonoBehaviour
         buildMenu.SetActive(true);
         buildGrid.SetActive(true);
         mainLight.shadowStrength = 0f;
-        //cursor && pause
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
         //buildings
         editBuild = true;
         //Checks which player you are
@@ -135,9 +132,6 @@ public class BuildingMenu : MonoBehaviour
         buildMenu.SetActive(false);
         buildGrid.SetActive(false);
         mainLight.shadowStrength = 0.15f;
-        //cursor && pause
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
         //buildings
         editBuild = false;
         //Checks which player you are when closing build menu

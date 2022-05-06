@@ -98,9 +98,6 @@ public class SpawnMenuActivate : MonoBehaviour
         mainCam.SetActive(false);
         buildCam.SetActive(true);
         buildMenu.SetActive(true);
-        //cursor && pause
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
         //buildings
         editBuild = true;
         //Checks which player you are
@@ -124,9 +121,6 @@ public class SpawnMenuActivate : MonoBehaviour
         mainCam.SetActive(true);
         buildCam.SetActive(false);
         buildMenu.SetActive(false);
-        //cursor && pause
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
         //buildings
         editBuild = false;
         //Checks which player you are when closing build menu
