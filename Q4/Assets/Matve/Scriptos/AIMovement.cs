@@ -111,8 +111,6 @@ public class AIMovement : MonoBehaviour
             deployed = true;
         }
 
-        
-
         GoToResource();
 
     }
@@ -161,8 +159,6 @@ public class AIMovement : MonoBehaviour
                 LimitTheBuyAI.currentAI--;
 
             }
-            
-
 
         }
     }

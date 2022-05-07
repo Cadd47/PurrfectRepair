@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4092072214916935697}
   - component: {fileID: 5154283466876263697}
   m_Layer: 15
-  m_Name: Ore
+  m_Name: ore
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

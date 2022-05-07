@@ -32,7 +32,7 @@ public class MenuManager : MonoBehaviour
             }
         }
 
-        if (!GameIsPaused && BuildingMenu.menuCheck == false && SpawnMenuActivate.menuCheck == false && MGManager.fishGame == false && MGManager.rogGame == false && MGManager.oreGame == false && MGManager.woodGame == false)
+        if (!GameIsPaused && BuildingMenu.menuCheck == false && SpawnMenuActivate.menuCheck == false && MGManager.oreGame == false)
         {
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
