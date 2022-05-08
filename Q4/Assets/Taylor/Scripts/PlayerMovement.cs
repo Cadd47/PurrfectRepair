@@ -8,9 +8,9 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
 
-    [SerializeField] ParticleSystem sprintParticle = null;
-    [SerializeField] ParticleSystem jumpParticle = null;
-    [SerializeField] ParticleSystem landParticle = null;
+    [SerializeField] ParticleSystem sprintParticle;
+    [SerializeField] ParticleSystem jumpParticle;
+    [SerializeField] ParticleSystem landParticle;
 
     public CharacterController controller;
     public Transform cam;
@@ -98,23 +98,30 @@ public class PlayerMovement : MonoBehaviour
         float vertical = Input.GetAxisRaw("Vertical");
         Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
 
-        //sprint
-        if (Input.GetKeyDown(KeyCode.LeftShift))
-        {
-            speed = 20;
-        }
         if (Input.GetKeyUp(KeyCode.LeftShift))
         {
             speed = 12;
+            sprintParticle.Stop();
+        }
+
+        if (horizontal == 0 && vertical == 0)
+        {
+            speed = 12;
+            sprintParticle.Stop();
         }
 
         if (Input.GetKey(KeyCode.LeftShift) && isGrounded)
         {
-            sprintParticle.Play();
-        }
-        else
-        {
-            sprintParticle.Stop();
+            speed = 20;
+
+            if (horizontal == 0 && vertical == 0)
+            {
+                sprintParticle.Stop();
+            }
+            else
+            {
+                sprintParticle.Play();
+            }
         }
 
         //camera

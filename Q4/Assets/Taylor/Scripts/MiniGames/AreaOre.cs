@@ -4,32 +4,42 @@ using UnityEngine;
 
 public class AreaOre : MonoBehaviour
 {
+    PlayerChecker playerChecker;
+    MGManager mgm;
+
     public GameObject E;
     public bool hasPlayer;
-    public static bool activateMG;
-    private bool active;
+    public static bool active;
+
+    public static bool amOne;
+
+    private void Start()
+    {
+        playerChecker = GameObject.Find("Players").GetComponent<PlayerChecker>();
+        mgm = GameObject.Find("MiniGameManager").GetComponent<MGManager>();
+    }
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.E) && hasPlayer)
         {
-            activateMG = !activateMG;
             active = !active;
+            Check();
         }
 
-        if (activateMG)
+        if (active)
         {
             if (Input.GetKeyDown(KeyCode.E) && !hasPlayer)
             {
-                activateMG = !activateMG;
                 active = !active;
+                Check();
             }
         }
 
         if (Input.GetKeyDown(KeyCode.Escape) && active)
         {
-            activateMG = !activateMG;
             active = !active;
+            Check();
         }
 
         if (hasPlayer)
@@ -40,21 +50,90 @@ public class AreaOre : MonoBehaviour
         {
             E.SetActive(false);
         }
-    }
 
-    private void OnTriggerEnter(Collider area)
-    {
-        if (area.CompareTag("Player"))
+        Collider[] hitChecks = Physics.OverlapSphere(transform.position, 7.5f);
+        foreach (Collider hitCollider in hitChecks)
         {
-            hasPlayer = true;
+            if (hitCollider.gameObject.name == "Player One")
+            {
+                if (GameObject.Find("Player One").GetComponent<x>().enabled == true)
+                {
+                    hasPlayer = true;
+                }
+                else
+                {
+                    hasPlayer = false;
+                }
+            }
+
+            if (hitCollider.gameObject.name == "Player Two")
+            {
+                if (GameObject.Find("Player Two").GetComponent<x>().enabled == true)
+                {
+                    hasPlayer = true;
+                }
+                else
+                {
+                    hasPlayer = false;
+                }
+            }
+
+            if (hitCollider.gameObject.name != "Player One" && hitCollider.gameObject.name != "Player Two")
+            {
+                hasPlayer = false;
+            }
         }
     }
 
-    private void OnTriggerExit(Collider area)
+    private void Check()
     {
-        if (area.CompareTag("Player"))
+        if (active)
         {
-            hasPlayer = false;
+            enableMG();
+        }
+        else
+        {
+            disableMG();
+        }
+    }
+
+    private void enableMG()
+    {
+        playerChecker.canSwitch = false;
+
+        MGManager.oreGame = true;
+        mgm.PleaseCheck();
+
+        if (GameObject.Find("Player One").GetComponent<PlayerMovement>().enabled == true)
+        {
+            amOne = true;
+            GameObject.Find("Player One").GetComponent<PlayerMovement>().enabled = false;
+            GameObject.Find("Player One").GetComponent<AltGrav>().enabled = true;
+        }
+        if (GameObject.Find("Player Two").GetComponent<PlayerMovement>().enabled == true)
+        {
+            amOne = false;
+            GameObject.Find("Player Two").GetComponent<PlayerMovement>().enabled = false;
+            GameObject.Find("Player Two").GetComponent<AltGrav>().enabled = true;
+        }
+    }
+
+    public void disableMG()
+    {
+        playerChecker.canSwitch = true;
+
+        MGManager.oreGame = false;
+        mgm.PleaseCheck();
+
+        if (amOne)
+        {
+            GameObject.Find("Player One").GetComponent<PlayerMovement>().enabled = true;
+            GameObject.Find("Player One").GetComponent<AltGrav>().enabled = false;
+        }
+        else
+        {
+            GameObject.Find("Player Two").GetComponent<PlayerMovement>().enabled = true;
+            GameObject.Find("Player Two").GetComponent<AltGrav>().enabled = false;
         }
     }
 }

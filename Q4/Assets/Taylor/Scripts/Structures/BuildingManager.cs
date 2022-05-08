@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class BuildingManager : MonoBehaviour
 {
     BuildingMenu buildingMenu;
+    AutoTextDisable atd;
 
+    public TextMeshProUGUI pointsGained;
     public Material[] materials;
 
     public GameObject[] structures;
@@ -16,6 +19,10 @@ public class BuildingManager : MonoBehaviour
 
     public bool cantSelect = false;
     public bool canPlace = true;
+
+    private bool one;
+    private bool two;
+    private bool three;
 
     public Camera buildCamera;
     public float gridSize;
@@ -28,6 +35,8 @@ public class BuildingManager : MonoBehaviour
     void Start()
     {
         buildingMenu = GameObject.Find("BuildingManager").GetComponent<BuildingMenu>();
+        atd = GameObject.Find("UpdateText").GetComponent<AutoTextDisable>();
+        pointsGained.enabled = false;
     }
 
     private void Update()
@@ -57,6 +66,7 @@ public class BuildingManager : MonoBehaviour
                         cantSelect = false;
                         selectedObject = null;
                     }
+
                 }
                 UpdateMaterials();
             }
@@ -92,6 +102,25 @@ public class BuildingManager : MonoBehaviour
             Destroy(howToBuild);
             selectedObject = Instantiate(structures[index], pos, transform.rotation);
             cantSelect = true;
+
+            if (selectedObject.name == "House_1(Clone)")
+            {
+                one = true;
+                two = false;
+                three = false;
+            }
+            if (selectedObject.name == "House_2(Clone)")
+            {
+                one = false;
+                two = true;
+                three = false;
+            }
+            if (selectedObject.name == "House_3(Clone)")
+            {
+                one = false;
+                two = false;
+                three = true;
+            }
         }
     }
 
@@ -115,6 +144,28 @@ public class BuildingManager : MonoBehaviour
 
         cantSelect = false;
         selectedObject = null;
+
+        if (one)
+        {
+            pointsGained.text = "+3 cats";
+            pointsGained.enabled = true;
+            atd.FloatText();
+            one = false;
+        }
+        if (two)
+        {
+            pointsGained.text = "+10 cats";
+            pointsGained.enabled = true;
+            atd.FloatText();
+            two = false;
+        }
+        if (three)
+        {
+            pointsGained.text = "+6 cats";
+            pointsGained.enabled = true;
+            atd.FloatText();
+            three = false;
+        }
     }
 
     public float RoundToGrid(float pos)

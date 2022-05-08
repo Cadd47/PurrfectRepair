@@ -5,6 +5,8 @@ using TMPro;
 
 public class OreMG : MonoBehaviour
 {
+    AreaOre areaOre;
+
     public float waitTime;
     public float shinyTotal;
 
@@ -19,6 +21,7 @@ public class OreMG : MonoBehaviour
     public int maxPoints = 5;
 
     MGManager MGManager;
+    AutoTextDisable atd;
 
     public TextMeshProUGUI pointCounter;
     public TextMeshProUGUI pointsGained;
@@ -26,6 +29,8 @@ public class OreMG : MonoBehaviour
     private void Start()
     {
         MGManager = GameObject.Find("MiniGameManager").GetComponent<MGManager>();
+        areaOre = GameObject.Find("OreSpawn").GetComponent<AreaOre>();
+        atd = GameObject.Find("UpdateText").GetComponent<AutoTextDisable>();
         pointsGained.enabled = false;
     }
 
@@ -41,14 +46,24 @@ public class OreMG : MonoBehaviour
         {
             if (PlayerChecker.playerCheck)
             {
+                areaOre.disableMG();
+                AreaOre.active = false;
+                MGManager.oreGame = false;
+
                 pointsGained.text = "+1 ore";
                 pointsGained.enabled = true;
+                atd.FloatText();
                 ResourceManager.oreCount += 1;
             }
             else
             {
+                areaOre.disableMG();
+                AreaOre.active = false;
+                MGManager.oreGame = false;
+
                 pointsGained.text = "+3 ore";
                 pointsGained.enabled = true;
+                atd.FloatText();
                 ResourceManager.oreCount += 3;
             }
 

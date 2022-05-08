@@ -30,6 +30,12 @@ public class PlayerChecker : MonoBehaviour
 
     }
 
+    public void checkPlayer()
+    {
+        playerCheck = !playerCheck;
+        Check();
+    }
+
     public void Check()
     {
         if (!playerCheck)
@@ -40,6 +46,9 @@ public class PlayerChecker : MonoBehaviour
 
             GameObject.Find("Player One").GetComponent<AltGrav>().enabled = false;
             GameObject.Find("Player Two").GetComponent<AltGrav>().enabled = true;
+
+            GameObject.Find("Player One").GetComponent<x>().enabled = true;
+            GameObject.Find("Player Two").GetComponent<x>().enabled = false;
 
             camOne.SetActive(true);
             camTwo.SetActive(false);
@@ -57,6 +66,9 @@ public class PlayerChecker : MonoBehaviour
 
             GameObject.Find("Player One").GetComponent<AltGrav>().enabled = true;
             GameObject.Find("Player Two").GetComponent<AltGrav>().enabled = false;
+
+            GameObject.Find("Player One").GetComponent<x>().enabled = false;
+            GameObject.Find("Player Two").GetComponent<x>().enabled = true;
 
             camOne.SetActive(false);
             camTwo.SetActive(true);

@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
-    PlayerChecker playerChecker;
     MGManager MGM;
 
     public static bool canPause = true;
@@ -14,7 +13,6 @@ public class MenuManager : MonoBehaviour
 
     void Start()
     {
-        playerChecker = GameObject.Find("Players").GetComponent<PlayerChecker>();
         MGM = GameObject.Find("MiniGameManager").GetComponent<MGManager>();
     }
 

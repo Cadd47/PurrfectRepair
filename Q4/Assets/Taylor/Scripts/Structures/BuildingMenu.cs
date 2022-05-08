@@ -15,7 +15,7 @@ public class BuildingMenu : MonoBehaviour
     public Light mainLight;
 
     private bool hasPlayer;
-    private bool amOne;
+    public static bool amOne;
     public bool editBuild = false;
 
     public static bool menuCheck;
@@ -66,17 +66,17 @@ public class BuildingMenu : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider buildMenu)
+    private void OnTriggerEnter(Collider collider)
     {
-        if (buildMenu.CompareTag("Player"))
+        if (collider.gameObject.tag == "Player")
         {
             hasPlayer = true;
         }
     }
 
-    private void OnTriggerExit(Collider buildMenu)
+    private void OnTriggerExit(Collider collider)
     {
-        if (buildMenu.CompareTag("Player"))
+        if (collider.gameObject.tag == "Player")
         {
             hasPlayer = false;
         }

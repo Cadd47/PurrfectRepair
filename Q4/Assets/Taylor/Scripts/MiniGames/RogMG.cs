@@ -5,6 +5,8 @@ using TMPro;
 
 public class RogMG : MonoBehaviour
 {
+    AreaStone areaStone;
+
     public GameObject collector;
     public GameObject rogPrefab;
 
@@ -28,6 +30,7 @@ public class RogMG : MonoBehaviour
     public int maxPoints = 5;
 
     MGManager MGManager;
+    AutoTextDisable atd;
 
     public TextMeshProUGUI pointCounter;
     public TextMeshProUGUI pointsGained;
@@ -36,6 +39,8 @@ public class RogMG : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         MGManager = GameObject.Find("MiniGameManager").GetComponent<MGManager>();
+        areaStone = GameObject.Find("StoneSpawn").GetComponent<AreaStone>();
+        atd = GameObject.Find("UpdateText").GetComponent<AutoTextDisable>();
         pointsGained.enabled = false;
     }
 
@@ -45,14 +50,24 @@ public class RogMG : MonoBehaviour
         {
             if (PlayerChecker.playerCheck)
             {
+                areaStone.disableMG();
+                AreaStone.active = false;
+                MGManager.rogGame = false;
+
                 pointsGained.text = "+5 rock";
                 pointsGained.enabled = true;
+                atd.FloatText();
                 ResourceManager.stoneCount += 5;
             }
             else
             {
+                areaStone.disableMG();
+                AreaStone.active = false;
+                MGManager.rogGame = false;
+
                 pointsGained.text = "+2 rock";
                 pointsGained.enabled = true;
+                atd.FloatText();
                 ResourceManager.stoneCount += 2;
             }
 

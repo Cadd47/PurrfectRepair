@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class MGManager : MonoBehaviour
 {
-    PlayerChecker playerChecker;
-
-    public GameObject players;
-
     [Header("MG Stuffs")]
     public GameObject wood;
     public GameObject rog;
@@ -29,48 +25,17 @@ public class MGManager : MonoBehaviour
         rog.SetActive(false);
         ore.SetActive(false);
         fish.SetActive(false);
-
-        playerChecker = GameObject.Find("Players").GetComponent<PlayerChecker>();
     }
 
     void Update()
     {
-        if (AreaWood.activateMG)
-        {
-            AreaWood.activateMG = false;
-            woodGame = !woodGame;
-            StartCoroutine(CheckMG());
-        }
-        if (AreaOre.activateMG)
-        {
-            AreaOre.activateMG = false;
-            oreGame = !oreGame;
-            StartCoroutine(CheckMG());
-        }
-        if (AreaFish.activateMG)
-        {
-            AreaFish.activateMG = false;
-            fishGame = !fishGame;
-            StartCoroutine(CheckMG());
-        }
-        if (AreaStone.activateMG)
-        {
-            AreaStone.activateMG = false;
-            rogGame = !rogGame;
-            StartCoroutine(CheckMG());
-        }
-
         if (!woodGame && !oreGame && !fishGame && !rogGame)
         {
             MenuManager.canPause = true;
-            playerChecker.canSwitch = true;
-            players.SetActive(true);
         }
         else
         {
             MenuManager.canPause = false;
-            playerChecker.canSwitch = false;
-            players.SetActive(false);
         }
     }
 

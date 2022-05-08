@@ -5,6 +5,8 @@ using TMPro;
 
 public class WoodMG : MonoBehaviour
 {
+    AreaWood areaWood;
+
     public GameObject arrow;
     public Transform pointA;
     public Transform pointB;
@@ -21,6 +23,7 @@ public class WoodMG : MonoBehaviour
     public int yield = 5;
 
     MGManager MGM;
+    AutoTextDisable atd;
 
     public TextMeshProUGUI pointCounter;
     public TextMeshProUGUI pointsGained;
@@ -34,6 +37,8 @@ public class WoodMG : MonoBehaviour
     private void Start()
     {
         MGM = GameObject.Find("MiniGameManager").GetComponent<MGManager>();
+        atd = GameObject.Find("UpdateText").GetComponent<AutoTextDisable>();
+        areaWood = GameObject.Find("WoodSpawn").GetComponent<AreaWood>();
         pointsGained.enabled = false;
     }
 
@@ -47,6 +52,8 @@ public class WoodMG : MonoBehaviour
         {
             if (r)
             {
+                areaWood.disableMG();
+                AreaWood.active = false;
                 MGManager.woodGame = false;
                 MGM.PleaseCheck();
             }
@@ -72,14 +79,24 @@ public class WoodMG : MonoBehaviour
         {
             if (PlayerChecker.playerCheck)
             {
+                areaWood.disableMG();
+                AreaWood.active = false;
+                MGManager.woodGame = false;
+
                 pointsGained.text = "+3 wood";
                 pointsGained.enabled = true;
+                atd.FloatText();
                 ResourceManager.woodCount += 3;
             }
             else
             {
+                areaWood.disableMG();
+                AreaWood.active = false;
+                MGManager.woodGame = false;
+
                 pointsGained.text = "+6 wood";
                 pointsGained.enabled = true;
+                atd.FloatText();
                 ResourceManager.woodCount += 6;
             }
 

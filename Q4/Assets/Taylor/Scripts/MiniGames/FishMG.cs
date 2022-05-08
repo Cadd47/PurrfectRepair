@@ -5,6 +5,8 @@ using TMPro;
 
 public class FishMG : MonoBehaviour
 {
+    AreaFish areaFish;
+
     [Header("Fish Area")]
     public Transform topPoint;
     public Transform bottomPoint;
@@ -36,12 +38,15 @@ public class FishMG : MonoBehaviour
     public int yield;
 
     MGManager MGM;
+    AutoTextDisable atd;
 
     public TextMeshProUGUI pointsGained;
 
     private void Start()
     {
         MGM = GameObject.Find("MiniGameManager").GetComponent<MGManager>();
+        areaFish = GameObject.Find("FishSpawn").GetComponent<AreaFish>();
+        atd = GameObject.Find("UpdateText").GetComponent<AutoTextDisable>();
         pointsGained.enabled = false;
     }
 
@@ -68,14 +73,24 @@ public class FishMG : MonoBehaviour
             {
                 if (PlayerChecker.playerCheck)
                 {
+                    areaFish.disableMG();
+                    AreaFish.active = false;
+                    MGManager.fishGame = false;
+
                     pointsGained.text = "+2 fish";
                     pointsGained.enabled = true;
+                    atd.FloatText();
                     ResourceManager.fishCount += 2;
                 }
                 else
                 {
+                    areaFish.disableMG();
+                    AreaFish.active = false;
+                    MGManager.fishGame = false;
+
                     pointsGained.text = "+1 fish";
                     pointsGained.enabled = true;
+                    atd.FloatText();
                     ResourceManager.fishCount += 1;
                 }
 
