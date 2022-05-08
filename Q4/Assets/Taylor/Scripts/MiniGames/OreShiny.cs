@@ -1,14 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class OreShiny : MonoBehaviour
 {
     Vector3 minScale;
     private Vector3 maxScale;
     private float duration = 5;
+    public static bool destroyed;
 
     GameObject minigame;
+
     OreMG ORMG;
 
     IEnumerator Start()
@@ -38,6 +41,7 @@ public class OreShiny : MonoBehaviour
         minigame = GameObject.Find("OreMG");
         ORMG = minigame.GetComponent<OreMG>();
         ORMG.currentPoints++;
+        destroyed = true;
         Destroy(gameObject);
     }
 

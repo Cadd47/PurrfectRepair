@@ -8,6 +8,7 @@ public class Rog : MonoBehaviour
     Vector3 endPos;
     private float duration = 5f;
     public float distance;
+    public static bool destroyed;
 
     [SerializeField] private Vector3 _rotation;
 
@@ -43,6 +44,7 @@ public class Rog : MonoBehaviour
     }
     void Destroy()
     {
+        destroyed = true;
         Destroy(gameObject);
     }
 }

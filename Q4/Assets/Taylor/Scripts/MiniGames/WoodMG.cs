@@ -60,18 +60,30 @@ public class WoodMG : MonoBehaviour
             if (o)
             {
                 currentPoints += 0;
+                pointsGained.text = "+0";
+                pointsGained.enabled = true;
+                atd.MGFloat();
             }
             if (y)
             {
                 currentPoints += 1;
+                pointsGained.text = "+1";
+                pointsGained.enabled = true;
+                atd.MGFloat();
             }
             if (g)
             {
                 currentPoints += 2;
+                pointsGained.text = "+2";
+                pointsGained.enabled = true;
+                atd.MGFloat();
             }
             if (b)
             {
                 currentPoints += 4;
+                pointsGained.text = "+4";
+                pointsGained.enabled = true;
+                atd.MGFloat();
             }
         }
 

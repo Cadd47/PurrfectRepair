@@ -71,6 +71,14 @@ public class OreMG : MonoBehaviour
             MGManager.oreGame = false;
             MGManager.PleaseCheck();
         }
+
+        if (OreShiny.destroyed)
+        {
+            OreShiny.destroyed = false;
+            pointsGained.text = "+1";
+            pointsGained.enabled = true;
+            atd.OreFloat();
+        }
     }
 
     IEnumerator SpawnShiny()

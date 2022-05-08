@@ -100,19 +100,19 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKeyUp(KeyCode.LeftShift))
         {
-            speed = 12;
+            speed = 12.5f;
             sprintParticle.Stop();
         }
 
         if (horizontal == 0 && vertical == 0)
         {
-            speed = 12;
+            speed = 12.5f;
             sprintParticle.Stop();
         }
 
         if (Input.GetKey(KeyCode.LeftShift) && isGrounded)
         {
-            speed = 20;
+            speed = 22.5f;
 
             if (horizontal == 0 && vertical == 0)
             {

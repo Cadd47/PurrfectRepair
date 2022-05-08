@@ -6,9 +6,10 @@ using TMPro;
 public class AutoTextDisable : MonoBehaviour
 {
     public TextMeshProUGUI yourMom;
-    public CanvasGroup background;
     public float timeNow;
     public float timer;
+    public float duration;
+    private float t;
 
     // Start is called before the first frame update
     void Start()
@@ -36,10 +37,53 @@ public class AutoTextDisable : MonoBehaviour
 
     public void FloatText()
     {
-        yourMom.color = Color.Lerp(new Color(1f, 0.96f, 0.619f, 1.0f), new Color(1f, 0.96f, 0.619f, 0f), Time.deltaTime);
-
-        transform.localPosition = new Vector2(0, 250);
-        transform.LeanMoveLocal(new Vector2(0, 400), 0.5f).setEaseLinear();
+        t = 0;
         timer = 0;
+        yourMom.color = new Color(1f, 1f, 1f, 1.0f);
+        transform.localPosition = new Vector2(0, 100);
+        transform.LeanMoveLocal(new Vector2(0, 300), 1f).setEaseInQuad();
+        StartCoroutine(Fade());
+    }
+
+    public void MGFloat()
+    {
+        t = 0;
+        timer = 0;
+        yourMom.color = new Color(1f, 0.96f, 0.619f, 1.0f);
+        transform.localPosition = new Vector2(0, -240);
+        StartCoroutine(MGFade());
+    }
+
+    public void OreFloat()
+    {
+        t = 0;
+        timer = 0;
+        yourMom.color = new Color(1f, 0.96f, 0.619f, 1.0f);
+        transform.localPosition = new Vector2(465, 345);
+        StartCoroutine(MGFade());
+    }
+
+    IEnumerator Fade()
+    {
+        yield return new WaitForSeconds(3f);
+
+        while (t < 1)
+        {
+            yourMom.color = Color.Lerp(new Color(1f, 1f, 1f, 1.0f), new Color(1f, 1f, 1f, 0f), t);
+            t += Time.deltaTime / duration;
+            yield return new WaitForEndOfFrame();
+        }
+    }
+
+    IEnumerator MGFade()
+    {
+        yield return new WaitForSeconds(1f);
+
+        while (t < 1)
+        {
+            yourMom.color = Color.Lerp(new Color(1f, 1f, 1f, 1.0f), new Color(1f, 1f, 1f, 0f), t);
+            t += Time.deltaTime / duration;
+            yield return new WaitForEndOfFrame();
+        }
     }
 }

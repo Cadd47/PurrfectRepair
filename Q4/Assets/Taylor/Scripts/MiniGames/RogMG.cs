@@ -92,6 +92,14 @@ public class RogMG : MonoBehaviour
         }
 
         pointCounter.text = currentPoints.ToString();
+
+        if (Rog.destroyed)
+        {
+            pointsGained.text = "+1";
+            pointsGained.enabled = true;
+            atd.MGFloat();
+            Rog.destroyed = false;
+        }
     }
 
     private void OnTriggerEnter(Collider collector)

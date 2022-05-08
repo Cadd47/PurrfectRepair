@@ -3484,6 +3484,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c21b651103f87a439f2085c62a2a7e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerOneCam: {fileID: 0}
+  playerTwoCam: {fileID: 0}
   ySlider: {fileID: 434759130}
   xSlider: {fileID: 1304471356}
 --- !u!1 &1735318143
