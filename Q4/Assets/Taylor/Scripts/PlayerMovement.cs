@@ -15,7 +15,7 @@ public class PlayerMovement : MonoBehaviour
     public CharacterController controller;
     public Transform cam;
 
-    public float speed = 12;
+    public float speed = 10;
     public float gravity;
     
     public float jumpHeight;
@@ -111,7 +111,7 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.LeftShift))
         {
             isRunning = false;
-            speed = 12.5f;
+            speed = 10f;
             sprintParticle.Stop();
         }
 
@@ -120,7 +120,7 @@ public class PlayerMovement : MonoBehaviour
             isRunning = false;
             isWalking = false;
             isIdle = true;
-            speed = 12.5f;
+            speed = 10f;
             sprintParticle.Stop();
         }
 

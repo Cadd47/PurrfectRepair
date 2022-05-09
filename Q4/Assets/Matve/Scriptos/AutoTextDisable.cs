@@ -10,6 +10,7 @@ public class AutoTextDisable : MonoBehaviour
     public float timer;
     public float duration;
     private float t;
+    private float y;
 
     // Start is called before the first frame update
     void Start()
@@ -37,16 +38,27 @@ public class AutoTextDisable : MonoBehaviour
 
     public void FloatText()
     {
-        t = 0;
+        y = 0;
+        t = 1;
         timer = 0;
         yourMom.color = new Color(1f, 1f, 1f, 1.0f);
         transform.localPosition = new Vector2(0, 100);
-        transform.LeanMoveLocal(new Vector2(0, 300), 1f).setEaseInQuad();
         StartCoroutine(Fade());
     }
-
+    /*
+    public void wood()
+    {
+        y = 0;
+        t = 1;
+        timer = 0;
+        yourMom.color = new Color(1f, 1f, 1f, 1.0f);
+        transform.localPosition = new Vector2(0, 100);
+        StartCoroutine(Fade());
+    }
+    */
     public void MGFloat()
     {
+        y = 1;
         t = 0;
         timer = 0;
         yourMom.color = new Color(1f, 0.96f, 0.619f, 1.0f);
@@ -56,6 +68,7 @@ public class AutoTextDisable : MonoBehaviour
 
     public void OreFloat()
     {
+        y = 1;
         t = 0;
         timer = 0;
         yourMom.color = new Color(1f, 0.96f, 0.619f, 1.0f);
@@ -63,25 +76,32 @@ public class AutoTextDisable : MonoBehaviour
         StartCoroutine(MGFade());
     }
 
+    IEnumerator Lean()
+    {
+        yield return new WaitForSeconds(1f);
+        transform.LeanMoveLocal(new Vector2(0, 300), 1f).setEaseInQuad();
+    }
+
     IEnumerator Fade()
     {
-        yield return new WaitForSeconds(3f);
+        StartCoroutine(Lean());
+        yield return new WaitForSeconds(1.5f);
 
-        while (t < 1)
+        while (y < 1)
         {
-            yourMom.color = Color.Lerp(new Color(1f, 1f, 1f, 1.0f), new Color(1f, 1f, 1f, 0f), t);
-            t += Time.deltaTime / duration;
+            yourMom.color = Color.Lerp(new Color(1f, 1f, 1f, 1.0f), new Color(1f, 1f, 1f, 0f), y);
+            y += Time.deltaTime / duration;
             yield return new WaitForEndOfFrame();
         }
     }
 
     IEnumerator MGFade()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.2f);
 
         while (t < 1)
         {
-            yourMom.color = Color.Lerp(new Color(1f, 1f, 1f, 1.0f), new Color(1f, 1f, 1f, 0f), t);
+            yourMom.color = Color.Lerp(new Color(1f, 0.96f, 0.619f, 1.0f), new Color(1f, 0.96f, 0.619f, 0f), t);
             t += Time.deltaTime / duration;
             yield return new WaitForEndOfFrame();
         }
