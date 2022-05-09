@@ -101,7 +101,7 @@ public class AreaFish : MonoBehaviour
     {
         playerChecker.canSwitch = false;
 
-        MGManager.oreGame = true;
+        MGManager.fishGame = true;
         mgm.PleaseCheck();
 
         if (GameObject.Find("Player One").GetComponent<PlayerMovement>().enabled == true)
@@ -122,7 +122,7 @@ public class AreaFish : MonoBehaviour
     {
         playerChecker.canSwitch = true;
 
-        MGManager.oreGame = false;
+        MGManager.fishGame = false;
         mgm.PleaseCheck();
 
         if (amOne)

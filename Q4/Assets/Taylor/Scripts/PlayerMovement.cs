@@ -32,6 +32,10 @@ public class PlayerMovement : MonoBehaviour
     float turnSmoothVelocity;
     public float turnSmoothTime = 0.15f;
 
+    public bool isIdle;
+    public bool isWalking;
+    public bool isRunning;
+
     IEnumerator checkLanded()
     {
         landParticle.Stop();
@@ -97,15 +101,25 @@ public class PlayerMovement : MonoBehaviour
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
         Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
+        
+        if(horizontal > 0 || vertical > 0)
+        {
+            isIdle = false;
+            isWalking = true;
+        }
 
         if (Input.GetKeyUp(KeyCode.LeftShift))
         {
+            isRunning = false;
             speed = 12.5f;
             sprintParticle.Stop();
         }
 
         if (horizontal == 0 && vertical == 0)
         {
+            isRunning = false;
+            isWalking = false;
+            isIdle = true;
             speed = 12.5f;
             sprintParticle.Stop();
         }
@@ -117,9 +131,13 @@ public class PlayerMovement : MonoBehaviour
             if (horizontal == 0 && vertical == 0)
             {
                 sprintParticle.Stop();
+                isRunning = false;
             }
             else
             {
+                isIdle = false;
+                isWalking = false;
+                isRunning = true;
                 sprintParticle.Play();
             }
         }
