@@ -56,7 +56,7 @@ public class RogMG : MonoBehaviour
 
                 pointsGained.text = "+5 rock";
                 pointsGained.enabled = true;
-                atd.yourMom.color = new Color(1.0f, 0.5f, 0.5f, 1.0f);
+                atd.yourMom.color = new Color(0.686f, 0.686f, 0.686f, 1.0f);
                 atd.FloatText();
                 ResourceManager.stoneCount += 5;
             }
@@ -68,7 +68,7 @@ public class RogMG : MonoBehaviour
 
                 pointsGained.text = "+2 rock";
                 pointsGained.enabled = true;
-                atd.yourMom.color = new Color(1.0f, 0.5f, 0.5f, 1.0f);
+                atd.yourMom.color = new Color(0.686f, 0.686f, 0.686f, 1.0f);
                 atd.FloatText();
                 ResourceManager.stoneCount += 2;
             }
@@ -76,11 +76,6 @@ public class RogMG : MonoBehaviour
             currentPoints = 0;
             MGManager.rogGame = false;
             MGManager.PleaseCheck();
-        }
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            StartCoroutine(SpawnRog());
         }
 
         if (Input.GetKey(KeyCode.RightArrow))
@@ -94,14 +89,15 @@ public class RogMG : MonoBehaviour
         }
 
         pointCounter.text = currentPoints.ToString();
-
+        /*
         if (Rog.destroyed)
         {
+            Rog.destroyed = false;
             pointsGained.text = "+1";
             pointsGained.enabled = true;
             atd.MGFloat();
-            Rog.destroyed = false;
         }
+        */
     }
 
     private void OnTriggerEnter(Collider collector)
@@ -113,8 +109,14 @@ public class RogMG : MonoBehaviour
         }
     }
 
+    public void pleaseRog()
+    {
+        StartCoroutine(SpawnRog());
+    }
+
     IEnumerator SpawnRog()
     {
+        yield return new WaitForSeconds(1f);
         for (int i = 0; i < rogTotal; i++)
         {
             //Spawn positions

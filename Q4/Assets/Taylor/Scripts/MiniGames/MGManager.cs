@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class MGManager : MonoBehaviour
 {
+    RogMG rogG;
+    OreMG oreG;
+
     [Header("MG Stuffs")]
     public GameObject wood;
     public GameObject rog;
@@ -19,12 +22,14 @@ public class MGManager : MonoBehaviour
     public GameObject oreSpawner;
     public GameObject rogSpawner;
 
-    void Start()
+    public void Start()
     {
         wood.SetActive(false);
         rog.SetActive(false);
         ore.SetActive(false);
         fish.SetActive(false);
+
+        oreG = ore.GetComponent<OreMG>();
     }
 
     void Update()
@@ -37,6 +42,8 @@ public class MGManager : MonoBehaviour
         {
             MenuManager.canPause = false;
         }
+
+        //rogG = GameObject.Find("Collector").GetComponent<RogMG>();
     }
 
     public void PleaseCheck()
@@ -65,9 +72,30 @@ public class MGManager : MonoBehaviour
             fish.SetActive(false);
         }
 
+        if (rogGame)
+        {
+            rog.SetActive(true);
+            rogG = GameObject.Find("Collector").GetComponent<RogMG>();
+            rogG.pleaseRog();
+        }
+        else
+        {
+            rog.SetActive(false);
+
+            while (rogSpawner.transform.childCount > 0)
+            {
+                foreach (Transform child in rogSpawner.transform)
+                {
+                    GameObject.Destroy(child.gameObject);
+                    yield return null;
+                }
+            }
+        }
+
         if (oreGame)
         {
             ore.SetActive(true);
+            oreG.pleaseShine();
         }
         else
         {
@@ -83,22 +111,5 @@ public class MGManager : MonoBehaviour
             }
         }
 
-        if (rogGame)
-        {
-            rog.SetActive(true);
-        }
-        else
-        {
-            rog.SetActive(false);
-
-            while (rogSpawner.transform.childCount > 0)
-            {
-                foreach (Transform child in rogSpawner.transform)
-                {
-                    GameObject.Destroy(child.gameObject);
-                    yield return null;
-                }
-            }
-        }
     }
 }
