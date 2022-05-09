@@ -139,7 +139,7 @@ Animator:
   m_GameObject: {fileID: 1282721495321653318}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 5ca21a61fa67e3f408b376cf4b9d96fe, type: 2}
+  m_Controller: {fileID: 9100000, guid: fc01c34c6e0d4d64e859060437d3e47d, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -252,7 +252,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2066062008513860858}
-  m_Mesh: {fileID: -1579241630799410176, guid: f49033942388020429229a68215ec5a4, type: 3}
+  m_Mesh: {fileID: -1579241630799410176, guid: 0c4519ae11e5af3448b33251252fbf5d, type: 3}
 --- !u!23 &6726949790612359439
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -393,7 +393,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2735386266443466869}
-  m_Mesh: {fileID: 289301614986012343, guid: f49033942388020429229a68215ec5a4, type: 3}
+  m_Mesh: {fileID: 289301614986012343, guid: 0c4519ae11e5af3448b33251252fbf5d, type: 3}
 --- !u!23 &4710132650228831333
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -691,7 +691,7 @@ SkinnedMeshRenderer:
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
   m_SkinnedMotionVectors: 1
-  m_Mesh: {fileID: 3546127195857105027, guid: f49033942388020429229a68215ec5a4, type: 3}
+  m_Mesh: {fileID: 3546127195857105027, guid: 0c4519ae11e5af3448b33251252fbf5d, type: 3}
   m_Bones:
   - {fileID: 3189988977050772160}
   - {fileID: 939356981378640728}
@@ -795,7 +795,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4903073985791311424}
-  m_Mesh: {fileID: 6169232810378233975, guid: f49033942388020429229a68215ec5a4, type: 3}
+  m_Mesh: {fileID: 6169232810378233975, guid: 0c4519ae11e5af3448b33251252fbf5d, type: 3}
 --- !u!23 &1047261830669676564
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -815,8 +815,8 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 28f7cb4e22db956439fafc7c123e8a84, type: 2}
-  - {fileID: 4874126678125670354, guid: f49033942388020429229a68215ec5a4, type: 3}
-  - {fileID: -3846018093981099296, guid: f49033942388020429229a68215ec5a4, type: 3}
+  - {fileID: 2100000, guid: 997194b96fa28774e8d01fbbed0eaf70, type: 2}
+  - {fileID: -3846018093981099296, guid: 0c4519ae11e5af3448b33251252fbf5d, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

@@ -102,7 +102,7 @@ public class PlayerMovement : MonoBehaviour
         float vertical = Input.GetAxisRaw("Vertical");
         Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
         
-        if(horizontal > 0 || vertical > 0)
+        if(horizontal > 0 || vertical > 0 || horizontal < 0 || vertical < 0)
         {
             isIdle = false;
             isWalking = true;
