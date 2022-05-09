@@ -52,6 +52,7 @@ public class OreMG : MonoBehaviour
 
                 pointsGained.text = "+1 ore";
                 pointsGained.enabled = true;
+                atd.yourMom.color = new Color(1.0f, 0.686f, 0.392f, 1.0f);
                 atd.FloatText();
                 ResourceManager.oreCount += 1;
             }
@@ -63,6 +64,7 @@ public class OreMG : MonoBehaviour
 
                 pointsGained.text = "+3 ore";
                 pointsGained.enabled = true;
+                atd.yourMom.color = new Color(1.0f, 0.686f, 0.392f, 1.0f);
                 atd.FloatText();
                 ResourceManager.oreCount += 3;
             }

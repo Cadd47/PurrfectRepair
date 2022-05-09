@@ -56,6 +56,7 @@ public class RogMG : MonoBehaviour
 
                 pointsGained.text = "+5 rock";
                 pointsGained.enabled = true;
+                atd.yourMom.color = new Color(1.0f, 0.5f, 0.5f, 1.0f);
                 atd.FloatText();
                 ResourceManager.stoneCount += 5;
             }
@@ -67,6 +68,7 @@ public class RogMG : MonoBehaviour
 
                 pointsGained.text = "+2 rock";
                 pointsGained.enabled = true;
+                atd.yourMom.color = new Color(1.0f, 0.5f, 0.5f, 1.0f);
                 atd.FloatText();
                 ResourceManager.stoneCount += 2;
             }

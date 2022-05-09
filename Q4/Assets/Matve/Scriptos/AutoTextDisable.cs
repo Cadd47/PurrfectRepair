@@ -41,21 +41,11 @@ public class AutoTextDisable : MonoBehaviour
         y = 0;
         t = 1;
         timer = 0;
-        yourMom.color = new Color(1f, 1f, 1f, 1.0f);
+        //yourMom.color = new Color(1f, 1f, 1f, 1.0f);
         transform.localPosition = new Vector2(0, 100);
         StartCoroutine(Fade());
     }
-    /*
-    public void wood()
-    {
-        y = 0;
-        t = 1;
-        timer = 0;
-        yourMom.color = new Color(1f, 1f, 1f, 1.0f);
-        transform.localPosition = new Vector2(0, 100);
-        StartCoroutine(Fade());
-    }
-    */
+
     public void MGFloat()
     {
         y = 1;
@@ -78,15 +68,15 @@ public class AutoTextDisable : MonoBehaviour
 
     IEnumerator Lean()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.75f);
         transform.LeanMoveLocal(new Vector2(0, 300), 1f).setEaseInQuad();
     }
 
     IEnumerator Fade()
     {
         StartCoroutine(Lean());
-        yield return new WaitForSeconds(1.5f);
-
+        yield return new WaitForSeconds(1f);
+        Debug.Log("e");
         while (y < 1)
         {
             yourMom.color = Color.Lerp(new Color(1f, 1f, 1f, 1.0f), new Color(1f, 1f, 1f, 0f), y);

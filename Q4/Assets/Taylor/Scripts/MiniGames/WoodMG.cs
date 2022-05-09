@@ -97,6 +97,7 @@ public class WoodMG : MonoBehaviour
 
                 pointsGained.text = "+3 wood";
                 pointsGained.enabled = true;
+                atd.yourMom.color = new Color(0.588f, 0.882f, 0.588f, 1.0f);
                 atd.FloatText();
                 ResourceManager.woodCount += 3;
             }
@@ -108,6 +109,7 @@ public class WoodMG : MonoBehaviour
 
                 pointsGained.text = "+6 wood";
                 pointsGained.enabled = true;
+                atd.yourMom.color = new Color(0.588f, 0.882f, 0.588f, 1.0f);
                 atd.FloatText();
                 ResourceManager.woodCount += 6;
             }

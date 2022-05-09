@@ -149,6 +149,7 @@ public class BuildingManager : MonoBehaviour
         {
             pointsGained.text = "+3 cats";
             pointsGained.enabled = true;
+            atd.yourMom.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
             atd.FloatText();
             one = false;
         }
@@ -156,6 +157,7 @@ public class BuildingManager : MonoBehaviour
         {
             pointsGained.text = "+10 cats";
             pointsGained.enabled = true;
+            atd.yourMom.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
             atd.FloatText();
             two = false;
         }
@@ -163,6 +165,7 @@ public class BuildingManager : MonoBehaviour
         {
             pointsGained.text = "+6 cats";
             pointsGained.enabled = true;
+            atd.yourMom.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
             atd.FloatText();
             three = false;
         }

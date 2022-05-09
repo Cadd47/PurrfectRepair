@@ -79,6 +79,7 @@ public class FishMG : MonoBehaviour
 
                     pointsGained.text = "+2 fish";
                     pointsGained.enabled = true;
+                    atd.yourMom.color = new Color(0.588f, 0.882f, 1.0f, 1.0f);
                     atd.FloatText();
                     ResourceManager.fishCount += 2;
                 }
@@ -90,6 +91,7 @@ public class FishMG : MonoBehaviour
 
                     pointsGained.text = "+1 fish";
                     pointsGained.enabled = true;
+                    atd.yourMom.color = new Color(0.588f, 0.882f, 1.0f, 1.0f);
                     atd.FloatText();
                     ResourceManager.fishCount += 1;
                 }
