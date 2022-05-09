@@ -69,13 +69,14 @@ public class OreMG : MonoBehaviour
             MGManager.oreGame = false;
             MGManager.PleaseCheck();
         }
-
+        /*
         if ()
         {
             pointsGained.text = "+1";
             pointsGained.enabled = true;
             atd.OreFloat();
         }
+        */
     }
 
     public void pleaseShine()
