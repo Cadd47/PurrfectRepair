@@ -8,7 +8,8 @@ public class OreShiny : MonoBehaviour
     Vector3 minScale;
     private Vector3 maxScale;
     private float duration = 5;
-    public static bool destroyed;
+
+    public static float destroyed;
 
     GameObject minigame;
 
@@ -41,7 +42,7 @@ public class OreShiny : MonoBehaviour
         minigame = GameObject.Find("OreMG");
         ORMG = minigame.GetComponent<OreMG>();
         ORMG.currentPoints++;
-        destroyed = true;
+        destroyed ++;
         Destroy(gameObject);
     }
 

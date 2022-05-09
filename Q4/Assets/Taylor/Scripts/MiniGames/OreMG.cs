@@ -18,7 +18,7 @@ public class OreMG : MonoBehaviour
 
     [Header("Resource Implementation")]
     public int currentPoints;
-    public int maxPoints = 5;
+    public int maxPoints;
 
     MGManager MGManager;
     AutoTextDisable atd;
@@ -37,12 +37,8 @@ public class OreMG : MonoBehaviour
     void Update()
     {
         pointCounter.text = currentPoints.ToString();
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            StartCoroutine(SpawnShiny());
-        }
 
-        if(currentPoints >= maxPoints)
+        if (currentPoints >= maxPoints)
         {
             if (PlayerChecker.playerCheck)
             {
@@ -74,17 +70,29 @@ public class OreMG : MonoBehaviour
             MGManager.PleaseCheck();
         }
 
-        if (OreShiny.destroyed)
+        if ()
         {
-            OreShiny.destroyed = false;
             pointsGained.text = "+1";
             pointsGained.enabled = true;
             atd.OreFloat();
         }
     }
 
+    public void pleaseShine()
+    {
+        StartCoroutine(SpawnShiny());
+        /*
+        while (currentPoints <= maxPoints)
+        {
+
+        }
+        */
+    }
+
     IEnumerator SpawnShiny()
     {
+        yield return new WaitForSeconds(1f);
+
         for (int i = 0; i < shinyTotal; i++)
         {
             //Spawn positions
