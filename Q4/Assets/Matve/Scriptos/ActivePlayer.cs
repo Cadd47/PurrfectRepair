@@ -6,7 +6,8 @@ public class ActivePlayer : MonoBehaviour
 {
     public GameObject P1;
     public GameObject P2;
-    public bool isP1;
+    public static bool isP1;
+
 
     // Start is called before the first frame update
     void Start()
@@ -19,6 +20,7 @@ public class ActivePlayer : MonoBehaviour
     {
         if (isP1)
         {
+           
             P1.SetActive(true);
             P2.SetActive(false);
         }

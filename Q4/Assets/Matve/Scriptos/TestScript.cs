@@ -16,13 +16,13 @@ public class TestScript : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (AP.isP1)
+            if (ActivePlayer.isP1)
             {
-                AP.isP1 = false;
+                ActivePlayer.isP1 = false;
             }
             else
             {
-                AP.isP1 = true;
+                ActivePlayer.isP1 = true;
             }
         }
     }
