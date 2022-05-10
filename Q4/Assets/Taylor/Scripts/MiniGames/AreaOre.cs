@@ -7,6 +7,8 @@ public class AreaOre : MonoBehaviour
     PlayerChecker playerChecker;
     MGManager mgm;
 
+    GameObject mainCamera;
+
     public GameObject E;
     public bool hasPlayer;
     public static bool active;
@@ -15,6 +17,7 @@ public class AreaOre : MonoBehaviour
 
     private void Start()
     {
+        mainCamera = GameObject.Find("Main Camera");
         playerChecker = GameObject.Find("Players").GetComponent<PlayerChecker>();
         mgm = GameObject.Find("MiniGameManager").GetComponent<MGManager>();
     }
@@ -100,7 +103,7 @@ public class AreaOre : MonoBehaviour
     private void enableMG()
     {
         playerChecker.canSwitch = false;
-
+        mainCamera.SetActive(false);
         MGManager.oreGame = true;
         mgm.PleaseCheck();
 
@@ -121,7 +124,7 @@ public class AreaOre : MonoBehaviour
     public void disableMG()
     {
         playerChecker.canSwitch = true;
-
+        mainCamera.SetActive(true);
         MGManager.oreGame = false;
         mgm.PleaseCheck();
 

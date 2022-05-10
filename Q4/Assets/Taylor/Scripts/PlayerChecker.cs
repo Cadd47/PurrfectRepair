@@ -27,7 +27,6 @@ public class PlayerChecker : MonoBehaviour
             playerCheck = !playerCheck;
             Check();
         }
-
     }
 
     public void checkPlayer()

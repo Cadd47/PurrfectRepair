@@ -7,6 +7,8 @@ public class AreaWood : MonoBehaviour
     PlayerChecker playerChecker;
     MGManager mgm;
 
+    GameObject mainCamera;
+
     public GameObject E;
     public bool hasPlayer;
     public static bool active;
@@ -15,6 +17,7 @@ public class AreaWood : MonoBehaviour
 
     private void Start()
     {
+        mainCamera = GameObject.Find("Main Camera");
         playerChecker = GameObject.Find("Players").GetComponent<PlayerChecker>();
         mgm = GameObject.Find("MiniGameManager").GetComponent<MGManager>();
     }
@@ -100,18 +103,20 @@ public class AreaWood : MonoBehaviour
     private void enableMG()
     {
         playerChecker.canSwitch = false;
-
+        mainCamera.SetActive(false);
         MGManager.woodGame = true;
         mgm.PleaseCheck();
 
         if (GameObject.Find("Player One").GetComponent<PlayerMovement>().enabled == true)
         {
+            
             amOne = true;
             GameObject.Find("Player One").GetComponent<PlayerMovement>().enabled = false;
             GameObject.Find("Player One").GetComponent<AltGrav>().enabled = true;
         }
         if (GameObject.Find("Player Two").GetComponent<PlayerMovement>().enabled == true)
         {
+            
             amOne = false;
             GameObject.Find("Player Two").GetComponent<PlayerMovement>().enabled = false;
             GameObject.Find("Player Two").GetComponent<AltGrav>().enabled = true;
@@ -121,17 +126,19 @@ public class AreaWood : MonoBehaviour
     public void disableMG()
     {
         playerChecker.canSwitch = true;
-
+        mainCamera.SetActive(true);
         MGManager.woodGame = false;
         mgm.PleaseCheck();
 
         if (amOne)
         {
+            playerChecker.camOne.SetActive(true);
             GameObject.Find("Player One").GetComponent<PlayerMovement>().enabled = true;
             GameObject.Find("Player One").GetComponent<AltGrav>().enabled = false;
         }
         else
         {
+            playerChecker.camTwo.SetActive(true);
             GameObject.Find("Player Two").GetComponent<PlayerMovement>().enabled = true;
             GameObject.Find("Player Two").GetComponent<AltGrav>().enabled = false;
         }

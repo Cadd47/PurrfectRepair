@@ -22,23 +22,33 @@ public class PlayAnimations : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(PM.isIdle && !PM.isWalking && !PM.isRunning)
+        if (PM.enabled == false)
         {
             idle.SetActive(true);
             walk.SetActive(false);
             run.SetActive(false);
         }
-        else if (!PM.isIdle && PM.isWalking && !PM.isRunning)
+        else
         {
-            idle.SetActive(false);
-            walk.SetActive(true);
-            run.SetActive(false);
-        }
-        else if (!PM.isIdle && !PM.isWalking && PM.isRunning)
-        {
-            idle.SetActive(false);
-            walk.SetActive(false);
-            run.SetActive(true);
+            if (PM.isIdle && !PM.isWalking && !PM.isRunning)
+            {
+                idle.SetActive(true);
+                walk.SetActive(false);
+                run.SetActive(false);
+            }
+            else if (!PM.isIdle && PM.isWalking && !PM.isRunning)
+            {
+                idle.SetActive(false);
+                walk.SetActive(true);
+                run.SetActive(false);
+            }
+            else if (!PM.isIdle && !PM.isWalking && PM.isRunning)
+            {
+                idle.SetActive(false);
+                walk.SetActive(false);
+                run.SetActive(true);
+            }
         }
     }
+
 }

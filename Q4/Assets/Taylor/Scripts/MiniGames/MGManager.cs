@@ -22,12 +22,23 @@ public class MGManager : MonoBehaviour
     public GameObject oreSpawner;
     public GameObject rogSpawner;
 
+    [Header("Animations")]
+    public GameObject woodAni;
+    public GameObject oreAni;
+    public GameObject fishAni;
+    public GameObject rogAni;
+
     public void Start()
     {
         wood.SetActive(false);
         rog.SetActive(false);
         ore.SetActive(false);
         fish.SetActive(false);
+
+        woodAni.SetActive(false);
+        oreAni.SetActive(false);
+        fishAni.SetActive(false);
+        rogAni.SetActive(false);
 
         oreG = ore.GetComponent<OreMG>();
     }
@@ -55,31 +66,37 @@ public class MGManager : MonoBehaviour
     {
         if (woodGame)
         {
+            woodAni.SetActive(true);
             wood.SetActive(true);
         }
         else
         {
+            woodAni.SetActive(false);
             wood.SetActive(false);
         }
 
         if (fishGame)
         {
+            fishAni.SetActive(true);
             FishMG.catchProgress = 0.15f;
             fish.SetActive(true);
         }
         else
         {
+            fishAni.SetActive(false);
             fish.SetActive(false);
         }
 
         if (rogGame)
         {
+            rogAni.SetActive(true);
             rog.SetActive(true);
             rogG = GameObject.Find("Collector").GetComponent<RogMG>();
             rogG.pleaseRog();
         }
         else
         {
+            rogAni.SetActive(false);
             rog.SetActive(false);
 
             while (rogSpawner.transform.childCount > 0)
@@ -94,11 +111,13 @@ public class MGManager : MonoBehaviour
 
         if (oreGame)
         {
+            oreAni.SetActive(true);
             ore.SetActive(true);
             oreG.pleaseShine();
         }
         else
         {
+            oreAni.SetActive(false);
             ore.SetActive(false);
 
             while (oreSpawner.transform.childCount > 0)

@@ -7,6 +7,8 @@ public class AreaFish : MonoBehaviour
     PlayerChecker playerChecker;
     MGManager mgm;
 
+    GameObject mainCamera;
+
     public GameObject E;
     public bool hasPlayer;
     public static bool active;
@@ -15,6 +17,7 @@ public class AreaFish : MonoBehaviour
 
     private void Start()
     {
+        mainCamera = GameObject.Find("Main Camera");
         playerChecker = GameObject.Find("Players").GetComponent<PlayerChecker>();
         mgm = GameObject.Find("MiniGameManager").GetComponent<MGManager>();
     }
@@ -100,7 +103,7 @@ public class AreaFish : MonoBehaviour
     private void enableMG()
     {
         playerChecker.canSwitch = false;
-
+        mainCamera.SetActive(false);
         MGManager.fishGame = true;
         mgm.PleaseCheck();
 
@@ -121,7 +124,7 @@ public class AreaFish : MonoBehaviour
     public void disableMG()
     {
         playerChecker.canSwitch = true;
-
+        mainCamera.SetActive(true);
         MGManager.fishGame = false;
         mgm.PleaseCheck();
 
