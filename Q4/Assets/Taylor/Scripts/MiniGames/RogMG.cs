@@ -8,6 +8,9 @@ public class RogMG : MonoBehaviour
     AreaStone areaStone;
     MoveStone moveStone;
 
+    public GameObject tut;
+    public GameObject stoneEnd;
+
     public GameObject collector;
     public GameObject rogPrefab;
 
@@ -44,6 +47,7 @@ public class RogMG : MonoBehaviour
         areaStone = GameObject.Find("StoneSpawn").GetComponent<AreaStone>();
         atd = GameObject.Find("UpdateText").GetComponent<AutoTextDisable>();
         pointsGained.enabled = false;
+        tut.SetActive(true);
     }
 
     public void Update()
@@ -62,6 +66,8 @@ public class RogMG : MonoBehaviour
                 atd.FloatText();
                 moveStone.Move();
                 ResourceManager.stoneCount += 5;
+
+                stoneEnd.SetActive(true);
             }
             else
             {
@@ -75,6 +81,8 @@ public class RogMG : MonoBehaviour
                 atd.FloatText();
                 moveStone.Move();
                 ResourceManager.stoneCount += 2;
+
+                stoneEnd.SetActive(true);
             }
 
             currentPoints = 0;

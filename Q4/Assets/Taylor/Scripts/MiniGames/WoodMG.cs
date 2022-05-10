@@ -7,6 +7,9 @@ public class WoodMG : MonoBehaviour
 {
     AreaWood areaWood;
 
+    public GameObject tut;
+    public GameObject woodEnd;
+
     public GameObject arrow;
     public Transform pointA;
     public Transform pointB;
@@ -42,6 +45,7 @@ public class WoodMG : MonoBehaviour
         atd = GameObject.Find("UpdateText").GetComponent<AutoTextDisable>();
         areaWood = GameObject.Find("WoodSpawn").GetComponent<AreaWood>();
         pointsGained.enabled = false;
+        tut.SetActive(true);
     }
 
     void Update()
@@ -93,6 +97,8 @@ public class WoodMG : MonoBehaviour
         {
             if (PlayerChecker.playerCheck)
             {
+                woodEnd.SetActive(true);
+
                 areaWood.disableMG();
                 AreaWood.active = false;
                 MGManager.woodGame = false;
@@ -106,6 +112,8 @@ public class WoodMG : MonoBehaviour
             }
             else
             {
+                woodEnd.SetActive(true);
+
                 areaWood.disableMG();
                 AreaWood.active = false;
                 MGManager.woodGame = false;

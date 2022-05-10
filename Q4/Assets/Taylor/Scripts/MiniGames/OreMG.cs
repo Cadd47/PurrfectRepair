@@ -7,6 +7,9 @@ public class OreMG : MonoBehaviour
 {
     AreaOre areaOre;
 
+    public GameObject tut;
+    public GameObject oreEnd;
+
     public float waitTime;
     public float shinyTotal;
 
@@ -34,6 +37,7 @@ public class OreMG : MonoBehaviour
         areaOre = GameObject.Find("OreSpawn").GetComponent<AreaOre>();
         atd = GameObject.Find("UpdateText").GetComponent<AutoTextDisable>();
         pointsGained.enabled = false;
+        tut.SetActive(true);
     }
 
     void Update()
@@ -54,6 +58,8 @@ public class OreMG : MonoBehaviour
                 atd.FloatText();
                 moveOre.Move();
                 ResourceManager.oreCount += 1;
+
+                oreEnd.SetActive(true);
             }
             else
             {
@@ -67,6 +73,8 @@ public class OreMG : MonoBehaviour
                 atd.FloatText();
                 moveOre.Move();
                 ResourceManager.oreCount += 3;
+
+                oreEnd.SetActive(true);
             }
 
             currentPoints = 0;

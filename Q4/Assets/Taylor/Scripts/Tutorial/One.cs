@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TutorialOne : MonoBehaviour
+public class One : MonoBehaviour
 {
     public GameObject[] TutP1;
 
@@ -22,7 +22,10 @@ public class TutorialOne : MonoBehaviour
 
             if (press >= TutP1.Length)
             {
-                press = 0;
+                for(int i = 0; i < TutP1.Length; i++)
+                {
+                    Destroy(TutP1[i].gameObject);
+                }
             }
 
             TutP1[press].SetActive(true);

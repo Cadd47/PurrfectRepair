@@ -7,6 +7,9 @@ public class FishMG : MonoBehaviour
 {
     AreaFish areaFish;
 
+    public GameObject tut;
+    public GameObject fishEnd;
+
     [Header("Fish Area")]
     public Transform topPoint;
     public Transform bottomPoint;
@@ -48,6 +51,7 @@ public class FishMG : MonoBehaviour
         areaFish = GameObject.Find("FishSpawn").GetComponent<AreaFish>();
         atd = GameObject.Find("UpdateText").GetComponent<AutoTextDisable>();
         pointsGained.enabled = false;
+        tut.SetActive(true);
     }
 
     private void FixedUpdate()
@@ -82,6 +86,8 @@ public class FishMG : MonoBehaviour
                     atd.yourMom.color = new Color(0.588f, 0.882f, 1.0f, 1.0f);
                     atd.FloatText();
                     ResourceManager.fishCount += 2;
+
+                    fishEnd.SetActive(true);
                 }
                 else
                 {
@@ -94,6 +100,8 @@ public class FishMG : MonoBehaviour
                     atd.yourMom.color = new Color(0.588f, 0.882f, 1.0f, 1.0f);
                     atd.FloatText();
                     ResourceManager.fishCount += 1;
+
+                    fishEnd.SetActive(true);
                 }
 
                 MGManager.fishGame = false;

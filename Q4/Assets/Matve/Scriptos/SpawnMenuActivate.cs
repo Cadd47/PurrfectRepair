@@ -7,6 +7,8 @@ public class SpawnMenuActivate : MonoBehaviour
 
     PlayerChecker playerChecker;
 
+    public GameObject tut;
+
     public GameObject mainCam;
     public GameObject buildCam;
     public GameObject buildMenu;
@@ -56,7 +58,7 @@ public class SpawnMenuActivate : MonoBehaviour
             Check();
         }
 
-        if (hasPlayer)
+        if (hasPlayer && !menuCheck)
         {
             E.SetActive(true);
         }
@@ -140,6 +142,8 @@ public class SpawnMenuActivate : MonoBehaviour
 
     private void enableBuildMenu()
     {
+        tut.SetActive(true);
+
         playerChecker.canSwitch = false;
         //camera & build menu
         mainCam.SetActive(false);

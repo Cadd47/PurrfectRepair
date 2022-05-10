@@ -14,7 +14,6 @@ public class BuildingManager : MonoBehaviour
 
     public GameObject[] structures;
     public GameObject selectedObject;
-    public GameObject howToBuild;
     private MeshRenderer renderer;
 
     public bool cantSelect = false;
@@ -99,7 +98,6 @@ public class BuildingManager : MonoBehaviour
     {
         if(cantSelect == false)
         {
-            Destroy(howToBuild);
             selectedObject = Instantiate(structures[index], pos, transform.rotation);
             cantSelect = true;
 

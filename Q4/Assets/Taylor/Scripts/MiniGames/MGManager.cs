@@ -53,8 +53,6 @@ public class MGManager : MonoBehaviour
         {
             MenuManager.canPause = false;
         }
-
-        //rogG = GameObject.Find("Collector").GetComponent<RogMG>();
     }
 
     public void PleaseCheck()
