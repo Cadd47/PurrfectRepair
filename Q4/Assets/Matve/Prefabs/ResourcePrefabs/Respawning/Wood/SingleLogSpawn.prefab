@@ -48,7 +48,7 @@ MonoBehaviour:
     type: 3}
   currentResource: {fileID: 0}
   timer: 0
-  maxTime: 0
+  maxTime: 10
   occupied: 0
 --- !u!1001 &406647491823396783
 PrefabInstance:

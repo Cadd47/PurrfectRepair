@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 2044170659770658157}
   - component: {fileID: 3166454911779529416}
   - component: {fileID: 870732665139500546}
-  m_Layer: 14
+  - component: {fileID: 6404224717821496334}
+  m_Layer: 0
   m_Name: snowpile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -79,3 +80,17 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &6404224717821496334
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1663388258666002391}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -3214521003866156968, guid: df6105f9974f08840adebd19e13ec62b, type: 3}
