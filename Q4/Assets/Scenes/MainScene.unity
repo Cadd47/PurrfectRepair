@@ -2355,9 +2355,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 478615648}
-        m_MethodName: BYE
-        m_Mode: 1
+      - m_Target: {fileID: 478615646}
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -81572,7 +81572,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 461116451125022936}
-  m_LocalRotation: {x: 0.13165644, y: -0.00000000853051, z: 0.0000000011323729, w: 0.99129546}
+  m_LocalRotation: {x: 0.13165644, y: 0.000000008530507, z: -0.0000000011323726, w: 0.99129546}
   m_LocalPosition: {x: 0, y: 7.8, z: -57}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -103741,7 +103741,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 461116452126675423}
-  m_LocalRotation: {x: 0.13165641, y: -0.000000008528304, z: 0.0000000011326654, w: 0.99129546}
+  m_LocalRotation: {x: 0.13165641, y: 0.0000000085283025, z: -0.0000000011326651,
+    w: 0.99129546}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:

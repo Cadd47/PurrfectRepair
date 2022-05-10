@@ -6,14 +6,17 @@ using UnityEngine.SceneManagement;
 public class MenuManager : MonoBehaviour
 {
     MGManager MGM;
+    Population pop;
 
     public static bool canPause = true;
-    public static bool GameIsPaused = true;
+    public static bool GameIsPaused;
     public GameObject pauseMenuUI;
 
     void Start()
     {
         MGM = GameObject.Find("MiniGameManager").GetComponent<MGManager>();
+        pop = GameObject.Find("Population Manager").GetComponent<Population>();
+        GameIsPaused = false;
     }
 
     void Update()
@@ -30,7 +33,7 @@ public class MenuManager : MonoBehaviour
             }
         }
 
-        if (!GameIsPaused && BuildingMenu.menuCheck == false && SpawnMenuActivate.menuCheck == false && MGManager.oreGame == false)
+        if (!GameIsPaused && BuildingMenu.menuCheck == false && SpawnMenuActivate.menuCheck == false && MGManager.oreGame == false && pop.winScreen.activeInHierarchy == false)
         {
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
@@ -59,6 +62,7 @@ public class MenuManager : MonoBehaviour
     public void PressStart()
     {
         SceneManager.LoadScene("MainScene");
+        Time.timeScale = 1f;
         GameIsPaused = false;
     }
 
@@ -70,7 +74,6 @@ public class MenuManager : MonoBehaviour
     public void PressToMain()
     {
         SceneManager.LoadScene("MainMenu");
-        GameIsPaused = true;
     }
 
     public void PressQuit()
