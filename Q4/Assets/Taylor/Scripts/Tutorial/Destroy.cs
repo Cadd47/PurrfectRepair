@@ -4,11 +4,18 @@ using UnityEngine;
 
 public class Destroy : MonoBehaviour
 {
+    private bool bye = false;
+
     void Update()
     {
         if (gameObject.activeInHierarchy && Input.GetKeyDown(KeyCode.Space))
         {
-            Destroy(gameObject);
+            bye = true;
+        }
+
+        if (bye)
+        {
+            gameObject.SetActive(false);
         }
     }
 }

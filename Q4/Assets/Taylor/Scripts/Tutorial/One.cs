@@ -10,12 +10,10 @@ public class One : MonoBehaviour
 
     private int press = 0;
 
+    public static bool goForIt = false;
+
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            Destroy(gameObject);
-        }
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -27,7 +25,7 @@ public class One : MonoBehaviour
                 for (int i = 0; i < TutP1.Length; i++)
                 {
                     bigBoi.SetActive(false);
-
+                    goForIt = true;
                     press = 0;
                 }
             }
