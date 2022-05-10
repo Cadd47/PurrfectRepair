@@ -45,4 +45,9 @@ public class Options : MonoBehaviour
     {
         SavedOptions.savedXSense = newX;
     }
+
+    public void SetFullScreen (bool isFullscreen)
+    {
+        Screen.fullScreen = isFullscreen;
+    }
 }
