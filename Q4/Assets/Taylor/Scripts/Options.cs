@@ -9,22 +9,32 @@ public class Options : MonoBehaviour
     public CinemachineFreeLook playerOneCam;
     public CinemachineFreeLook playerTwoCam;
 
+    public Toggle size;
+
     public Slider ySlider;
     public Slider xSlider;
 
+    [Header("Music")]
+    public AudioSource AudioSource;
     public Slider mSlider;
 
     void Start()
     {
         Screen.SetResolution(1920, 1200, true);
+
+        AudioSource.Play();
     }
 
     public void Update()
     {
+        size.isOn = SavedOptions.saveScreen;
+
         ySlider.value = SavedOptions.savedYSense;
         xSlider.value = SavedOptions.savedXSense;
 
         mSlider.value = SavedOptions.saveMVolume;
+
+        AudioSource.volume = mSlider.value;
 
         try
         {
@@ -37,6 +47,15 @@ public class Options : MonoBehaviour
             {
                 playerTwoCam.m_YAxis.m_MaxSpeed = ySlider.value;
                 playerTwoCam.m_XAxis.m_MaxSpeed = xSlider.value * 166.667f;
+            }
+
+            if (size.isOn)
+            {
+                Screen.fullScreen = true;
+            }
+            else
+            {
+                Screen.fullScreen = false;
             }
         }
         catch
@@ -57,11 +76,11 @@ public class Options : MonoBehaviour
 
     public void AdjustM(float newM)
     {
-        SavedOptions.saveMVolume= newM;
+        SavedOptions.saveMVolume = newM;
     }
 
     public void SetFullScreen (bool isFullscreen)
     {
-        Screen.fullScreen = isFullscreen;
+        SavedOptions.saveScreen = isFullscreen;
     }
 }

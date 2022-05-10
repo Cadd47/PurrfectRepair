@@ -56,11 +56,15 @@ public class BuildingManager : MonoBehaviour
                     //Rotate
                     if (Input.GetKeyDown(KeyCode.R))
                     {
+                        FindObjectOfType<AudioManager>().Play("RotateBuild");
+
                         selectedObject.transform.Rotate(Vector3.up, rotateAmount);
                     }
                     //Trash
                     if (Input.GetKeyDown(KeyCode.T))
                     {
+                        FindObjectOfType<AudioManager>().Play("TrashBuild");
+
                         Destroy(selectedObject);
                         cantSelect = false;
                         selectedObject = null;
@@ -137,6 +141,8 @@ public class BuildingManager : MonoBehaviour
 
     public void PlaceObject()
     {
+        FindObjectOfType<AudioManager>().Play("PlaceBuild");
+
         selectedObject.GetComponent<Renderer>().material.color = Color.white;
         selectedObject.transform.Find("Plane").gameObject.SetActive(false);
 

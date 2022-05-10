@@ -128,6 +128,8 @@ public class AreaWood : MonoBehaviour
 
     public void disableMG()
     {
+        FindObjectOfType<AudioManager>().Play("Click");
+
         playerChecker.canSwitch = true;
         mainCamera.SetActive(true);
         MGManager.woodGame = false;

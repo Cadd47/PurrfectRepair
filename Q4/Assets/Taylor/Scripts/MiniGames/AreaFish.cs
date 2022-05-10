@@ -126,6 +126,8 @@ public class AreaFish : MonoBehaviour
 
     public void disableMG()
     {
+        FindObjectOfType<AudioManager>().Play("Click");
+
         playerChecker.canSwitch = true;
         mainCamera.SetActive(true);
         MGManager.fishGame = false;

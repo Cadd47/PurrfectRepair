@@ -33,15 +33,22 @@ public class MenuManager : MonoBehaviour
             }
         }
 
-        if (!GameIsPaused && BuildingMenu.menuCheck == false && SpawnMenuActivate.menuCheck == false && MGManager.oreGame == false && pop.winScreen.activeInHierarchy == false)
+        try
         {
-            Cursor.visible = false;
-            Cursor.lockState = CursorLockMode.Locked;
+            if (!GameIsPaused && BuildingMenu.menuCheck == false && SpawnMenuActivate.menuCheck == false && MGManager.oreGame == false && pop.winScreen.activeInHierarchy == false)
+            {
+                Cursor.visible = false;
+                Cursor.lockState = CursorLockMode.Locked;
+            }
+            else
+            {
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
+            }
         }
-        else
+        catch
         {
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;
+            //I'm not dealing with you rn....
         }
     }
 
@@ -74,11 +81,22 @@ public class MenuManager : MonoBehaviour
     public void PressToMain()
     {
         SceneManager.LoadScene("MainMenu");
+        One.goForIt = false;
     }
 
     public void PressQuit()
     {
         Debug.Log("Quitting Application...");
         Application.Quit();
+    }
+
+    public void hover()
+    {
+        FindObjectOfType<AudioManager>().Play("Hover");
+    }
+
+    public void click()
+    {
+        FindObjectOfType<AudioManager>().Play("Click");
     }
 }

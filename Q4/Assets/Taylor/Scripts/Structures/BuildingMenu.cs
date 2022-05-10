@@ -174,6 +174,8 @@ public class BuildingMenu : MonoBehaviour
     }
     private void disableBuildMenu()
     {
+        FindObjectOfType<AudioManager>().Play("Click");
+
         playerChecker.canSwitch = true;
         //destroy any green and red
         Destroy(buildingManager.selectedObject);

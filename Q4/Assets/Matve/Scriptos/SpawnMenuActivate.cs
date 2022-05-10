@@ -168,6 +168,8 @@ public class SpawnMenuActivate : MonoBehaviour
     }
     private void disableBuildMenu()
     {
+        FindObjectOfType<AudioManager>().Play("Click");
+
         playerChecker.canSwitch = true;
         //camera & build menu
         mainCam.SetActive(true);

@@ -126,6 +126,8 @@ public class AreaOre : MonoBehaviour
 
     public void disableMG()
     {
+        FindObjectOfType<AudioManager>().Play("Click");
+
         playerChecker.canSwitch = true;
         mainCamera.SetActive(true);
         MGManager.oreGame = false;

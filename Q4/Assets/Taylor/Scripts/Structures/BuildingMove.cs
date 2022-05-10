@@ -26,6 +26,7 @@ public class BuildingMove : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) && hover == true)
         {
+            FindObjectOfType<AudioManager>().Play("PlaceBuild");
             GameObject.Find("BuildingManager").GetComponent<BuildingManager>().selectedObject = gameObject;
 
             hover = false;

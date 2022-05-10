@@ -72,6 +72,8 @@ public class PlayerMovement : MonoBehaviour
             jumpTimeCounter = 0.25f;
             jumpParticle.Play();
 
+            FindObjectOfType<AudioManager>().Play("Jump");
+
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
 
@@ -132,6 +134,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 sprintParticle.Stop();
                 isRunning = false;
+
             }
             else
             {

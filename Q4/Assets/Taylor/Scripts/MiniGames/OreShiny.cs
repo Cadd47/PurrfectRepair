@@ -7,7 +7,7 @@ public class OreShiny : MonoBehaviour
 {
     Vector3 minScale;
     private Vector3 maxScale;
-    private float duration = 5;
+    private float duration = 4;
 
     public static bool destroyed;
 
