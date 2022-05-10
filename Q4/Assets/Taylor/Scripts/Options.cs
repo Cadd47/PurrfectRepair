@@ -12,6 +12,8 @@ public class Options : MonoBehaviour
     public Slider ySlider;
     public Slider xSlider;
 
+    public Slider mSlider;
+
     void Start()
     {
         Screen.SetResolution(1920, 1200, true);
@@ -21,6 +23,8 @@ public class Options : MonoBehaviour
     {
         ySlider.value = SavedOptions.savedYSense;
         xSlider.value = SavedOptions.savedXSense;
+
+        mSlider.value = SavedOptions.saveMVolume;
 
         try
         {
@@ -49,6 +53,11 @@ public class Options : MonoBehaviour
     public void AdjustX(float newX)
     {
         SavedOptions.savedXSense = newX;
+    }
+
+    public void AdjustM(float newM)
+    {
+        SavedOptions.saveMVolume= newM;
     }
 
     public void SetFullScreen (bool isFullscreen)

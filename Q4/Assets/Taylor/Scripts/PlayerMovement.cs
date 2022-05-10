@@ -66,7 +66,7 @@ public class PlayerMovement : MonoBehaviour
             StartCoroutine(checkLanded());
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && velocity.y < 0 && isGrounded)
+        if (Input.GetKeyDown(KeyCode.Space) && velocity.y < 0 && isGrounded && One.goForIt)
         {
             isJumping = true;
             jumpTimeCounter = 0.25f;
