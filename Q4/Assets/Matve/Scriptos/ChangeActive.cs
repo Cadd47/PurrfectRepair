@@ -8,6 +8,12 @@ public class ChangeActive : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+       
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
         if (p1)
         {
             ActivePlayer.isP1 = true;
@@ -16,11 +22,5 @@ public class ChangeActive : MonoBehaviour
         {
             ActivePlayer.isP1 = false;
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
