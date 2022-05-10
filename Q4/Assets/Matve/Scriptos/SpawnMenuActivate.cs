@@ -16,6 +16,9 @@ public class SpawnMenuActivate : MonoBehaviour
     private bool amOne;
     public bool editBuild = false;
 
+    private bool one;
+    private bool two;
+
     public static bool menuCheck;
 
     void Start()
@@ -61,22 +64,66 @@ public class SpawnMenuActivate : MonoBehaviour
         {
             E.SetActive(false);
         }
-    }
 
-    private void OnTriggerEnter(Collider buildMenu)
-    {
-        if (buildMenu.CompareTag("Player"))
+        if (one && !two)
+        {
+            if (GameObject.Find("Player One").GetComponent<x>().enabled == true)
+            {
+                hasPlayer = true;
+            }
+            else
+            {
+                hasPlayer = false;
+            }
+        }
+
+        if (!one && two)
+        {
+            if (GameObject.Find("Player Two").GetComponent<x>().enabled == true)
+            {
+                hasPlayer = true;
+            }
+            else
+            {
+                hasPlayer = false;
+            }
+        }
+
+        if (one && two)
         {
             hasPlayer = true;
         }
-    }
 
-    private void OnTriggerExit(Collider buildMenu)
-    {
-        if (buildMenu.CompareTag("Player"))
+        if (!one && !two)
         {
             hasPlayer = false;
         }
+    }
+
+    private void OnTriggerEnter(Collider collider)
+    {
+        if (collider.gameObject.name == "Player One")
+        {
+            one = true;
+        }
+
+        if (collider.gameObject.name == "Player Two")
+        {
+            two = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider collider)
+    {
+        if (collider.gameObject.name == "Player One")
+        {
+            one = false;
+        }
+        if (collider.gameObject.name == "Player Two")
+        {
+            two = false;
+        }
+
     }
 
     private void Check()

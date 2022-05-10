@@ -76,7 +76,7 @@ public class AutoTextDisable : MonoBehaviour
     {
         StartCoroutine(Lean());
         yield return new WaitForSeconds(1f);
-        Debug.Log("e");
+
         while (y < 1)
         {
             yourMom.color = Color.Lerp(new Color(1f, 1f, 1f, 1.0f), new Color(1f, 1f, 1f, 0f), y);

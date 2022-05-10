@@ -22,6 +22,7 @@ public class OreMG : MonoBehaviour
 
     MGManager MGManager;
     AutoTextDisable atd;
+    MoveOre moveOre;
 
     public TextMeshProUGUI pointCounter;
     public TextMeshProUGUI pointsGained;
@@ -29,6 +30,7 @@ public class OreMG : MonoBehaviour
     private void Start()
     {
         MGManager = GameObject.Find("MiniGameManager").GetComponent<MGManager>();
+        moveOre = GameObject.Find("MiniGameManager").GetComponent<MoveOre>();
         areaOre = GameObject.Find("OreSpawn").GetComponent<AreaOre>();
         atd = GameObject.Find("UpdateText").GetComponent<AutoTextDisable>();
         pointsGained.enabled = false;
@@ -50,6 +52,7 @@ public class OreMG : MonoBehaviour
                 pointsGained.enabled = true;
                 atd.yourMom.color = new Color(1.0f, 0.686f, 0.392f, 1.0f);
                 atd.FloatText();
+                moveOre.Move();
                 ResourceManager.oreCount += 1;
             }
             else
@@ -62,6 +65,7 @@ public class OreMG : MonoBehaviour
                 pointsGained.enabled = true;
                 atd.yourMom.color = new Color(1.0f, 0.686f, 0.392f, 1.0f);
                 atd.FloatText();
+                moveOre.Move();
                 ResourceManager.oreCount += 3;
             }
 
@@ -69,25 +73,21 @@ public class OreMG : MonoBehaviour
             MGManager.oreGame = false;
             MGManager.PleaseCheck();
         }
-        /*
-        if ()
+        else
         {
-            pointsGained.text = "+1";
-            pointsGained.enabled = true;
-            atd.OreFloat();
+            if (OreShiny.destroyed)
+            {
+                pointsGained.text = "+1";
+                pointsGained.enabled = true;
+                atd.OreFloat();
+                OreShiny.destroyed = false;
+            }
         }
-        */
     }
 
     public void pleaseShine()
     {
         StartCoroutine(SpawnShiny());
-        /*
-        while (currentPoints <= maxPoints)
-        {
-
-        }
-        */
     }
 
     IEnumerator SpawnShiny()

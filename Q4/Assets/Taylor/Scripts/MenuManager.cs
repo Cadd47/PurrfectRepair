@@ -8,7 +8,7 @@ public class MenuManager : MonoBehaviour
     MGManager MGM;
 
     public static bool canPause = true;
-    public static bool GameIsPaused = false;
+    public static bool GameIsPaused = true;
     public GameObject pauseMenuUI;
 
     void Start()
@@ -59,6 +59,7 @@ public class MenuManager : MonoBehaviour
     public void PressStart()
     {
         SceneManager.LoadScene("MainScene");
+        GameIsPaused = false;
     }
 
     public void PressCredits()
@@ -69,6 +70,7 @@ public class MenuManager : MonoBehaviour
     public void PressToMain()
     {
         SceneManager.LoadScene("MainMenu");
+        GameIsPaused = true;
     }
 
     public void PressQuit()

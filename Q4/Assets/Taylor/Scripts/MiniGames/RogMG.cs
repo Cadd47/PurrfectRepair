@@ -6,6 +6,7 @@ using TMPro;
 public class RogMG : MonoBehaviour
 {
     AreaStone areaStone;
+    MoveStone moveStone;
 
     public GameObject collector;
     public GameObject rogPrefab;
@@ -39,6 +40,7 @@ public class RogMG : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         MGManager = GameObject.Find("MiniGameManager").GetComponent<MGManager>();
+        moveStone = GameObject.Find("MiniGameManager").GetComponent<MoveStone>();
         areaStone = GameObject.Find("StoneSpawn").GetComponent<AreaStone>();
         atd = GameObject.Find("UpdateText").GetComponent<AutoTextDisable>();
         pointsGained.enabled = false;
@@ -58,6 +60,7 @@ public class RogMG : MonoBehaviour
                 pointsGained.enabled = true;
                 atd.yourMom.color = new Color(0.686f, 0.686f, 0.686f, 1.0f);
                 atd.FloatText();
+                moveStone.Move();
                 ResourceManager.stoneCount += 5;
             }
             else
@@ -70,12 +73,23 @@ public class RogMG : MonoBehaviour
                 pointsGained.enabled = true;
                 atd.yourMom.color = new Color(0.686f, 0.686f, 0.686f, 1.0f);
                 atd.FloatText();
+                moveStone.Move();
                 ResourceManager.stoneCount += 2;
             }
 
             currentPoints = 0;
             MGManager.rogGame = false;
             MGManager.PleaseCheck();
+        }
+        else
+        {
+            if (Rog.destroyed)
+            {
+                Rog.destroyed = false;
+                pointsGained.text = "+1";
+                pointsGained.enabled = true;
+                atd.MGFloat();
+            }
         }
 
         if (Input.GetKey(KeyCode.RightArrow))
@@ -89,15 +103,6 @@ public class RogMG : MonoBehaviour
         }
 
         pointCounter.text = currentPoints.ToString();
-        /*
-        if (Rog.destroyed)
-        {
-            Rog.destroyed = false;
-            pointsGained.text = "+1";
-            pointsGained.enabled = true;
-            atd.MGFloat();
-        }
-        */
     }
 
     private void OnTriggerEnter(Collider collector)

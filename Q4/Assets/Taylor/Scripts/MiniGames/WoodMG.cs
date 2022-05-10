@@ -24,6 +24,7 @@ public class WoodMG : MonoBehaviour
 
     MGManager MGM;
     AutoTextDisable atd;
+    MoveWood moveWood;
 
     public TextMeshProUGUI pointCounter;
     public TextMeshProUGUI pointsGained;
@@ -37,6 +38,7 @@ public class WoodMG : MonoBehaviour
     private void Start()
     {
         MGM = GameObject.Find("MiniGameManager").GetComponent<MGManager>();
+        moveWood = GameObject.Find("MiniGameManager").GetComponent<MoveWood>();
         atd = GameObject.Find("UpdateText").GetComponent<AutoTextDisable>();
         areaWood = GameObject.Find("WoodSpawn").GetComponent<AreaWood>();
         pointsGained.enabled = false;
@@ -99,6 +101,7 @@ public class WoodMG : MonoBehaviour
                 pointsGained.enabled = true;
                 atd.yourMom.color = new Color(0.588f, 0.882f, 0.588f, 1.0f);
                 atd.FloatText();
+                moveWood.Move();
                 ResourceManager.woodCount += 3;
             }
             else
@@ -111,6 +114,7 @@ public class WoodMG : MonoBehaviour
                 pointsGained.enabled = true;
                 atd.yourMom.color = new Color(0.588f, 0.882f, 0.588f, 1.0f);
                 atd.FloatText();
+                moveWood.Move();
                 ResourceManager.woodCount += 6;
             }
 

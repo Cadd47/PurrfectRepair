@@ -9,6 +9,8 @@ public class Rog : MonoBehaviour
     private float duration = 5f;
     public float distance;
 
+    public static bool destroyed;
+
     [SerializeField] private Vector3 _rotation;
 
     IEnumerator Start()
@@ -43,6 +45,7 @@ public class Rog : MonoBehaviour
     }
     void Destroy()
     {
+        destroyed = true;
         Destroy(gameObject);
     }
 }
