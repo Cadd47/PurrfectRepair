@@ -9,6 +9,8 @@ public class BuildingMenu : MonoBehaviour
 
     public GameObject tut;
 
+    public GameObject arrow;
+
     public GameObject mainCam;
     public GameObject buildCam;
     public GameObject buildMenu;
@@ -146,7 +148,7 @@ public class BuildingMenu : MonoBehaviour
     private void enableBuildMenu()
     {
         tut.SetActive(true);
-
+        Destroy(arrow);
         playerChecker.canSwitch = false;
         //camera & menu
         mainCam.SetActive(false);

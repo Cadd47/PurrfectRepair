@@ -12,6 +12,11 @@ public class Options : MonoBehaviour
     public Slider ySlider;
     public Slider xSlider;
 
+    void Start()
+    {
+        Screen.SetResolution(1920, 1200, true);
+    }
+
     public void Update()
     {
         ySlider.value = SavedOptions.savedYSense;

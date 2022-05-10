@@ -6,6 +6,8 @@ public class One : MonoBehaviour
 {
     public GameObject[] TutP1;
 
+    public GameObject bigBoi;
+
     private int press = 0;
 
     void Update()
@@ -22,9 +24,11 @@ public class One : MonoBehaviour
 
             if (press >= TutP1.Length)
             {
-                for(int i = 0; i < TutP1.Length; i++)
+                for (int i = 0; i < TutP1.Length; i++)
                 {
-                    Destroy(TutP1[i].gameObject);
+                    bigBoi.SetActive(false);
+
+                    press = 0;
                 }
             }
 

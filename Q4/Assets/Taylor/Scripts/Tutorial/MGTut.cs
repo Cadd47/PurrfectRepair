@@ -5,7 +5,7 @@ using UnityEngine;
 public class MGTut : MonoBehaviour
 {
     public GameObject[] Tut;
-
+    public GameObject bigBoi;
     private int press = 0;
 
     void Update()
@@ -27,7 +27,9 @@ public class MGTut : MonoBehaviour
             {
                 for (int i = 0; i < Tut.Length; i++)
                 {
-                    Destroy(Tut[i].gameObject);
+                    bigBoi.SetActive(false);
+
+                    press = 0;
                 }
             }
 

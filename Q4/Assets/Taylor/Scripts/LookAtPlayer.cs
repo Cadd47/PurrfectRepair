@@ -8,6 +8,13 @@ public class LookAtPlayer : MonoBehaviour
 
     void LateUpdate()
     {
-        transform.LookAt(transform.position + cam.forward);
+        try
+        {
+            transform.LookAt(transform.position + cam.forward);
+        }
+        catch
+        {
+            //shut up dumb camera
+        }
     }
 }

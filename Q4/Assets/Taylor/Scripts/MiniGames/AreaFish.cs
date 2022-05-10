@@ -9,6 +9,8 @@ public class AreaFish : MonoBehaviour
 
     GameObject mainCamera;
 
+    public GameObject arrow;
+
     public GameObject E;
     public bool hasPlayer;
     public static bool active;
@@ -45,7 +47,7 @@ public class AreaFish : MonoBehaviour
             Check();
         }
 
-        if (hasPlayer)
+        if (hasPlayer && !active)
         {
             E.SetActive(true);
         }
@@ -102,6 +104,7 @@ public class AreaFish : MonoBehaviour
 
     private void enableMG()
     {
+        Destroy(arrow);
         playerChecker.canSwitch = false;
         mainCamera.SetActive(false);
         MGManager.fishGame = true;

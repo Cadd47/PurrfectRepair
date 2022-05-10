@@ -6,6 +6,7 @@ using TMPro;
 public class FishMG : MonoBehaviour
 {
     AreaFish areaFish;
+    MoveFish moveFish;
 
     public GameObject tut;
     public GameObject fishEnd;
@@ -49,6 +50,7 @@ public class FishMG : MonoBehaviour
     {
         MGM = GameObject.Find("MiniGameManager").GetComponent<MGManager>();
         areaFish = GameObject.Find("FishSpawn").GetComponent<AreaFish>();
+        moveFish = GameObject.Find("MiniGameManager").GetComponent<MoveFish>();
         atd = GameObject.Find("UpdateText").GetComponent<AutoTextDisable>();
         pointsGained.enabled = false;
         tut.SetActive(true);
@@ -85,6 +87,7 @@ public class FishMG : MonoBehaviour
                     pointsGained.enabled = true;
                     atd.yourMom.color = new Color(0.588f, 0.882f, 1.0f, 1.0f);
                     atd.FloatText();
+                    moveFish.Move();
                     ResourceManager.fishCount += 2;
 
                     fishEnd.SetActive(true);
@@ -99,6 +102,7 @@ public class FishMG : MonoBehaviour
                     pointsGained.enabled = true;
                     atd.yourMom.color = new Color(0.588f, 0.882f, 1.0f, 1.0f);
                     atd.FloatText();
+                    moveFish.Move();
                     ResourceManager.fishCount += 1;
 
                     fishEnd.SetActive(true);

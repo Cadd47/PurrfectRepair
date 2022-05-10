@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class AddPopulation : MonoBehaviour
 {
+    public GameObject winScreen;
+
     public int AIvalue;
     public int value;
     Collider col;
@@ -22,7 +24,7 @@ public class AddPopulation : MonoBehaviour
             AddPop();
             placed = true;
         }
-        
+
     }
 
     public void AddPop()
